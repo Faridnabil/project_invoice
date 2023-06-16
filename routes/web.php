@@ -20,6 +20,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', function () {
         return view('menu.home');
     });
+
+    Route::get('/beritaacara', function () {
+        return view('berita-acara.berita');
+    });
 });
 
 Route::middleware(['auth', 'role:Administrator'])->group(function () {
