@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\SPKController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,4 +54,7 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     //DELETE ROLES
     Route::get('delete-quotation/{id}', [QuotationController::class, 'delete_quotation']);
     //END:ROLES
+
+    Route::get('view-spk', [SPKController::class, 'index'])->name('view-spk');
+    Route::get('create-spk', [SPKController::class, 'show'])->name('create-spk');
 });

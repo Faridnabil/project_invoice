@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>@yield('title')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -226,7 +226,7 @@
                 </div>
 
                 <!-- SidebarSearch Form -->
-                <div class="form-inline">
+                {{-- <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                             aria-label="Search">
@@ -236,7 +236,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 @yield('navbar')
             </div>
@@ -268,6 +268,8 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
+
+    <script src="{{ asset('template/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- ChartJS -->
