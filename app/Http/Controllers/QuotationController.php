@@ -28,7 +28,7 @@ class QuotationController extends Controller
     {
         $kode = DB::table('quotation')->count();
         $addNol = '';
-        $kodetb = 'INV';
+        $kodetb = 'QUO';
         $kode = str_replace($kodetb, "", $kode);
         $kode = (int) $kode + 1;
         $incrementKode = $kode;
@@ -42,38 +42,39 @@ class QuotationController extends Controller
         } elseif (strlen($kode) == 4) {
             $addNol = "00";
         }
-        $id_inv = $kodetb . $addNol . $incrementKode;
+        $id_quot = $kodetb . $addNol . $incrementKode;
 
         $rules = $request->validate([
-            'no_invoice' => '',
-            'tanggal' => 'required',
-            'total' => '',
-            'status' => '',
-            'status_hod' => '',
-            'status_director' => '',
-            'status_yayasan' => '',
-            'barang_id' => 'required',
+            'no_quotation' => '',
+            'customer_name' => 'required',
+            'address' => 'required',
+            'tax' => 'required',
+            'tax_amount' => 'required',
+            'sub_total' => 'required',
+            'amount' => 'required',
+            'amount_paid' => 'required',
+            'amount_due' => 'required',
+
         ]);
 
         Quotation::create([
-            'no_invoice' => $id_inv,
-            'tanggal' => $request->tanggal,
-            'total' => 0,
-            'status' => $request->status,
-            'status_hod' => $request->status_hod,
-            'status_director' => $request->status_director,
-            'status_yayasan' => $request->status_yayasan,
-            'users_id' => $request->users_id,
+            'no_quotation' => $id_quot,
+            'customer_name' => $request->customer_name,
+            'address' => $request->address,
+            'tax' => $request->tax,
+            'tax_amount' => $request->tax_amount,
+            'sub_total' => $request->sub_total,
+            'amount' => $request->amount,
+            'amount_paid' => $request->amount_paid,
+            'amount_due' => $request->amount_due - $request->amount_paid,
             'created_at' => now(),
         ]);
 
         $data = Quotation::latest()->first();
-        $totaldata = count($request->barang_id);
+        $totaldata = count($request->item_code);
         $totalrequest = 0;
         if ($totaldata != 0) {
             for ($i = 0; $i < $totaldata; $i++) {
-                $barang = Barang::find($request->barang_id[$i]);
-
                 //update stok barang (penjualan = bertambah)
                 // Barang::find($request->barang_id[$i])->update([
                 //     'stok' => $barang->stok + $request->kuantitas[$i]
@@ -81,18 +82,19 @@ class QuotationController extends Controller
 
                 QuotationDetail::create([
                     'quotation_id' => $data->id,
-                    'barang_id' => $request->barang_id[$i],
-                    'satuan_id' => $request->satuan_id[$i],
-                    'stok' => $request->stok[$i],
-                    'sub_total' => $barang->harga * $request->stok[$i],
+                    'item_code' => $request->item_code[$i],
+                    'item_name' => $request->item_name[$i],
+                    'qty' => $request->qty[$i],
+                    'price' => $request->price[$i],
+                    'total' => $request->total[$i],
                     'created_at' => now(),
                 ]);
-                $totalrequest = $totalrequest + ($request->stok[$i] * $barang->harga);
+                $totalrequest = $totalrequest + ($request->qty[$i] * $request->price[$i]);
             }
         }
 
         Quotation::where("id", $data->id)->update([
-            'total' => $totalrequest
+            'amount' => $totalrequest
         ]);
 
         return redirect('view-quotation')->with('success', 'Request created successfully');
@@ -109,55 +111,54 @@ class QuotationController extends Controller
     public function update_quotation(Request $request, $id)
     {
         $this->validate($request, [
-            'no_invoice' => '',
-            'tanggal' => 'required',
-            'total' => '',
-            'status' => '',
-            'status_hod' => '',
-            'status_director' => '',
-            'status_yayasan' => '',
-            'barang_id' => 'required',
+            'no_quotation' => '',
+            'customer_name' => 'required',
+            'address' => 'required',
+            'tax' => 'required',
+            'tax_amount' => 'required',
+            'sub_total' => 'required',
+            'amount' => 'required',
+            'amount_paid' => 'required',
+            'amount_due' => 'required',
         ]);
 
-        $barang = Barang::find($request->barang_id);
-
         Quotation::where("id", $id)->update([
-            'no_invoice' => $request->no_request,
-            'tanggal' => $request->tanggal,
-            'total' => 0,
-            'status' => $request->status,
-            'status_hod' => $request->status_hod,
-            'status_director' => $request->status_director,
-            'status_yayasan' => $request->status_yayasan,
-            'users_id' => $request->users_id,
+            'no_quotation' => $request->no_quotation,
+            'customer_name' => $request->customer_name,
+            'address' => $request->address,
+            'tax' => $request->tax,
+            'tax_amount' => $request->tax_amount,
+            'sub_total' => $request->sub_total,
+            'amount' => $request->amount,
+            'amount_paid' => $request->amount_paid,
+            'amount_due' => $request->amount_due,
             'updated_at' => now(),
         ]);
 
         // $data = QuotationDetail::where('quotation_id', $request)->get();
         $total = count($request->idreq);
-        $totalrequest = 0;
+        $totalquotation = 0;
         if ($total != 0) {
             for ($i = 0; $i < $total; $i++) {
-                $barang = Barang::find($request->barang_id[$i]);
-
                 //update stok barang (penjualan = bertambah)
                 // Barang::find($request->barang_id[$i])->update([
                 //     'stok' => $barang->stok + $request->kuantitas[$i]
                 // ]);
 
                 QuotationDetail::where('id', $request->idreq[$i])->update([
-                    'barang_id' => $request->barang_id[$i],
-                    'satuan_id' => $request->satuan_id[$i],
-                    'stok' => $request->stok[$i],
-                    'sub_total' => $barang->harga * $request->stok[$i],
+                    'item_code' => $request->item_code[$i],
+                    'item_name' => $request->item_name[$i],
+                    'qty' => $request->qty[$i],
+                    'price' => $request->price[$i],
+                    'total' => $request->total[$i],
                     'updated_at' => now(),
                 ]);
-                $totalrequest = $totalrequest + ($request->stok[$i] * $barang->harga);
+                $totalquotation = $totalquotation + ($request->qty[$i] * $request->price[$i]);
             }
         }
 
         Quotation::where("id", $request->id)->update([
-            'total' => $totalrequest
+            'total' => $totalquotation
         ]);
 
         return redirect('view-quotation')->with('success', 'Request updated successfully');
@@ -184,7 +185,7 @@ class QuotationController extends Controller
         $query = QuotationDetail::join('quotation', 'quotation.id', '=', 'quotation_detail.quotation_id')
             ->select(
                 'quotation_detail.*',
-                'quotation.no_invoice',
+                'quotation.no_quotation',
                 'quotation.customer_name',
                 'quotation.address',
                 'quotation.total',

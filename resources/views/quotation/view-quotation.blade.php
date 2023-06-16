@@ -103,7 +103,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>No. Invoice</th>
+                                            <th>No. Quotation</th>
                                             <th>Created Date</th>
                                             <th>Customer Name</th>
                                             <th>Invoice Total</th>
@@ -113,17 +113,20 @@
                                     <tbody>
                                         @foreach ($quotation as $item)
                                             <tr>
-                                                <td>{{ $item->no_invoice }}</td>
-                                                <td>{{ $item->created_at }}</td>
+                                                <td>{{ $item->no_quotation }}</td>
+                                                <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
                                                 <td>{{ $item->customer_name }}</td>
-                                                <td>{{ $item->total }}</td>
-                                                <td>X</td>
+                                                <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td>
+                                                <td>
+                                                    <a href="/edit-quotation/{{ $item->id }}" type="button">Edit</a>
+                                                    <a href="/delete-quotation/{{ $item->id }}" type="button">Delete</a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>No. Invoice</th>
+                                            <th>No. Quotation</th>
                                             <th>Created Date</th>
                                             <th>Customer Name</th>
                                             <th>Invoice Total</th>

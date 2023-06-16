@@ -9,7 +9,7 @@
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
-                                                                                                                            with font-awesome or any other icon font library -->
+                                                                                                                                                                        with font-awesome or any other icon font library -->
             <li class="nav-item">
                 <a href="/home" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -103,27 +103,29 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <h2>From,</h2>
-                                            <p>Nama Pengaju</p>
-                                            <p>Alamat Pengaju</p>
-                                            <p>Bank Pengaju</p>
-                                            <p>Email Pengaju</p>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h2>To,</h2>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="no_invoice" hidden>
+                                                <input type="text" class="form-control" name="no_quotation" hidden>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="customer_name" placeholder="Customer Name">
+                                                <input type="text" class="form-control" name="customer_name"
+                                                    placeholder="Customer Name">
                                             </div>
                                             <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="address" placeholder="Customer Address"></textarea>
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <h2>To,</h2>
+                                            <img src="{{ asset('template/dist/img/logo-global.png') }}"
+                                                style="width: 250px; height:75px">
+                                            <p>PT. Global Technology Essential<br>
+                                                globaltechnologyessential@gmail.com<br>
+                                                Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat 41117</p>
+                                        </div>
                                     </div>
                                     <div class="after-add">
                                         <div class="row mb-3">
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 <input type="text" class="form-control" name="item_code[]"
                                                     placeholder="No Item">
                                             </div>
@@ -131,17 +133,17 @@
                                                 <input type="text" class="form-control" name="item_name[]"
                                                     placeholder="Item Name">
                                             </div>
-                                            <div class="col-1">
-                                                <input type="text" class="form-control" name="qty[]"
-                                                    placeholder="Quantity">
+                                            <div class="col-2">
+                                                <input type="text" class="form-control" id="qty" name="qty[]"
+                                                    onkeyup="sum()" placeholder="Quantity">
                                             </div>
                                             <div class="col-2">
-                                                <input type="text" class="form-control" name="price[]"
-                                                    placeholder="Price">
+                                                <input type="text" class="form-control" id="price" name="price[]"
+                                                    onkeyup="sum()" placeholder="Price">
                                             </div>
                                             <div class="col-2">
-                                                <input type="text" class="form-control" name="sub_total[]"
-                                                    placeholder="Total">
+                                                <input type="text" class="form-control" id="total" name="total[]"
+                                                    placeholder="Total" readonly>
                                             </div>
                                             <div class="col-1">
                                                 <button class="btn btn-primary add" type="button">
@@ -161,28 +163,34 @@
                                         <div class="col-sm-4">
                                             <h2>Details :</h2>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="" placeholder="Sub Total">
+                                                <input type="text" class="form-control" id="sub_total"
+                                                    name="sub_total" placeholder="Sub Total" onkeyup="sum1()" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Tax Rate">
+                                                <input type="text" class="form-control" id="tax" name="tax"
+                                                    placeholder="Tax Rate" onkeyup="sum1()">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Tax Amount">
+                                                <input type="text" class="form-control" id="tax_amount"
+                                                    name="tax_amount" placeholder="Tax Amount" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Total">
+                                                <input type="text" class="form-control" id="amount" name="amount"
+                                                    placeholder="Total" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Amount Paid">
+                                                <input type="text" class="form-control" id="amount_paid"
+                                                    name="amount_paid" placeholder="Amount Paid" onkeyup="sum1()">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Amount Due">
+                                                <input type="text" class="form-control" id="amount_due"
+                                                    name="amount_due" placeholder="Amount Due" readonly>
                                             </div>
 
                                             <a href="view-quotation" class="btn btn-danger" type="button">
                                                 Cancel
                                             </a>
-                                            <button class="btn btn-success" type="button">
+                                            <button class="btn btn-success" type="submit">
                                                 Submit
                                             </button>
                                         </div>
@@ -211,20 +219,20 @@
                 e.preventDefault();
                 $(".after-add").append(`
                 <div class="row mb-3"">
-                    <div class="col-3">
+                    <div class="col-2">
                         <input type="text" class="form-control" name="item_code[]" placeholder="No Item">
                     </div>
                     <div class="col-3">
                         <input type="text" class="form-control" name="item_name[]" placeholder="Item Name">
                     </div>
-                    <div class="col-1">
-                        <input type="text" class="form-control" name="qty[]" placeholder="Quantity">
+                    <div class="col-2">
+                        <input type="text" class="form-control" id="qty" name="qty[]" placeholder="Quantity" onkeyup="sum()">
                     </div>
                     <div class="col-2">
-                        <input type="text" class="form-control" name="price[]" placeholder="Price">
+                        <input type="text" class="form-control" id="price" name="price[]" placeholder="Price" onkeyup="sum()">
                     </div>
                     <div class="col-2">
-                        <input type="text" class="form-control" name="sub_total[]" placeholder="Total">
+                        <input type="text" class="form-control" id="total" name="total[]" placeholder="Total" onkeyup="sum()" readonly>
                     </div>
                     <div class="col-1">
                         <button class="btn btn-danger remove" type="button">
@@ -241,5 +249,37 @@
                 $(remove).remove();
             });
         });
+    </script>
+
+    <script>
+        function sum() {
+            var txtQtyValue = document.getElementById('qty').value;
+            var txtPriceValue = document.getElementById('price').value;
+            var result = parseInt(txtQtyValue) * parseInt(txtPriceValue);
+            if (!isNaN(result)) {
+                document.getElementById('total').value = result;
+                document.getElementById('sub_total').value = result;
+            }
+        }
+    </script>
+
+    <script>
+        function sum1() {
+            var txtSubTotalValue = document.getElementById('sub_total').value;
+            var txtTaxValue = document.getElementById('tax').value;
+            var txtAmountDueValue = document.getElementById('amount_due').value;
+            var txtAmountPaidValue = document.getElementById('amount_paid').value;
+
+            var resultTax = parseInt(txtSubTotalValue) * parseInt(txtTaxValue) / 100;
+            var resultAmount = parseInt(txtSubTotalValue) * parseInt(txtTaxValue) / 100 + parseInt(txtSubTotalValue);
+            if (!isNaN(resultTax)) {
+                document.getElementById('tax_amount').value = resultTax;
+            }
+
+            if (!isNaN(resultAmount)) {
+                document.getElementById('amount').value = resultAmount;
+                document.getElementById('amount_due').value = resultAmount;
+            }
+        }
     </script>
 @endsection

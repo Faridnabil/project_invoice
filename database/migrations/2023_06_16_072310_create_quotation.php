@@ -15,13 +15,14 @@ class CreateQuotation extends Migration
     {
         Schema::create('quotation', function (Blueprint $table) {
             $table->id();
-            $table->string('no_invoice')->nullable();
+            $table->string('no_quotation')->nullable();
             $table->string('customer_name');
             $table->string('address');
             $table->string('tax');
             $table->string('tax_amount');
-            $table->string('total');
-            $table->string('amount_paid');
+            $table->string('sub_total');
+            $table->string('amount');
+            $table->string('amount_paid')->nullable();
             $table->string('amount_due');
             $table->string('description')->nullable();
             $table->timestamps();

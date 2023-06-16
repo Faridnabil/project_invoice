@@ -9,11 +9,11 @@ use Spatie\Permission\Traits\HasRoles;
 class QuotationDetail extends Model
 {
     use HasFactory, HasRoles;
-    protected $table = "quotation";
+    protected $table = "quotation_detail";
     protected $primaryKey = "id";
     protected $fillable = [
         'quotation_id', 'item_code', 'item_name',
-        'qty', 'price', 'sub_total'
+        'qty', 'price', 'total'
     ];
 
     public function quotation()

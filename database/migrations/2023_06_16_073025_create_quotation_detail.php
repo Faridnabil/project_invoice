@@ -20,7 +20,7 @@ class CreateQuotationDetail extends Migration
             $table->string('item_name');
             $table->string('qty');
             $table->string('price');
-            $table->string('sub_total');
+            $table->string('total');
             $table->timestamps();
         });
     }
