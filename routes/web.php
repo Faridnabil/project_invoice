@@ -24,6 +24,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/beritaacara', function () {
         return view('berita-acara.berita');
     });
+
+    Route::get('/beritaacaraprint', function () {
+        return view('berita-acara.beritaprint');
+    });
 });
 
 Route::middleware(['auth', 'role:Administrator'])->group(function () {
