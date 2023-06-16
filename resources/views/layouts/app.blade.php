@@ -197,8 +197,6 @@
                             style="display: none;">
                             @csrf
                         </form>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                     </div>
                 </li>
             </ul>
@@ -223,7 +221,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">{{ auth()->user()->name }}</a>
                     </div>
                 </div>
 

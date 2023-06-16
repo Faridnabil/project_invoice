@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\RoleController;
+use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +21,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/beritaacara', function () {
-        return view('berita-acara.berita');
+        return view('berita-acara.view-berita');
     });
 
     Route::get('/beritaacaraprint', function () {
@@ -44,38 +43,14 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     //END:USER
 
     //BEGIN:ROLES
-    Route::get('view-roles', [RoleController::class, 'view_roles']);
+    Route::get('view-quotation', [QuotationController::class, 'view_quotation']);
     //CREATE ROLES
-    Route::get('create-roles', [RoleController::class, 'create_roles']);
-    Route::post('store-roles', [RoleController::class, 'store']);
+    Route::get('create-quotation', [QuotationController::class, 'create_quotation']);
+    Route::post('store-quotation', [QuotationController::class, 'store_quotation']);
     //EDIT ROLES
-    Route::get('edit-roles/{id}', [RoleController::class, 'edit_roles']);
-    Route::post('update-roles/{id}', [RoleController::class, 'update']);
+    Route::get('edit-quotation/{id}', [QuotationController::class, 'edit_quotation']);
+    Route::post('update-quotation/{id}', [QuotationController::class, 'update_quotation']);
     //DELETE ROLES
-    Route::get('delete-roles/{id}', [RoleController::class, 'delete_roles']);
+    Route::get('delete-quotation/{id}', [QuotationController::class, 'delete_quotation']);
     //END:ROLES
-
-    //BEGIN:PERMISSION
-    Route::get('view-permission', [PermissionController::class, 'view_permission']);
-    //CREATE PERMISSION
-    Route::get('create-permission', [PermissionController::class, 'create_permission']);
-    Route::post('store-permission', [PermissionController::class, 'store']);
-    //EDIT PERMISSION
-    Route::get('edit-permission/{id}', [PermissionController::class, 'edit_permission']);
-    Route::post('update-permission/{id}', [PermissionController::class, 'update']);
-    //DELETE PERMISSION
-    Route::get('delete-permission/{id}', [PermissionController::class, 'delete_permission']);
-    //END:PERMISSION
-
-    //BEGIN:INVENTORY
-    Route::get('view-permission', [PermissionController::class, 'view_permission']);
-    //CREATE INVENTORY
-    Route::get('create-permission', [PermissionController::class, 'create_permission']);
-    Route::post('store-permission', [PermissionController::class, 'store']);
-    //EDIT INVENTORY
-    Route::get('edit-permission/{id}', [PermissionController::class, 'edit_permission']);
-    Route::post('update-permission/{id}', [PermissionController::class, 'update']);
-    //DELETE INVENTORY
-    Route::get('delete-permission/{id}', [PermissionController::class, 'delete_permission']);
-    //END:INVENTORY
 });
