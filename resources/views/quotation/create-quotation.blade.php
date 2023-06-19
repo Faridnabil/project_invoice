@@ -4,72 +4,6 @@
     Dashboard
 @endsection
 
-@section('navbar')
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                                                                                                                                                                        with font-awesome or any other icon font library -->
-            <li class="nav-item">
-                <a href="/home" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dashboard
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/view-quotation" class="nav-link active">
-                    <i class="nav-icon fas fa-hand-holding-usd"></i>
-                    <p>
-                        Quotations
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
-                    <p>
-                        Tables
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="pages/tables/simple.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Penawaran Harga</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/tables/data.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>DataTables</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/tables/jsgrid.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>jsGrid</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-header">EXAMPLES</li>
-            <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
-                    <i class="nav-icon far fa-calendar-alt"></i>
-                    <p>
-                        Calendar
-                        <span class="badge badge-info right">2</span>
-                    </p>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-@endsection
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -163,8 +97,8 @@
                                         <div class="col-sm-4">
                                             <h2>Details :</h2>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="sub_total"
-                                                    name="sub_total" placeholder="Sub Total" onkeyup="sum1()" readonly>
+                                                <input type="text" class="form-control" id="sub_total" name="sub_total"
+                                                    placeholder="Sub Total" onkeyup="sum1()" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="tax" name="tax"

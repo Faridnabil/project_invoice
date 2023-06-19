@@ -4,72 +4,6 @@
     Dashboard
 @endsection
 
-@section('navbar')
-    <!-- Sidebar Menu -->
-    <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-                                            with font-awesome or any other icon font library -->
-            <li class="nav-item">
-                <a href="/home" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dashboard
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/view-quotation" class="nav-link active">
-                    <i class="nav-icon fas fa-hand-holding-usd"></i>
-                    <p>
-                        Quotations
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
-                    <p>
-                        Tables
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="pages/tables/simple.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Penawaran Harga</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/tables/data.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>DataTables</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/tables/jsgrid.html" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>jsGrid</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-header">EXAMPLES</li>
-            <li class="nav-item">
-                <a href="pages/calendar.html" class="nav-link">
-                    <i class="nav-icon far fa-calendar-alt"></i>
-                    <p>
-                        Calendar
-                        <span class="badge badge-info right">2</span>
-                    </p>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!-- /.sidebar-menu -->
-@endsection
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -119,7 +53,8 @@
                                                 <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td>
                                                 <td>
                                                     <a href="/edit-quotation/{{ $item->id }}" type="button">Edit</a>
-                                                    <a href="/delete-quotation/{{ $item->id }}" type="button">Delete</a>
+                                                    <a href="/delete-quotation/{{ $item->id }}"
+                                                        type="button">Delete</a>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -148,38 +83,4 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-    <!-- DataTables  & Plugins -->
-    <script src="{{ asset('template/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('template/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-    <!-- Page specific script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
 @endsection
