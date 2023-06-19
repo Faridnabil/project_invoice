@@ -120,9 +120,8 @@
                                     <thead>
                                         <tr>
                                             <th>No. SPK</th>
-                                            <th>Created Date</th>
-                                            <th>Customer Name</th>
-                                            <th></th>
+                                            <th>Nama Client/Instansi</th>
+                                            <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -140,9 +139,8 @@
                                     <tfoot>
                                         <tr>
                                             <th>No. SPK</th>
-                                            <th>Created Date</th>
-                                            <th>Customer Name</th>
-                                            <th></th>
+                                            <th>Nama Client/Instansi</th>
+                                            <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
                                     </tfoot>
