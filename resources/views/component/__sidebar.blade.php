@@ -29,7 +29,7 @@
                         <!-- Add icons to the links using the .nav-icon class  with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
-                            <a href="/home" class="nav-link">
+                            <a href="/home" class="nav-link {{ request()->is('home') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -38,7 +38,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/view-quotation" class="nav-link">
+                            <a href="/view-quotation"
+                                class="nav-link {{ request()->is('view-quotation') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-hand-holding-usd"></i>
                                 <p>
                                     Quotations
@@ -47,7 +48,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/beritaacara" class="nav-link">
+                            <a href="/beritaacara" class="nav-link {{ request()->is('beritaacara') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     Berita Acara
@@ -56,7 +57,8 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('view-spk') }}" class="nav-link">
+                            <a href="{{ route('view-spk') }}"
+                                class="nav-link {{ request()->is('view-spk') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     SPK
