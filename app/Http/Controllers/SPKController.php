@@ -80,4 +80,9 @@ class SPKController extends Controller
     }
         //return redirect('view-spk')->with('success', 'Data Berhasil Dibuat');
     }
+
+    public function pdf()
+    {
+        return view('spk.pdf');
+    }
 }
