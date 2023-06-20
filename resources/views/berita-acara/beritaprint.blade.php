@@ -27,7 +27,7 @@
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>
-                    <center><img src="{{ asset('/template/dist/img/logo-global.png') }} width="150px" /></center>
+                    <center><img src="{{ asset('template/dist/img/logo-global.png') }}" width="150px" /></center>
                 </td>
                 <td colspan="11">
                     <h3

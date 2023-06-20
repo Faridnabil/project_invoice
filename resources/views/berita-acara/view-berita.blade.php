@@ -50,7 +50,7 @@
                                             <td>1</td>
                                             <td>GENZ COMPANY</td>
                                             <td>Approved</td>
-                                            <td><a href="/beritaacaraprint" class="btn btn-block btn-primary">Print</a></td>
+                                            <td><a href="/beritaacaraprint" target="_blank" class="btn btn-block btn-primary">Print</a></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>

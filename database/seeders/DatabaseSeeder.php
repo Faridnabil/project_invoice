@@ -13,6 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(PermissionDemoSeeder::class);
+        // $this->call(
+        //     PermissionDemoSeeder::class,
+        //     create_spk::class
+        // );
+        $this->call([
+            PermissionDemoSeeder::class,
+            create_spk::class
+        ]);
+
     }
 }

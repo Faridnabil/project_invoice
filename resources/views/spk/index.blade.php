@@ -38,30 +38,23 @@
                                     <thead>
                                         <tr>
                                             <th>No. SPK</th>
-                                            <th>Nama Client/Instansi</th>
+                                            <th>Nama/Instansi</th>
+                                            <th>Nama/Instansi Client</th>
                                             <th>Date</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($quotation as $item)
+                                        @foreach ($spk as $item)
                                             <tr>
-                                                <td>{{ $item->no_invoice }}</td>
-                                                <td>{{ $item->created_at }}</td>
-                                                <td>{{ $item->customer_name }}</td>
-                                                <td>{{ $item->total }}</td>
-                                                <td>X</td>
+                                                <td>{{ $item->no }}</td>
+                                                <td>{{ $item->nama }}</td>
+                                                <td>{{ $item->nama1}}</td>
+                                                <td>{{ $item->tgl }}</td>
+                                                <td>Edit | Delete</td>
                                             </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No. SPK</th>
-                                            <th>Nama Client/Instansi</th>
-                                            <th>Date</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

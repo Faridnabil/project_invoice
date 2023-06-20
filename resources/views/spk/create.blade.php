@@ -28,7 +28,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <form action="store-quotation" method="POST" enctype="multipart/form-data">
+                <form action="/store-spk" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card card-danger">
                         {{-- <div class="card-header">
@@ -40,13 +40,13 @@
                                 </div>
                                 <div class="col-3">
                                     <label for="">Nomor</label>
-                                    <input type="text" class="form-control" placeholder=".col-3">
+                                    <input type="text" class="form-control" placeholder="Auto" name="no" readonly>
                                 </div>
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label>Date:</label>
                                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                            <input type="date" class="form-control" />
+                                            <input type="date" class="form-control" name="tgl"/>
                                             {{-- <div class="input-group-append" data-target="#reservationdate"
                                                 data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -72,43 +72,57 @@
                             <div class="row">
                                 <div class="col-6">
                                     <label for="">Nama/Instansi</label>
-                                    <input type="text" class="form-control" placeholder=".col-3">
+                                    <input type="text" class="form-control" placeholder="" name="nama">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Nama/Instansi</label>
-                                    <input type="text" class="form-control" placeholder=".col-3">
+                                    <input type="text" class="form-control" placeholder="" name="nama1">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Alamat</label>
-                                    <input type="text" class="form-control" placeholder=".col-4">
+                                    <input type="text" class="form-control" placeholder="" name="alamat">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Alamat</label>
-                                    <input type="text" class="form-control" placeholder=".col-4">
+                                    <input type="text" class="form-control" placeholder="" name="alamat1">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Telepon</label>
-                                    <input type="text" class="form-control" placeholder=".col-4">
+                                    <input type="text" class="form-control" placeholder="" name="telp">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Telepon</label>
-                                    <input type="text" class="form-control" placeholder=".col-4">
+                                    <input type="text" class="form-control" placeholder="" name="telp1">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Nomor KTP</label>
-                                    <input type="text" class="form-control" placeholder=".col-4">
+                                    <input type="text" class="form-control" placeholder="" name="ktp">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Nomor KTP</label>
-                                    <input type="text" class="form-control" placeholder=".col-4">
+                                    <input type="text" class="form-control" placeholder="" name="ktp1">
                                     <br>
+                                </div>
+                                {{-- <div class="col-6">
+                                </div>
+                                <div class="col-2">
+                                </div>
+                                <div class="col-2">
+                                </div> --}}
+                                <div class="col-2">
+                                    <a href="view-spk" class="btn btn-danger" type="button">
+                                        Cancel
+                                    </a>
+                                    <button class="btn btn-success" type="submit">
+                                        Submit
+                                    </button>
                                 </div>
                                 {{-- <div class="col-5">
                                     <input type="text" class="form-control" placeholder=".col-5">
