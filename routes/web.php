@@ -35,7 +35,6 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
 
-
     //BEGIN:USER
     Route::get('view-user', [UserController::class, 'view_user']);
     //CREATE USER
@@ -64,4 +63,8 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('create-spk', [SPKController::class, 'show'])->name('create-spk');
     Route::post('store-spk', [SPKController::class, 'store']);
     Route::get('print-spk', [SPKController::class, 'pdf'])->name('print-spk');
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
