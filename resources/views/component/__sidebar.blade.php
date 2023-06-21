@@ -66,8 +66,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ request()->is('users*') ? 'menu-is-opening menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">
+                        <li class="nav-item {{ request()->is('users*', 'roles*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ request()->is('users*', 'roles*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Data Master
@@ -83,7 +83,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('roles.index') }}"
+                                        class="nav-link  {{ request()->is('roles*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Roles</p>
                                     </a>

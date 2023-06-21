@@ -110,7 +110,7 @@ class RoleController extends Controller
         try {
             Role::find($id)->delete();
 
-            return redirect('users')->with('success', 'Data berhasil Dihapus');
+            return redirect('roles')->with('success', 'Data berhasil Dihapus');
 
         } catch (\Throwable $th) {
             return back()->with('error', 'Data gagal Dihapus');
