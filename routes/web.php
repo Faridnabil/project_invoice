@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BASTController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\SPKController;
 use App\Http\Controllers\UserController;
@@ -19,14 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', function () {
         return view('menu.home');
-    });
-
-    Route::get('/beritaacara', function () {
-        return view('berita-acara.view-berita');
-    });
-
-    Route::get('/beritaacaraprint', function () {
-        return view('berita-acara.beritaprint');
     });
 });
 
@@ -63,6 +56,13 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('create-spk', [SPKController::class, 'show'])->name('create-spk');
     Route::post('store-spk', [SPKController::class, 'store']);
     Route::get('print-spk', [SPKController::class, 'pdf'])->name('print-spk');
+
+
+    //BERITA ACARA SERAH TERIMA
+    Route::get('view-bast', [BASTController::class, 'index'])->name('view-bast');
+    Route::get('create-bast', [BASTController::class, 'show'])->name('create-bast');
+    Route::post('store-bast', [BASTController::class, 'store']);
+    Route::get('print-bast', [BASTController::class, 'pdf'])->name('print-bast');
 });
 
 Route::get('/', function () {

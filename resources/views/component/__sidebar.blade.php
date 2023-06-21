@@ -48,7 +48,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/beritaacara" class="nav-link {{ request()->is('beritaacara') ? 'active' : '' }}">
+                            <a href="/view-bast" class="nav-link {{ request()->is('beritaacara') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     Berita Acara

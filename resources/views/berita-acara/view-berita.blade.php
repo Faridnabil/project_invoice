@@ -40,6 +40,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Date</th>
                                             <th>Clients</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -47,11 +48,15 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
-                                            <td>GENZ COMPANY</td>
-                                            <td>Approved</td>
-                                            <td><a href="/beritaacaraprint" target="_blank" class="btn btn-block btn-primary">Print</a></td>
+                                            @foreach ($bast as $item)
+                                            <tr>
+                                                <td>{{ $item->no }}</td>
+                                                <td>{{ $item->tgl }}</td>
+                                                <td>{{ $item->nama }}</td>
+                                                <td>{{ $item->nama1}}</td>
+                                            <td><a href="/print-bast" target="_blank" class="btn btn-block btn-primary">Print</a></td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
