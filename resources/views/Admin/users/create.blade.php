@@ -96,12 +96,12 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="btn btn-success" type="submit">
-                                        Submit
-                                    </button>
                                     <a href="{{ route('users.index') }}" class="btn btn-danger" type="button">
                                         Kembali
                                     </a>
+                                    <button class="btn btn-success" type="submit">
+                                        Submit
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -113,4 +113,3 @@
         <!-- /.content -->
     </div>
 @endsection
-

@@ -62,9 +62,9 @@
                                         </td>
 
                                         <td class="project-actions text-right">
-                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                            <form onsubmit="deleteUser(event, {{ $item->id }})"
                                                 action="{{ route('users.destroy', $item->id) }}" method="POST">
-                                                
+
                                                 <a class="btn btn-info btn-sm" href="#">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
@@ -95,4 +95,25 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@endsection
+
+
+@section('ajax')
+    <script>
+        function deleteUser(event, id) {
+            event.preventDefault();
+
+            swal({
+                title: "Hapus Data",
+                text: "Anda yakin ingin menghapus?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    event.target.submit();
+                }
+            });
+        }
+    </script>
 @endsection
