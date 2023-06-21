@@ -56,13 +56,18 @@ class UserController extends Controller
             'roles' => 'required',
         ]);
 
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
+        try {
+            $input = $request->all();
+            $input['password'] = Hash::make($input['password']);
 
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+            $user = User::create($input);
+            $user->assignRole($request->input('roles'));
 
-        return redirect('users')->with('success', 'User created successfully');
+            return redirect('users')->with('success', 'Data berhasil Disimpan');
+
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Data gagal Disimpan');
+        }
     }
 
     /**
@@ -111,20 +116,25 @@ class UserController extends Controller
             'roles' => 'required',
         ]);
 
-        $input = $request->all();
-        if (!empty($input['password'])) {
-            $input['password'] = Hash::make($input['password']);
-        } else {
-            $input = Arr::except($input, array('password'));
+        try {
+            $input = $request->all();
+            if (!empty($input['password'])) {
+                $input['password'] = Hash::make($input['password']);
+            } else {
+                $input = Arr::except($input, array('password'));
+            }
+
+            $user = User::find($id);
+            $user->update($input);
+            DB::table('model_has_roles')->where('model_id', $id)->delete();
+
+            $user->assignRole($request->input('roles'));
+
+            return redirect('users')->with('success', 'Data berhasil Diperbarui');
+
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Data gagal Diperbarui');
         }
-
-        $user = User::find($id);
-        $user->update($input);
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
-
-        $user->assignRole($request->input('roles'));
-
-        return redirect('users')->with('success', 'User updated successfully');
     }
 
     /**
@@ -135,7 +145,12 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        return redirect('view-user')->with('success', 'User deleted successfully');
+        try {
+            User::find($id)->delete();
+            return redirect('view-user')->with('success', 'Data berhasil Dihapus');
+
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Data gagal Dihapus');
+        }
     }
 }

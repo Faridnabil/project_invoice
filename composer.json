@@ -12,6 +12,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "php-flasher/flasher-laravel": "^1.15",
         "realrashid/sweet-alert": "^6.0",
         "spatie/laravel-permission": "^5.10"
     },
