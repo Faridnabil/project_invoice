@@ -1,6 +1,6 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="/home" class="brand-link">
                 <img src="{{ asset('template/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Invoice</span>
@@ -66,8 +66,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item {{ request()->is('users*') ? 'menu-is-opening menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">
+                        <li class="nav-item {{ request()->is('users*', 'roles*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ request()->is('users*', 'roles*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Data Master
@@ -83,7 +83,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('roles.index') }}"
+                                        class="nav-link  {{ request()->is('roles*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Roles</p>
                                     </a>
