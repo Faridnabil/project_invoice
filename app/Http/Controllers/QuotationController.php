@@ -125,7 +125,7 @@ class QuotationController extends Controller
             'sub_total' => $request->sub_total,
             'amount' => $request->amount,
             'amount_paid' => $request->amount_paid,
-            'amount_due' => $request->amount_due,
+            'amount_due' => $request->amount_due - $request->amount_paid,
             'updated_at' => now(),
         ]);
 
