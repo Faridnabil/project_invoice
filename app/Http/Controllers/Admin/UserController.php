@@ -147,7 +147,7 @@ class UserController extends Controller
     {
         try {
             User::find($id)->delete();
-            return redirect('view-user')->with('success', 'Data berhasil Dihapus');
+            return redirect('users')->with('success', 'Data berhasil Dihapus');
 
         } catch (\Throwable $th) {
             return back()->with('error', 'Data gagal Dihapus');

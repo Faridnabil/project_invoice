@@ -62,16 +62,24 @@
                                         </td>
 
                                         <td class="project-actions text-right">
-                                            <a class="btn btn-info btn-sm" href="#">
-                                                <i class="fas fa-pencil-alt">
-                                                </i>
-                                                Edit
-                                            </a>
-                                            <a class="btn btn-danger btn-sm" href="#">
-                                                <i class="fas fa-trash">
-                                                </i>
-                                                Delete
-                                            </a>
+                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                                action="{{ route('users.destroy', $item->id) }}" method="POST">
+                                                
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </a>
+
+
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fas fa-trash"></i>
+                                                    Delete
+                                                </button>
+                                            </form>
+
                                         </td>
 
                                     </tr>
