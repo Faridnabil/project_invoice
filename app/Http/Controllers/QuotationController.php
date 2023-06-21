@@ -89,14 +89,8 @@ class QuotationController extends Controller
                     'total' => $request->total[$i],
                     'created_at' => now(),
                 ]);
-                $totalrequest = $totalrequest + ($request->qty[$i] * $request->price[$i]);
             }
         }
-
-        Quotation::where("id", $data->id)->update([
-            'amount' => $totalrequest
-        ]);
-
         return redirect('view-quotation')->with('success', 'Request created successfully');
     }
 
@@ -137,7 +131,6 @@ class QuotationController extends Controller
 
         // $data = QuotationDetail::where('quotation_id', $request)->get();
         $total = count($request->idreq);
-        $totalquotation = 0;
         if ($total != 0) {
             for ($i = 0; $i < $total; $i++) {
                 //update stok barang (penjualan = bertambah)
@@ -153,13 +146,8 @@ class QuotationController extends Controller
                     'total' => $request->total[$i],
                     'updated_at' => now(),
                 ]);
-                $totalquotation = $totalquotation + ($request->qty[$i] * $request->price[$i]);
             }
         }
-
-        Quotation::where("id", $request->id)->update([
-            'total' => $totalquotation
-        ]);
 
         return redirect('view-quotation')->with('success', 'Request updated successfully');
     }

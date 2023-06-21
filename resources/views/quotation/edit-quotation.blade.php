@@ -31,6 +31,16 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form action="/update-quotation/{{ $quotation->id }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
@@ -40,7 +50,7 @@
                                             <h2>From,</h2>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="no_quotation"
-                                                    value="{{ $quotation->no_quotation }}">
+                                                    value="{{ $quotation->no_quotation }}" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="customer_name"
@@ -61,31 +71,36 @@
                                         </div>
                                     </div>
                                     @foreach ($quotation_detail as $item)
-                                        <div class="row mb-3">
-                                            <div class="col-2">
-                                                <input type="text" class="form-control" name="item_code[]"
-                                                    placeholder="No Item" value="{{ $item->item_code }}">
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="text" class="form-control" name="item_name[]"
-                                                    placeholder="Item Name" value="{{ $item->item_name }}">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="text" class="form-control" id="qty" name="qty[]"
-                                                    onkeyup="sum()" placeholder="Quantity" value="{{ $item->qty }}">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="text" class="form-control" id="price" name="price[]"
-                                                    onkeyup="sum()" placeholder="Price" value="{{ $item->price }}">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="text" class="form-control" id="total" name="total[]"
-                                                    placeholder="Total" value="{{ $item->total }}" readonly>
-                                            </div>
-                                            <div class="col-1">
-                                                <button class="btn btn-primary add" type="button">
-                                                    Add
-                                                </button>
+                                        <input type="hidden" name="idreq[]" value="{{ $item->id }}">
+                                        <div class="after-add" id="DBody">
+                                            <div class="row mb-3" id="DRow">
+                                                <div class="col-2">
+                                                    <input type="text" class="form-control" name="item_code[]"
+                                                        placeholder="No Item" value="{{ $item->item_code }}">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="text" class="form-control" name="item_name[]"
+                                                        placeholder="Item Name" value="{{ $item->item_name }}">
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="text" class="form-control" id="qty" name="qty[]"
+                                                        onchange="Calc(this);" placeholder="Quantity"
+                                                        value="{{ $item->qty }}">
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="text" class="form-control" id="price" name="price[]"
+                                                        onchange="Calc(this);" placeholder="Price"
+                                                        value="{{ $item->price }}">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="text" class="form-control" id="total" name="total[]"
+                                                        placeholder="Total" value="{{ $item->total }}" readonly>
+                                                </div>
+                                                {{-- <div class="col-1">
+                                                    <button class="btn btn-primary" onclick="btnAdd()" type="button">
+                                                        Add
+                                                    </button>
+                                                </div> --}}
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -101,12 +116,11 @@
                                             <h2>Details :</h2>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="sub_total" name="sub_total"
-                                                    placeholder="Sub Total" onkeyup="sum1()" readonly
-                                                    value="{{ $quotation->sub_total }}">
+                                                    placeholder="Sub Total" readonly value="{{ $quotation->sub_total }}">
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="tax" name="tax"
-                                                    placeholder="Tax Rate" onkeyup="sum1()"
+                                                    placeholder="Tax Rate" onchange="GetTotal()"
                                                     value="{{ $quotation->tax }}">
                                             </div>
                                             <div class="form-group">
@@ -120,7 +134,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="amount_paid"
-                                                    name="amount_paid" placeholder="Amount Paid" onkeyup="sum1()"
+                                                    name="amount_paid" placeholder="Amount Paid"
                                                     value="{{ $quotation->amount_paid }}">
                                             </div>
                                             <div class="form-group">
@@ -151,39 +165,64 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
 
     <script>
-        function sum() {
-            var txtQtyValue = document.getElementById('qty').value;
-            var txtPriceValue = document.getElementById('price').value;
-            var result = parseInt(txtQtyValue) * parseInt(txtPriceValue);
-            if (!isNaN(result)) {
-                document.getElementById('total').value = result;
-                document.getElementById('sub_total').value = result;
-            }
+        function btnAdd() {
+            /*Button Add Row*/
+            var v = $("#DRow").clone().appendTo("#DBody");
+
+            $(v).find("input").val('');
+            $(v).removeClass("d-none");
+            $(v).find("$DRow").first().html($('#DBody div').length - 1);
         }
-    </script>
 
-    <script>
-        function sum1() {
-            var txtSubTotalValue = document.getElementById('sub_total').value;
-            var txtTaxValue = document.getElementById('tax').value;
-            var txtAmountDueValue = document.getElementById('amount_due').value;
-            var txtAmountPaidValue = document.getElementById('amount_paid').value;
+        function btnDelete(v) {
+            /*Button Delete Row*/
+            $(v).parent().parent().remove();
+            GetTotal();
 
-            var resultTax = parseInt(txtSubTotalValue) * parseInt(txtTaxValue) / 100;
-            var resultAmount = parseInt(txtSubTotalValue) * parseInt(txtTaxValue) / 100 + parseInt(txtSubTotalValue);
-            if (!isNaN(resultTax)) {
-                document.getElementById('tax_amount').value = resultTax;
+            $("#DBody").find("#DRow").each(
+                function(index) {
+                    $(this).find("#DRow").first().html(index);
+                }
+
+            );
+        }
+
+        function Calc(v) {
+            /*Detail Calculation Each Row*/
+            var index = $(v).parent().parent().index();
+
+            var qty = document.getElementsByName("qty[]")[index].value;
+            var price = document.getElementsByName("price[]")[index].value;
+
+            var total = qty * price;
+            document.getElementsByName("total[]")[index].value = total;
+
+            GetTotal();
+        }
+
+        function GetTotal() {
+            /*Footer Calculation*/
+            var sum = 0;
+            var totals = document.getElementsByName("total[]");
+
+            for (let index = 0; index < totals.length; index++) {
+                var total = totals[index].value;
+                sum = +(sum) + +(total);
             }
+            document.getElementById("sub_total").value = sum;
 
-            if (!isNaN(resultAmount)) {
-                document.getElementById('amount').value = resultAmount;
-                document.getElementById('amount_due').value = resultAmount;
-            }
+            var tax = document.getElementById("tax").value;
+            var tax_amount = +(sum) * +(tax) / 100;
+            document.getElementById("tax_amount").value = tax_amount;
+
+            var grand_total = +(sum) + +(tax_amount);
+            document.getElementById("amount").value = grand_total;
+            document.getElementById("amount_due").value = grand_total;
         }
     </script>
 @endsection
