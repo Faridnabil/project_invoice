@@ -66,8 +66,8 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item {{ request()->is('users*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-table"></i>
                                 <p>
                                     Data Master
@@ -76,15 +76,16 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('users.index') }}"
+                                        class="nav-link {{ request()->is('users*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Contoh 1</p>
+                                        <p>Users</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Contoh 2</p>
+                                        <p>Roles</p>
                                     </a>
                                 </li>
                             </ul>

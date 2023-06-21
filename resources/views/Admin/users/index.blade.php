@@ -34,7 +34,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            <a href="{{ route('users.create') }}" type="button" class="btn btn-primary">Add User</a>
+                            <a href="{{ route('users.create') }}" type="button" class="btn btn-primary">Tambah User</a>
                         </h3>
                     </div>
                     <!-- /.card-header -->
@@ -65,7 +65,7 @@
                                             <form onsubmit="deleteUser(event, {{ $item->id }})"
                                                 action="{{ route('users.destroy', $item->id) }}" method="POST">
 
-                                                <a class="btn btn-info btn-sm" href="#">
+                                                <a class="btn btn-info btn-sm" href="{{ route('users.edit', $item->id) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit
