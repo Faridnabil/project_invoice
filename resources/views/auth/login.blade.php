@@ -20,7 +20,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ asset('template/index2.html') }}"><b>Invoice</b>Web</a>
+            <a href="#"><b>Invoice</b>Web</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
