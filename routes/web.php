@@ -33,6 +33,8 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'role:Administrator'])->group(function () {
 
     Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+    Route::resource('roles', \App\Http\Controllers\Admin\RoleController::class);
+
 
     //BEGIN:USER
     Route::get('view-user', [UserController::class, 'view_user']);
