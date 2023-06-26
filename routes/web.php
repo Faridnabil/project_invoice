@@ -41,16 +41,18 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('delete-user/{id}', [UserController::class, 'delete_user']);
     //END:USER
 
-    //BEGIN:ROLES
+    //BEGIN:QUOTATION
     Route::get('view-quotation', [QuotationController::class, 'view_quotation']);
-    //CREATE ROLES
+    //CREATE QUOTATION
     Route::get('create-quotation', [QuotationController::class, 'create_quotation']);
     Route::post('store-quotation', [QuotationController::class, 'store_quotation']);
-    //EDIT ROLES
+    //EDIT QUOTATION
     Route::get('edit-quotation/{id}', [QuotationController::class, 'edit_quotation']);
     Route::post('update-quotation/{id}', [QuotationController::class, 'update_quotation']);
-    //DELETE ROLES
+    //DELETE QUOTATION
     Route::get('delete-quotation/{id}', [QuotationController::class, 'delete_quotation']);
+    //DETAIL QUOTATION
+    Route::get('detail-quotation/{id}', [QuotationController::class, 'detail_quotation']);
     //END:ROLES
 
     //SPK
@@ -60,7 +62,7 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('edit-spk/{id}', [SPKController::class, 'showEdit']);
     Route::post('update-spk/{id}', [SPKController::class, 'update']);
     Route::get('delete-spk/{id}', [SPKController::class, 'destroy']);
-    Route::get('print-spk/{id}', [SPKController::class, 'pdf']);
+    Route::get('detail-spk/{id}', [SPKController::class, 'pdf']);
 
 
     //BERITA ACARA SERAH TERIMA

@@ -49,32 +49,49 @@
                                             <tr>
                                                 <td>{{ $item->no }}</td>
                                                 <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->nama1}}</td>
+                                                <td>{{ $item->nama1 }}</td>
                                                 <td>{{ $item->tgl }}</td>
-                                                <td><a href="edit-spk/{{ $item->id }}">Edit</a> | <a type="button" data-toggle="modal" data-target="#deleteConfirmation">
-                                                    Delete</a> | <a href="print-spk/{{ $item->id }}" target="_blank">Details</a></td>
+                                                <td>
+                                                    <a href="/edit-spk/{{ $item->id }}" type="button"
+                                                        title="Edit">
+                                                        <span class="fas fa-edit">&nbsp;&nbsp;&nbsp;</span>
+                                                    </a>
+                                                    <a href="#" data-toggle="modal" data-target="#deleteConfirmation"
+                                                        type="button" title="Delete">
+                                                        <span class="fas fa-trash">&nbsp;&nbsp;&nbsp;</span>
+                                                    </a>
+                                                    <a href="/detail-spk/{{ $item->id }}" type="button"
+                                                        target="__blank" title="Detail">
+                                                        <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
+                                                    </a>
+                                                </td>
                                             </tr>
-                                            <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
-                                                  <div class="modal-content">
-                                                    <div class="modal-header">
-                                                      <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
-                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                      </button>
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah Anda Yakin Ingin Menghapus Data ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <form action="delete-spk/{{ $item->id }}" method="GET"
+                                                                enctype="multipart/form-data">
+                                                                <button type="submit" class="btn btn-primary">Hapus
+                                                                    Data</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
-                                                    <div class="modal-body">
-                                                      Apakah Anda Yakin Ingin Menghapus Data ini?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                      <form action="delete-spk/{{ $item->id }}" method="GET" enctype="multipart/form-data">
-                                                        <button type="submit" class="btn btn-primary" >Hapus Data</button>
-                                                      </form>
-                                                    </div>
-                                                  </div>
                                                 </div>
-                                              </div>
+                                            </div>
                                         @endforeach
                                     </tbody>
                                 </table>

@@ -48,59 +48,59 @@
                                         @foreach ($quotation as $item)
                                             <tr>
                                                 <td>
-                                                    {{ date('d.m', strtotime($item->created_at)) }}/
-                                                    @switch(date('m', strtotime($item->created_at)))
-                                                        @case( date(1, strtotime($item->created_at)) )
+                                                    {{ date('d.m', strtotime($item->tanggal_quotation)) }}/
+                                                    @switch(date('m', strtotime($item->tanggal_quotation)))
+                                                        @case(date(1, strtotime($item->tanggal_quotation)))
                                                             I
                                                         @break
 
-                                                        @case( date(2, strtotime($item->created_at)) )
+                                                        @case(date(2, strtotime($item->tanggal_quotation)))
                                                             II
                                                         @break
 
-                                                        @case( date(3, strtotime($item->created_at)) )
+                                                        @case(date(3, strtotime($item->tanggal_quotation)))
                                                             III
                                                         @break
 
-                                                        @case( date(4, strtotime($item->created_at)) )
+                                                        @case(date(4, strtotime($item->tanggal_quotation)))
                                                             IV
                                                         @break
 
-                                                        @case( date(5, strtotime($item->created_at)) )
+                                                        @case(date(5, strtotime($item->tanggal_quotation)))
                                                             V
                                                         @break
 
-                                                        @case( date(6, strtotime($item->created_at)) )
+                                                        @case(date(6, strtotime($item->tanggal_quotation)))
                                                             VI
                                                         @break
 
-                                                        @case( date(7, strtotime($item->created_at)) )
+                                                        @case(date(7, strtotime($item->tanggal_quotation)))
                                                             VII
                                                         @break
 
-                                                        @case( date(8, strtotime($item->created_at)) )
+                                                        @case(date(8, strtotime($item->tanggal_quotation)))
                                                             VIII
                                                         @break
 
-                                                        @case( date(9, strtotime($item->created_at)) )
+                                                        @case(date(9, strtotime($item->tanggal_quotation)))
                                                             IX
                                                         @break
 
-                                                        @case( date(10, strtotime($item->created_at)) )
+                                                        @case(date(10, strtotime($item->tanggal_quotation)))
                                                             X
                                                         @break
 
-                                                        @case( date(11, strtotime($item->created_at)) )
+                                                        @case(date(11, strtotime($item->tanggal_quotation)))
                                                             XI
                                                         @break
 
-                                                        @case( date(11, strtotime($item->created_at)) )
+                                                        @case(date(11, strtotime($item->tanggal_quotation)))
                                                             XII
                                                         @break
                                                     @endswitch
-                                                    /{{ date('Y', strtotime($item->created_at)) }}/{{ $item->no_quotation }}
+                                                    /{{ date('Y', strtotime($item->tanggal_quotation)) }}/{{ $item->no_quotation }}
                                                 </td>
-                                                <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
+                                                <td>{{ date('d F Y', strtotime($item->tanggal_quotation)) }}</td>
                                                 <td>{{ $item->customer_name }}</td>
                                                 <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td>
                                                 <td>
@@ -108,16 +108,42 @@
                                                         title="Edit">
                                                         <span class="fas fa-edit">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
-                                                    <a href="/delete-quotation/{{ $item->id }}" type="button"
+                                                    <a href="#" data-toggle="modal" data-target="#deleteConfirmation" type="button"
                                                         title="Delete">
                                                         <span class="fas fa-trash">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
-                                                    <a href="/delete-quotation/{{ $item->id }}" type="button"
-                                                        title="Detail">
+                                                    <a href="/detail-quotation/{{ $item->id }}" type="button"
+                                                        target="__blank" title="Detail">
                                                         <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
                                                 </td>
                                             </tr>
+                                            <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah Anda Yakin Ingin Menghapus Data ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <form action="delete-quotation/{{ $item->id }}"
+                                                                method="GET" enctype="multipart/form-data">
+                                                                <button type="submit" class="btn btn-primary">Hapus
+                                                                    Data</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endforeach
                                     </tbody>
                                     <tfoot>

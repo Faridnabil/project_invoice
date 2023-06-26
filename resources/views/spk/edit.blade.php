@@ -127,7 +127,7 @@
                                 <div class="col-2">
                                 </div> --}}
                                 <div class="col-2">
-                                    <a href="view-spk" class="btn btn-danger" type="button">
+                                    <a href="/view-spk" class="btn btn-danger" type="button">
                                         Cancel
                                     </a>
                                     <button class="btn btn-success" type="submit">

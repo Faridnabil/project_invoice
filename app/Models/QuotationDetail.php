@@ -13,7 +13,7 @@ class QuotationDetail extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         'quotation_id', 'item_code', 'item_name',
-        'qty', 'price', 'total'
+        'qty', 'satuan', 'price', 'total'
     ];
 
     public function quotation()

@@ -48,6 +48,8 @@ class QuotationController extends Controller
             'no_quotation' => '',
             'customer_name' => 'required',
             'address' => 'required',
+            'nama_project' => 'required',
+            'tanggal_quotation' => 'required',
             'tax' => 'required',
             'tax_amount' => 'required',
             'sub_total' => 'required',
@@ -61,6 +63,8 @@ class QuotationController extends Controller
             'no_quotation' => $id_quot,
             'customer_name' => $request->customer_name,
             'address' => $request->address,
+            'nama_project' => $request->nama_project,
+            'tanggal_quotation' => $request->tanggal_quotation,
             'tax' => $request->tax,
             'tax_amount' => $request->tax_amount,
             'sub_total' => $request->sub_total,
@@ -85,6 +89,7 @@ class QuotationController extends Controller
                     'item_code' => $request->item_code[$i],
                     'item_name' => $request->item_name[$i],
                     'qty' => $request->qty[$i],
+                    'satuan' => $request->satuan[$i],
                     'price' => $request->price[$i],
                     'total' => $request->total[$i],
                     'created_at' => now(),
@@ -108,6 +113,8 @@ class QuotationController extends Controller
             'no_quotation' => '',
             'customer_name' => 'required',
             'address' => 'required',
+            'nama_project' => 'required',
+            'tanggal_quotation' => 'required',
             'tax' => 'required',
             'tax_amount' => 'required',
             'sub_total' => 'required',
@@ -120,6 +127,8 @@ class QuotationController extends Controller
             'no_quotation' => $request->no_quotation,
             'customer_name' => $request->customer_name,
             'address' => $request->address,
+            'nama_project' => $request->nama_project,
+            'tanggal_quotation' => $request->tanggal_quotation,
             'tax' => $request->tax,
             'tax_amount' => $request->tax_amount,
             'sub_total' => $request->sub_total,
@@ -133,15 +142,12 @@ class QuotationController extends Controller
         $total = count($request->idreq);
         if ($total != 0) {
             for ($i = 0; $i < $total; $i++) {
-                //update stok barang (penjualan = bertambah)
-                // Barang::find($request->barang_id[$i])->update([
-                //     'stok' => $barang->stok + $request->kuantitas[$i]
-                // ]);
 
                 QuotationDetail::where('id', $request->idreq[$i])->update([
                     'item_code' => $request->item_code[$i],
                     'item_name' => $request->item_name[$i],
                     'qty' => $request->qty[$i],
+                    'satuan' => $request->satuan[$i],
                     'price' => $request->price[$i],
                     'total' => $request->total[$i],
                     'updated_at' => now(),
@@ -154,7 +160,7 @@ class QuotationController extends Controller
 
     public function delete_quotation($id)
     {
-        QuotationDetail::find($id)->delete();
+        Quotation::find($id)->delete();
 
         return redirect('view-quotation')->with('success', 'Request deleted successfully');
     }
@@ -165,35 +171,6 @@ class QuotationController extends Controller
         $quotation = Quotation::find($id);
         $quotation_detail = QuotationDetail::where('quotation_id', $id)->get();
 
-        return view('quotation/detail-quotation', compact('quotation', 'quotation_detail', 'user', 'barang'));
-
-        $quotation['q'] = $request->query('q');
-        $quotation['start'] = $request->query('start');
-        $quotation['end'] = $request->query('end');
-        $query = QuotationDetail::join('quotation', 'quotation.id', '=', 'quotation_detail.quotation_id')
-            ->select(
-                'quotation_detail.*',
-                'quotation.no_quotation',
-                'quotation.customer_name',
-                'quotation.address',
-                'quotation.total',
-                'quotation.tax',
-                'quotation.tax_amount',
-                'quotation.amount_paid',
-                'quotation.amount_due',
-
-            )->where(function ($query) use ($quotation) {
-                $query->where('customer_name', 'like', '%' . $quotation['q'] . '%');
-                $query->orWhere('created_at', 'like', '%' . $quotation['q'] . '%');
-            })->orderBy('id', 'ASC');
-
-        if ($quotation['start'])
-            $query->whereDate('created_at', '>=', $quotation['start']);
-        if ($quotation['end'])
-            $query->whereDate('created_at', '<=', $quotation['end']);
-
-        $quotation['quotation'] = $query->paginate(15);
-
-        return view('quotation/view-quotation', $quotation);
+        return view('quotation/detail-quotation', compact('quotation', 'quotation_detail'));
     }
 }

@@ -46,10 +46,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <h2>From,</h2>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="no_quotation" hidden>
-                                            </div>
+                                            <h4>From :</h4>
+                                            <input type="text" class="form-control" name="no_quotation" hidden>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="customer_name"
                                                     placeholder="Customer Name">
@@ -59,27 +57,38 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <h2>To,</h2>
-                                            <img src="{{ asset('template/dist/img/logo-global.png') }}"
-                                                style="width: 250px; height:75px">
-                                            <p>PT. Global Technology Essential<br>
-                                                globaltechnologyessential@gmail.com<br>
-                                                Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat 41117</p>
+                                            <h4>Project Name :</h4>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="nama_project"
+                                                    placeholder="Project Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="date" class="form-control" name="tanggal_quotation"
+                                                    placeholder="Quotation Date">
+                                            </div>
                                         </div>
                                     </div>
+                                    <h4>Item :</h4>
                                     <div class="after-add" id="DBody">
                                         <div class="row mb-3">
                                             <div class="col-2">
                                                 <input type="text" class="form-control" name="item_code[]"
                                                     placeholder="No Item">
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 <input type="text" class="form-control" name="item_name[]"
                                                     placeholder="Item Name">
                                             </div>
                                             <div class="col-2">
                                                 <input type="number" class="form-control" id="qty" name="qty[]"
                                                     onchange="Calc(this);" placeholder="Quantity">
+                                            </div>
+                                            <div class="col-1">
+                                                <select class="form-control" name="satuan[]">
+                                                    <option value="Unit">Unit</option>
+                                                    <option value="Set">Set</option>
+                                                    <option value="Roll">Roll</option>
+                                                </select>
                                             </div>
                                             <div class="col-2">
                                                 <input type="number" class="form-control" id="price" name="price[]"
@@ -100,13 +109,20 @@
                                                 <input type="text" class="form-control" name="item_code[]"
                                                     placeholder="No Item">
                                             </div>
-                                            <div class="col-3">
+                                            <div class="col-2">
                                                 <input type="text" class="form-control" name="item_name[]"
                                                     placeholder="Item Name">
                                             </div>
                                             <div class="col-2">
                                                 <input type="number" class="form-control" id="qty" name="qty[]"
                                                     onchange="Calc(this);" placeholder="Quantity">
+                                            </div>
+                                            <div class="col-1">
+                                                <select class="form-control" name="satuan[]">
+                                                    <option value="Unit">Unit</option>
+                                                    <option value="Set">Set</option>
+                                                    <option value="Roll">Roll</option>
+                                                </select>
                                             </div>
                                             <div class="col-2">
                                                 <input type="number" class="form-control" id="price" name="price[]"
@@ -126,13 +142,13 @@
                                     <!-- /.card-body -->
                                     <div class="row">
                                         <div class="col-sm-8">
-                                            <h2>Notes :</h2>
+                                            <h4>Notes :</h4>
                                             <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="description" placeholder="Enter ..."></textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <h2>Details :</h2>
+                                            <h4>Details :</h4>
                                             <div class="form-group">
                                                 <input type="number" class="form-control" id="sub_total"
                                                     name="sub_total" placeholder="Sub Total" readonly>

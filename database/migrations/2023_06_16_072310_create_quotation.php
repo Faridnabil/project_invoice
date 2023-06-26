@@ -18,6 +18,8 @@ class CreateQuotation extends Migration
             $table->string('no_quotation')->nullable();
             $table->string('customer_name');
             $table->string('address');
+            $table->string('nama_project');
+            $table->string('tanggal_quotation');
             $table->string('tax');
             $table->string('tax_amount');
             $table->string('sub_total');
