@@ -55,7 +55,7 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('view-spk', [SPKController::class, 'index'])->name('view-spk');
     Route::get('create-spk', [SPKController::class, 'show'])->name('create-spk');
     Route::post('store-spk', [SPKController::class, 'store']);
-    Route::get('print-spk', [SPKController::class, 'pdf'])->name('print-spk');
+    Route::get('print-spk/{id}', [SPKController::class, 'pdf']);
 
 
     //BERITA ACARA SERAH TERIMA

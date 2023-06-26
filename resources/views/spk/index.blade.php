@@ -51,7 +51,7 @@
                                                 <td>{{ $item->nama }}</td>
                                                 <td>{{ $item->nama1}}</td>
                                                 <td>{{ $item->tgl }}</td>
-                                                <td>Edit | Delete | <a href="{{ route('print-spk') }}" target="_blank">Details</a></td>
+                                                <td>Edit | Delete | <a href="print-spk/{{ $item->id }}" target="_blank">Details</a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>

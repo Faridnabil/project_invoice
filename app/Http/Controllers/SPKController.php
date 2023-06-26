@@ -81,8 +81,9 @@ class SPKController extends Controller
         //return redirect('view-spk')->with('success', 'Data Berhasil Dibuat');
     }
 
-    public function pdf()
+    public function pdf($id)
     {
-        return view('spk.pdf');
+        $spk = SPK::find($id);
+        return view('spk.pdf', compact('spk'));
     }
 }
