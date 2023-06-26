@@ -48,7 +48,17 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/view-bast" class="nav-link {{ request()->is('beritaacara') ? 'active' : '' }}">
+                            <a href="/view-invoice"
+                                class="nav-link {{ request()->is('view-invoice') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-receipt"></i>
+                                <p>
+                                    Invoice
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/view-bast" class="nav-link {{ request()->is('view-bast') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     Berita Acara

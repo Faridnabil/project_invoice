@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BASTController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SPKController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,10 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('create-bast', [BASTController::class, 'show'])->name('create-bast');
     Route::post('store-bast', [BASTController::class, 'store']);
     Route::get('print-bast', [BASTController::class, 'pdf'])->name('print-bast');
+
+    //INVOICE
+    Route::get('view-invoice', [InvoiceController::class, 'view_invoice'])->name('view-invoice');
+
 });
 
 Route::get('/', function () {
