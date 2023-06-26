@@ -8,7 +8,7 @@
     <title>Cetak Laporan Data Alumni</title>
     <style>
         body {
-            font-family: "Times New Roman", Times, serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         @page {
@@ -18,6 +18,7 @@
 
         .p{
             text-align: justify;
+            /* font-family: Arial, Helvetica, sans-serif */
         }
         header,
         footer {
@@ -166,12 +167,11 @@
                                 <td> {{ $spk->ktp1 }}</td>
                             </tr>
                         </table><br>
-                        Dalam hal ini bertindak atas nama {{ $spk->nama }} dan selanjutnya disebut <b>PIHAK
+                        Dalam hal ini bertindak atas nama {{ $spk->nama1 }} dan selanjutnya disebut <b>PIHAK
                             KEDUA</b>. <br>
                         <b>PIHAK PERTAMA</b> dan <b>PIHAK KEDUA</b> secara bersama-sama (selanjutnya disebut sebagai
                         <b>PARA PIHAK</b>). <br><br>
-                        Atas dasar pertimbangan yang diuraikan di atas, <b>PARA PIHAK</b> selanjutnya menerangkan dengan
-                        ini telah sepakat dan setuju untuk mengadakan Kerjasama dan disahkan dalam bentuk surat
+                        Atas dasar pertimbangan yang diuraikan di atas, <b>PARA PIHAK</b> selanjutnya menerangkan dengan ini telah sepakat dan setuju untuk mengadakan Kerjasama dan disahkan dalam bentuk surat
                         perjanjian Kerjasama dengan ketentuan dan syarat sebagai berikut :
                     </p>
                     <p style="text-align: center;"><b>PASAL 1 <br>
@@ -192,11 +192,79 @@
                             HAK DAN KEWAJIBAN PIHAK PERTAMA</b><br></p>
                     <p style="text-align: justify;">
                         1.	PIHAK PERTAMA bertanggung jawab atas seluruh proses Kerjasama pekerjaan pembuatan &nbsp;&nbsp;&nbsp;(Pembangunan Server Lokal) untuk PIHAK KEDUA sesuai dengan kesepakatan PARA PIHAK, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sebagai berikut : <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.	Menentukan timeline kerja <br>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.	Menentukan timeline kerja <br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.	Mengatur dan memproses seluruh tahapan dan kegiatan Pembangunan Server Lokal <br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.	Membuat dan mensetting aplikasi sesuai dengan arahan PIHAK KEDUA
-
                     </p>
+                    <p style="text-align: justify;">
+                        2.	PIHAK PERTAMA berhak menerima uang sebesar Rp. 10.000.000 dan potongan pajak sesuai dengan &nbsp;&nbsp;&nbsp;&nbsp;Peraturan Undang-Undang yang berlaku, dengan rincian sebagai berikut:<br>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;a.	Total biaya pembuatan (Nama Project) sebesar ....yang dibagi menjadi dua termin, sebagai berikut : <br>
+                        <ul>
+                            <li>Termin pertama, ketika menandatangani dan menyepakati SPK sebesar 50% dari total biaya yaitu senilai
+                            </li>
+                            <li>Termin kedua, ketika PIHAK PERTAMA menyerahkan hasil pekerjaan pembuatan Pembangunan Server Lokal terakhir dan menyerahkan berita acara serah terima (BAST) yang disepakati oleh PIHAK KEDUA sebesar
+                            </li>
+                            <li>Biaya tambahan untuk keperluan revisi yang telah melebihi batasan sesuai dengan perjanjian yang tertera dokumen quotation yang telah diberikan dengan nominal yang akan dibahas selanjutnya sebelum melaksanakan revisi.</li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify;">
+                        3.	PIHAK PERTAMA berkewajiban memberikan kesempatan revisi dalam pengerjaan pembuatan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Nama Project) sesuai dengan ketentuan yang tertera pada dokumen quotation yang telah diberikan.
+                    </p>
+                    <p style="text-align: justify;">
+                        4.	PIHAK PERTAMA berhak menjadıkan hasil kerja sama ini untuk diperlihatkan sebagai hasil kerja &nbsp;&nbsp;(portfolio) antar PIHAK PERTAMA dan PIHAK KEDUA, namun PIHAK PERTAMA tetap &nbsp;&nbsp;berkewajiban untuk meminta persetujuan terlebih dahulu kepada PIHAK KEDUA dalam hal &nbsp;&nbsp;&nbsp;&nbsp;penggunaan hasil pekerjaan ini untuk kepentingan PIHAK PERTAMA. Adapun ketidaksepahaman &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dalam perihal persetujuan akan diselesaikan secara musyawarah oleh PARA PIHAK.
+                    </p>
+                    <p style="text-align: justify;">
+                        5.	PIHAK PERTAMA wajib memberikan hasil pengerjaan pembuatan (Nama Project) kepada PIHAK &nbsp;&nbsp;&nbsp;&nbsp;KEDUA dengan rincian sebagai berikut : <br>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </p>
+                    <p style="text-align: center;"><b>PASAL 4<br>
+                        HAK DAN KEWAJIBAN PIHAK KEDUA</b><br>
+                    </p>
+                    <p style="text-align: justify;">
+                        1.	Ide konsep yang telah dibuat oleh PIHAK PERTAMA berhak untuk direvisi sebanyak-banyaknya 1 (satu) kali oleh PIHAK KEDUA pada setiap fasenya dan harus melalui persetujuan PIHAK KEDUA sebelum dipublikasikan.
+                    </p>
+                    <p style="text-align: justify;">
+                        2.	PIHAK KEDUA berkewajiban membayar uang sebesar … dan potongan pajak sesuai dengan Peraturan Undang-Undang yang berlaku, dengan rincian sesuai dengan Pasal 3 Ayat 2.
+                    </p>
+                    <p style="text-align: justify;">
+                        3.	PIHAK KEDUA berhak meminta revisi dalam pengerjaan pembuatan (Nama Project)  sesuai dengan ketentuan yang tertera pada dokumen quotation yang telah diberikan.
+                    </p>
+                    <p style="text-align: justify;">
+                        4.	PIHAK KEDUA berhak menerima hasil pengerjaan pembuatan (Nama Project) kepada PIHAK KEDUA dengan rincian sebagai berikut :<br>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </p>
+                    <p style="text-align: justify;">
+                        5.	Hasil pengerjaan Pembuatan (Nama Project) sepenuhnya menjadi milik PIHAK KEDUA, sehingga penggunaan hasil ini untuk kepentingan PIHAK PERTAMA dan pihak lainnya harus berdasarkan persetujuan PIHAK KEDUA.
+                    </p>
+                    <p style="text-align: center;"><b>PASAL 5 <br>
+                        PERJANJIAN TAMBAHAN</b><br>
+                    </p>
+                    <p style="text-align: justify;">
+                        Selanjutnya hal-hal yang tidak tercantum dalam surat perjanjian kerjasama ıni dan apabila kelak di kemudian hari ternyata terdapat kekurangan atau kekeliruan, maka akan diadakan perubahan atau perbaikan yang dianggap perlu serta diatur dalam suatu perjanjian tambahan (addendum) dan merupakan dokumen yang tidak terpisahkan dari surat perjanjian kerjasama ini.
+                    </p>
+                    <p style="text-align: center;"><b>PASAL 6 <br>
+                        <i>FORCE MAJEURE</i></b><br>
+                    </p>
+                    <p style="text-align: justify;">
+                        Force Majeure atau perselisihan yang terjadi dalam pelaksanaan perjanjian kerjasama inı sehingga salah satu pihak tidak dapat memenuhi kewajibannya, maka masing-masing pihak akan menyelesaikannya secara musyawarah untuk mufakat. Dan apabila dengan jalan musyawarah untuk mufakat tidak juga terselesaikan, maka kedua belah pihak menunjuk dan menetapkan Badan Arbitrase Nasıonal sebagai domisili hukum tetap dan tidak berubah sebagai tempat penyelesaian.
+                        <br><br>Demikian SPK ini dibuat rangkap 2 (dua), disepakati dan ditandatangani oleh PARA PIHAK dalam keadaan sadar, sehat jasmani dan rohani, tanpa ada tekanan, pengaruh, paksaan dari pihak manapun, dengan bermaterai cukup, dan berlaku sejak ditandatangani.
+                        <br><br><br>Purwakarta, .................
+                    </p>
+                    <tr>
+                        <td colspan="6">PIHAK PERTAMA, <br><br><br><br><br></td>
+                        <td>PIHAK KEDUA, <br><br><br><br><br></td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">Nama</td>
+                        <td>Nama</td>
+                    </tr>
+                    <tr>
+                        <td><hr>Jabatan</td>
+                    </tr>
                 </td>
             </tr>
         </table>
