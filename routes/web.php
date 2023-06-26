@@ -53,9 +53,13 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('delete-quotation/{id}', [QuotationController::class, 'delete_quotation']);
     //END:ROLES
 
+    //SPK
     Route::get('view-spk', [SPKController::class, 'index'])->name('view-spk');
     Route::get('create-spk', [SPKController::class, 'show'])->name('create-spk');
     Route::post('store-spk', [SPKController::class, 'store']);
+    Route::get('edit-spk/{id}', [SPKController::class, 'showEdit']);
+    Route::post('update-spk/{id}', [SPKController::class, 'update']);
+    Route::get('delete-spk/{id}', [SPKController::class, 'destroy']);
     Route::get('print-spk/{id}', [SPKController::class, 'pdf']);
 
 
