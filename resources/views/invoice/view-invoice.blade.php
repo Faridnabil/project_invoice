@@ -31,7 +31,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="/create-invoice" type="button" class="btn btn-primary">Add Invoice </a>
+                                Data Invoice
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
@@ -102,24 +102,25 @@
                                                     @endswitch
                                                     /{{ date('Y', strtotime($item->created_at)) }}/{{ $item->no_inv }}
                                                 </td>
-                                                <td>{{$item->quotation_detail->customer_name}}</td>
+                                                <td>{{$item->customer_name}}</td>
                                                 <td>{{ date('d F Y', strtotime($item->issue_date)) }}</td>
                                                 <td>{{ date('d F Y', strtotime($item->due_date)) }}</td>
-                                                <td>total from quot</td>
-                                                <td>{{$item->status}}</td>
+                                                <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td>
+
+                                                    @if ($item->status == 'unpaid')
+                                                    <td style="color: red">{{$item->status}}</td>
+                                                    @elseif ($item->status == 'paid')
+                                                    <td style="color: green">{{$item->status}}</td>
+                                                    @endif
                                                 {{-- <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td> --}}
                                                 <td>
-                                                    <a href="/edit-quotation/{{ $item->id }}" type="button"
-                                                        title="Edit">
-                                                        <span class="fas fa-edit">&nbsp;&nbsp;&nbsp;</span>
-                                                    </a>
-                                                    <a href="/delete-quotation/{{ $item->id }}" type="button"
-                                                        title="Delete">
-                                                        <span class="fas fa-trash">&nbsp;&nbsp;&nbsp;</span>
-                                                    </a>
-                                                    <a href="/delete-quotation/{{ $item->id }}" type="button"
+                                                    <a href="/bayar-invoice/{{ $item->id }}" type="button"
                                                         title="Detail">
-                                                        <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
+                                                        <span class="fas fa-eye">&nbsp; &nbsp;</span>
+                                                    </a>
+                                                    <a href="/cetak-invoice/{{ $item->id }}" type="button"
+                                                        title="Cetak">
+                                                        <span class="fas fa-print"></span>
                                                     </a>
                                                 </td>
                                             </tr>

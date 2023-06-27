@@ -18,7 +18,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/home">Home</a></li>
                             <li class="breadcrumb-item"><a href="/view-quotation">Quotation</a></li>
-                            <li class="breadcrumb-item active">Create Quotation</li>
+                            <li class="breadcrumb-item active">Edit Quotation</li>
                         </ol>
                     </div>
                 </div>
@@ -41,25 +41,28 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="store-quotation" method="POST" enctype="multipart/form-data">
+                            <form action="/update-invoice/{{ $quotation->id }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <h3>From,</h3>
+                                            <h2>From,</h2>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" name="no_quotation" hidden>
+                                                <input type="text" class="form-control" name="no_quotation"
+                                                    value="{{ $quotation->no_quotation }}" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="customer_name"
-                                                    placeholder="Customer Name">
+                                                    placeholder="Customer Name" value="{{ $quotation->customer_name }}" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="3" name="address" placeholder="Customer Address"></textarea>
+                                                <textarea class="form-control" rows="3" name="address" placeholder="{{ $quotation->address }}" readonly
+                                                    value="{{ $quotation->address }}"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <h3>To,</h3>
+                                            <h2>To,</h2>
                                             <img src="{{ asset('template/dist/img/logo-global.png') }}"
                                                 style="width: 250px; height:75px">
                                             <p>PT. Global Technology Essential<br>
@@ -67,63 +70,41 @@
                                                 Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat 41117</p>
                                         </div>
                                     </div>
-                                    <div class="after-add" id="DBody">
-                                        <div class="row mb-3">
-                                            <div class="col-2">
-                                                <input type="text" class="form-control" name="item_code[]"
-                                                    placeholder="No Item">
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="text" class="form-control" name="item_name[]"
-                                                    placeholder="Item Name">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="number" class="form-control" id="qty" name="qty[]"
-                                                    onchange="Calc(this);" placeholder="Quantity">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="number" class="form-control" id="price" name="price[]"
-                                                    onchange="Calc(this);" placeholder="Price">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="number" class="form-control" id="total" name="total[]"
-                                                    value="0" readonly>
-                                            </div>
-                                            <div class="col-1">
-                                                <button class="btn btn-primary" onclick="btnAdd()" type="button">
-                                                    Add
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <div id="DRow" class="row mb-3">
-                                            <div class="col-2">
-                                                <input type="text" class="form-control" name="item_code[]"
-                                                    placeholder="No Item">
-                                            </div>
-                                            <div class="col-3">
-                                                <input type="text" class="form-control" name="item_name[]"
-                                                    placeholder="Item Name">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="number" class="form-control" id="qty" name="qty[]"
-                                                    onchange="Calc(this);" placeholder="Quantity">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="number" class="form-control" id="price" name="price[]"
-                                                    onchange="Calc(this);" placeholder="Price">
-                                            </div>
-                                            <div class="col-2">
-                                                <input type="number" class="form-control" id="total" name="total[]"
-                                                    value="0" readonly>
-                                            </div>
-                                            <div class="col-1">
-                                                <button class="btn btn-danger" onclick="btnDelete(this)" type="button">
-                                                    Delete
-                                                </button>
+                                    @foreach ($quotation_detail as $item)
+                                        <input type="hidden" name="idreq[]" value="{{ $item->id }}">
+                                        <div class="after-add" id="DBody">
+                                            <div class="row mb-3" id="DRow">
+                                                <div class="col-2">
+                                                    <input type="text" class="form-control" name="item_code[]"
+                                                        placeholder="No Item" readonly value="{{ $item->item_code }}">
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="text" class="form-control" name="item_name[]"
+                                                        placeholder="Item Name" readonly value="{{ $item->item_name }}">
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="text" class="form-control" id="qty" name="qty[]"
+                                                        onchange="Calc(this);" placeholder="Quantity"
+                                                        value="{{ $item->qty }}" readonly>
+                                                </div>
+                                                <div class="col-2">
+                                                    <input type="text" class="form-control" id="price" name="price[]"
+                                                        onchange="Calc(this);" placeholder="Price"
+                                                        value="{{ $item->price }}" readonly>
+                                                </div>
+                                                <div class="col-3">
+                                                    <input type="text" class="form-control" id="total" name="total[]"
+                                                        placeholder="Total" value="{{ $item->total }}" readonly>
+                                                </div>
+                                                {{-- <div class="col-1">
+                                                    <button class="btn btn-primary" onclick="btnAdd()" type="button">
+                                                        Add
+                                                    </button>
+                                                </div> --}}
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- /.card-body -->
+                                        <!-- /.card-body -->
+                                    @endforeach
                                     <div class="row">
                                         <div class="col-sm-8">
                                             <h2>Notes :</h2>
@@ -134,31 +115,35 @@
                                         <div class="col-sm-4">
                                             <h2>Details :</h2>
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="sub_total"
-                                                    name="sub_total" placeholder="Sub Total" readonly>
+                                                <input type="text" class="form-control" id="sub_total" name="sub_total"
+                                                    placeholder="Sub Total" readonly value="{{ $quotation->sub_total }}">
                                             </div>
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="tax" name="tax"
-                                                    placeholder="Tax Rate" onchange="GetTotal()">
+                                                <input type="text" class="form-control" id="tax" name="tax"
+                                                    placeholder="Tax Rate" onchange="GetTotal()"
+                                                    readonly value="{{ $quotation->tax }}">
                                             </div>
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="tax_amount"
-                                                    name="tax_amount" placeholder="Tax Amount" readonly>
+                                                <input type="text" class="form-control" id="tax_amount"
+                                                    name="tax_amount" placeholder="Tax Amount" readonly
+                                                    readonly value="{{ $quotation->tax_amount }}">
                                             </div>
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="amount" name="amount"
-                                                    placeholder="Total" readonly>
+                                                <input type="text" class="form-control" id="amount" name="amount"
+                                                    readonly placeholder="Total" readonly value="{{ $quotation->amount }}">
                                             </div>
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="amount_paid"
-                                                    name="amount_paid" placeholder="Amount Paid">
+                                                <input type="text" class="form-control" id="amount_paid"
+                                                    name="amount_paid" placeholder="Amount Paid"
+                                                    value="{{ $quotation->amount_paid }}">
                                             </div>
                                             <div class="form-group">
-                                                <input type="number" class="form-control" id="amount_due"
-                                                    name="amount_due" placeholder="Amount Due" readonly>
+                                                <input type="text" class="form-control" id="amount_due"
+                                                    name="amount_due" placeholder="Amount Due" readonly
+                                                    readonly value="{{ $quotation->amount_due }}">
                                             </div>
 
-                                            <a href="view-quotation" class="btn btn-danger" type="button">
+                                            <a href="/view-quotation" class="btn btn-danger" type="button">
                                                 Cancel
                                             </a>
                                             <button class="btn btn-success" type="submit">

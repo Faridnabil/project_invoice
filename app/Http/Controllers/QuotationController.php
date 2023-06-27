@@ -77,7 +77,9 @@ class QuotationController extends Controller
             'created_at' => now(),
         ]);
 
-
+        $now = date('Y-m-d');
+        $start_date = strtotime($now);
+        $end_date = strtotime("+14 day", $start_date);
 
         $data = Quotation::latest()->first();
         $totaldata = count($request->item_code);
@@ -101,6 +103,15 @@ class QuotationController extends Controller
                 ]);
             }
         }
+
+        Invoice::create([
+            'no_inv' => $id_inv,
+            'no_quotation' => $incrementKode,
+            'status' => 'unpaid',
+            'pembayaran' => '0',
+            'issue_date' => date('Y-m-d', $start_date),
+            'due_date' => date('Y-m-d', $end_date)
+        ]);
 
         return redirect('view-quotation')->with('success', 'Request created successfully');
     }

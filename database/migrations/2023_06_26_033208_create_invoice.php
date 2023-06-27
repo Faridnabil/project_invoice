@@ -15,7 +15,7 @@ class CreateInvoice extends Migration
     {
         Schema::create('invoice', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quotation_detail_id')->constrained('quotation_detail')->onDelete('cascade');
+            $table->foreignId('no_quotation')->constrained('quotation')->onDelete('cascade');
             $table->string('no_inv')->nullable();
             $table->string('status')->nullable();
             $table->string('pembayaran');

@@ -22,8 +22,8 @@ class Quotation extends Model
         return $this->hasMany('App\Models\QuotationDetail');
     }
 
-    public function inv()
+    public function invoice()
     {
-        return $this->hasMany('App\Models\QuotationDetail');
+        return $this->hasOne('App\Models\Invoice');
     }
 }
