@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quotation;
+use App\Models\Invoice;
 use App\Models\QuotationDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,6 +30,7 @@ class QuotationController extends Controller
         $kode = DB::table('quotation')->count();
         $addNol = '';
         $kodetb = 'QUO';
+        $kodeinv = 'INV';
         $kode = str_replace($kodetb, "", $kode);
         $kode = (int) $kode + 1;
         $incrementKode = $kode;
@@ -43,6 +45,7 @@ class QuotationController extends Controller
             $addNol = "00";
         }
         $id_quot = $kodetb . $addNol . $incrementKode;
+        $id_inv = $kodeinv . $addNol . $incrementKode;
 
         $rules = $request->validate([
             'no_quotation' => '',
@@ -74,6 +77,8 @@ class QuotationController extends Controller
             'created_at' => now(),
         ]);
 
+
+
         $data = Quotation::latest()->first();
         $totaldata = count($request->item_code);
         $totalrequest = 0;
@@ -96,6 +101,7 @@ class QuotationController extends Controller
                 ]);
             }
         }
+
         return redirect('view-quotation')->with('success', 'Request created successfully');
     }
 

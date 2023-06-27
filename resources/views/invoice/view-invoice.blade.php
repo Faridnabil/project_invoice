@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Inovice</h1>
+                        <h1>Invoice</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -31,21 +31,23 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="/create-quotation" type="button" class="btn btn-primary">Add Quotation </a>
+                                <a href="/create-invoice" type="button" class="btn btn-primary">Add Invoice </a>
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>No. Quotation</th>
-                                            <th>Created Date</th>
+                                            <th>No. Invoice</th>
                                             <th>Customer Name</th>
+                                            <th>Issue Date</th>
+                                            <th>Due Date</th>
                                             <th>Invoice Total</th>
+                                            <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($quotation as $item)
+                                        @foreach ($invoice as $item)
                                             <tr>
                                                 <td>
                                                     {{ date('d.m', strtotime($item->created_at)) }}/
@@ -98,11 +100,14 @@
                                                             XII
                                                         @break
                                                     @endswitch
-                                                    /{{ date('Y', strtotime($item->created_at)) }}/{{ $item->no_quotation }}
+                                                    /{{ date('Y', strtotime($item->created_at)) }}/{{ $item->no_inv }}
                                                 </td>
-                                                <td>{{ date('d F Y', strtotime($item->created_at)) }}</td>
-                                                <td>{{ $item->customer_name }}</td>
-                                                <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td>
+                                                <td>{{$item->quotation_detail->customer_name}}</td>
+                                                <td>{{ date('d F Y', strtotime($item->issue_date)) }}</td>
+                                                <td>{{ date('d F Y', strtotime($item->due_date)) }}</td>
+                                                <td>total from quot</td>
+                                                <td>{{$item->status}}</td>
+                                                {{-- <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td> --}}
                                                 <td>
                                                     <a href="/edit-quotation/{{ $item->id }}" type="button"
                                                         title="Edit">
@@ -122,11 +127,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>No. Quotation</th>
-                                            <th>Created Date</th>
-                                            <th>Customer Name</th>
-                                            <th>Invoice Total</th>
-                                            <th>Actions</th>
+                                            <th colspan="7">End of record</th>
                                         </tr>
                                     </tfoot>
                                 </table>

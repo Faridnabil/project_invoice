@@ -20,4 +20,9 @@ class QuotationDetail extends Model
     {
         return $this->belongsTo('App\Models\Quotation');
     }
+
+    public function invoice()
+    {
+        return $this->belongsTo('App\Models\Invoice');
+    }
 }

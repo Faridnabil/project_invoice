@@ -73,6 +73,9 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
 
     //INVOICE
     Route::get('view-invoice', [InvoiceController::class, 'view_invoice'])->name('view-invoice');
+    Route::get('detail-invoice', [InvoiceController::class, 'detail_invoice'])->name('detail-invoice');
+    Route::get('create-invoice', [InvoiceController::class, 'create_invoice']);
+    Route::post('store-invoice', [InvoiceController::class, 'store_invoice']);
 
 });
 

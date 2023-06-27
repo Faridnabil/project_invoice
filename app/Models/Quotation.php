@@ -22,4 +22,8 @@ class Quotation extends Model
         return $this->hasMany('App\Models\QuotationDetail');
     }
 
+    public function inv()
+    {
+        return $this->hasMany('App\Models\QuotationDetail');
+    }
 }
