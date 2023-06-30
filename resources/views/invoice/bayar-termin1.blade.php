@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Dashboard
+    Invoice
 @endsection
 
 @section('content')
@@ -17,8 +17,8 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="/home">Home</a></li>
-                            <li class="breadcrumb-item"><a href="/view-quotation">Quotation</a></li>
-                            <li class="breadcrumb-item active">Edit Quotation</li>
+                            <li class="breadcrumb-item"><a href="/view-invoice">Quotation</a></li>
+                            <li class="breadcrumb-item active">Bayar Invoice</li>
                         </ol>
                     </div>
                 </div>
@@ -41,60 +41,80 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form action="/update-invoice/{{ $quotation->id }}" method="POST"
-                                enctype="multipart/form-data">
+                            <form action="/update-termin1/{{ $invoice->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <h2>From,</h2>
+                                            <h4>From :</h4>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="no_quotation"
-                                                    value="{{ $quotation->no_quotation }}" readonly>
+                                                    value="{{ $invoice->quotation->no_quotation }}" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="quotation_id"
+                                                    value="{{ $invoice->quotation_id }}" hidden>
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="customer_name"
-                                                    placeholder="Customer Name" value="{{ $quotation->customer_name }}" readonly>
+                                                    placeholder="Customer Name"
+                                                    value="{{ $invoice->quotation->customer_name }}" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="3" name="address" placeholder="{{ $quotation->address }}" readonly
-                                                    value="{{ $quotation->address }}"></textarea>
+                                                <textarea class="form-control" rows="3" name="address" placeholder="{{ $invoice->quotation->address }}" readonly
+                                                    value="{{ $invoice->quotation->address }}"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <h2>To,</h2>
-                                            <img src="{{ asset('template/dist/img/logo-global.png') }}"
-                                                style="width: 250px; height:75px">
-                                            <p>PT. Global Technology Essential<br>
-                                                globaltechnologyessential@gmail.com<br>
-                                                Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat 41117</p>
+                                            <h4>Project Name :</h4>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="nama_project"
+                                                    value="{{ $invoice->quotation->nama_project }}"
+                                                    placeholder="Project Name" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="date" class="form-control" name="tanggal_quotation"
+                                                    value="{{ $invoice->quotation->tanggal_quotation }}"
+                                                    placeholder="Quotation Date" readonly>
+                                            </div>
                                         </div>
                                     </div>
-                                    @foreach ($quotation_detail as $item)
+                                    @foreach ($quotation as $item)
                                         <input type="hidden" name="idreq[]" value="{{ $item->id }}">
                                         <div class="after-add" id="DBody">
                                             <div class="row mb-3" id="DRow">
                                                 <div class="col-2">
+                                                    <label for="item-code">No Item</label>
                                                     <input type="text" class="form-control" name="item_code[]"
                                                         placeholder="No Item" readonly value="{{ $item->item_code }}">
                                                 </div>
                                                 <div class="col-3">
+                                                    <label for="item-name">Name Item</label>
                                                     <input type="text" class="form-control" name="item_name[]"
                                                         placeholder="Item Name" readonly value="{{ $item->item_name }}">
                                                 </div>
-                                                <div class="col-2">
+                                                <div class="col-1">
+                                                    <label for="qty">Quantity</label>
                                                     <input type="text" class="form-control" id="qty" name="qty[]"
                                                         onchange="Calc(this);" placeholder="Quantity"
                                                         value="{{ $item->qty }}" readonly>
                                                 </div>
+                                                <div class="col-1">
+                                                    <label for="satuan">Satuan</label>
+                                                    <input type="text" class="form-control" id="satuan"
+                                                        name="satuan[]" value="{{ $item->satuan }}" readonly>
+                                                </div>
                                                 <div class="col-2">
+                                                    <label for="sub_total">Sub total</label>
                                                     <input type="text" class="form-control" id="price" name="price[]"
                                                         onchange="Calc(this);" placeholder="Price"
                                                         value="{{ $item->price }}" readonly>
                                                 </div>
                                                 <div class="col-3">
-                                                    <input type="text" class="form-control" id="total" name="total[]"
-                                                        placeholder="Total" value="{{ $item->total }}" readonly>
+                                                    <label for="total">Total</label>
+                                                    <input type="text" class="form-control" id="total"
+                                                        name="total[]" placeholder="Total" value="{{ $item->total }}"
+                                                        readonly>
                                                 </div>
                                                 {{-- <div class="col-1">
                                                     <button class="btn btn-primary" onclick="btnAdd()" type="button">
@@ -107,43 +127,75 @@
                                     @endforeach
                                     <div class="row">
                                         <div class="col-sm-8">
-                                            <h2>Notes :</h2>
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="3" name="description" placeholder="Enter ..."></textarea>
+                                                <label for="notes">Notes</label>
+                                                <textarea class="form-control" rows="3" name="description"
+                                                    placeholder="{{ $invoice->quotation->description }}" value="{{ $invoice->quotation->description }}" readonly></textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="no-inv">No Invoice</label>
+                                                <input type="text" class="form-control" name="no_inv"
+                                                    value="{{ $invoice->no_inv }}" readonly>
+                                            </div>
+                                            @if ($invoice->termin1 == 0)
+                                                <div class="form-group">
+                                                    <label for="total-paid">Termin 1</label>
+                                                    <input type="text" class="form-control" id="termin1"
+                                                        name="termin1" placeholder="Termin 1">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="total-paid">Termin 2</label>
+                                                    <input type="text" class="form-control" id="termin2"
+                                                        name="termin2" placeholder="Termin 2" value="0" readonly>
+                                                </div>
+                                            @else
+                                                <div class="form-group">
+                                                    <label for="total-paid">Termin 1</label>
+                                                    <input type="text" class="form-control" id="termin1"
+                                                        name="termin1" placeholder="Termin 1"
+                                                        value="{{ $invoice->termin2 }}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="total-paid">Termin 2</label>
+                                                    <input type="text" class="form-control" id="termin2"
+                                                        name="termin2" placeholder="Termin 2"
+                                                        value="{{ $invoice->termin2 }}" readonly>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="col-sm-4">
-                                            <h2>Details :</h2>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="sub_total" name="sub_total"
-                                                    placeholder="Sub Total" readonly value="{{ $quotation->sub_total }}">
+                                                <label for="sub-total">Sub total</label>
+                                                <input type="text" class="form-control" id="sub_total"
+                                                    name="sub_total" placeholder="Sub Total" readonly
+                                                    value="{{ $invoice->quotation->sub_total }}">
                                             </div>
                                             <div class="form-group">
+                                                <label for="tax">Pajak</label>
                                                 <input type="text" class="form-control" id="tax" name="tax"
-                                                    placeholder="Tax Rate" onchange="GetTotal()"
-                                                    readonly value="{{ $quotation->tax }}">
+                                                    placeholder="Tax Rate" onchange="GetTotal()" readonly
+                                                    value="{{ $invoice->quotation->tax }}">
                                             </div>
                                             <div class="form-group">
+                                                <label for="tax-amount">Total Pajak</label>
                                                 <input type="text" class="form-control" id="tax_amount"
                                                     name="tax_amount" placeholder="Tax Amount" readonly
-                                                    readonly value="{{ $quotation->tax_amount }}">
+                                                    value="{{ $invoice->quotation->tax_amount }}">
                                             </div>
                                             <div class="form-group">
+                                                <label for="grand-total">Grand Total</label>
                                                 <input type="text" class="form-control" id="amount" name="amount"
-                                                    readonly placeholder="Total" readonly value="{{ $quotation->amount }}">
+                                                    placeholder="Total" readonly
+                                                    value="{{ $invoice->quotation->amount }}">
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="amount_paid"
-                                                    name="amount_paid" placeholder="Amount Paid"
-                                                    value="{{ $quotation->amount_paid }}">
-                                            </div>
-                                            <div class="form-group">
+                                                <label for="total-due">Sisa Total</label>
                                                 <input type="text" class="form-control" id="amount_due"
                                                     name="amount_due" placeholder="Amount Due" readonly
-                                                    readonly value="{{ $quotation->amount_due }}">
+                                                    value="{{ $invoice->quotation->amount_due }}">
                                             </div>
 
-                                            <a href="/view-quotation" class="btn btn-danger" type="button">
+                                            <a href="/view-invoice" class="btn btn-danger" type="button">
                                                 Cancel
                                             </a>
                                             <button class="btn btn-success" type="submit">

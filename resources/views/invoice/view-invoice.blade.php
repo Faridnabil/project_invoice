@@ -102,25 +102,30 @@
                                                     @endswitch
                                                     /{{ date('Y', strtotime($item->created_at)) }}/{{ $item->no_inv }}
                                                 </td>
-                                                <td>{{$item->customer_name}}</td>
+                                                <td>{{$item->quotation->customer_name}}</td>
                                                 <td>{{ date('d F Y', strtotime($item->issue_date)) }}</td>
                                                 <td>{{ date('d F Y', strtotime($item->due_date)) }}</td>
-                                                <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td>
+                                                <td>Rp. {{ number_format($item->quotation->amount, 0, ',', '.') }}</td>
 
                                                     @if ($item->status == 'unpaid')
                                                     <td style="color: red">{{$item->status}}</td>
                                                     @elseif ($item->status == 'paid')
+                                                    <td style="color: rgb(160, 149, 0)">{{$item->status}}</td>
+                                                    @elseif ($item->status == 'lunas')
                                                     <td style="color: green">{{$item->status}}</td>
                                                     @endif
-                                                {{-- <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td> --}}
                                                 <td>
-                                                    <a href="/bayar-invoice/{{ $item->id }}" type="button"
-                                                        title="Detail">
-                                                        <span class="fas fa-eye">&nbsp; &nbsp;</span>
+                                                    <a href="/termin1/{{ $item->id }}" type="button"
+                                                        title="Bayar Termin 1">
+                                                        <span class="fas fa-coins">&nbsp; &nbsp;</span>
+                                                    </a>
+                                                    <a href="/termin2/{{ $item->id }}" type="button"
+                                                        title="Bayar Termin 2">
+                                                        <span class="fas fa-coins">&nbsp; &nbsp;</span>
                                                     </a>
                                                     <a href="/cetak-invoice/{{ $item->id }}" type="button"
                                                         title="Cetak">
-                                                        <span class="fas fa-print"></span>
+                                                        <span class="fas fa-eye"></span>
                                                     </a>
                                                 </td>
                                             </tr>

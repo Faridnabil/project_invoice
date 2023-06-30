@@ -77,10 +77,10 @@ class SPKController extends Controller
                 'quotation_id' => $request->quotation_id,
             ], $rules);
 
-            //echo $spk;
+            // echo $spk;
             return redirect('view-spk')->with('success', 'Data Berhasil Dibuat');
         } catch (\Exception $e) {
-            //return $e->getMessage();
+            // return $e->getMessage();
             return redirect('view-spk')->with('error', 'Data Gagal Dibuat');
         }
     }
@@ -148,12 +148,15 @@ class SPKController extends Controller
     public function pdf($id)
     {
         $spk = SPK::find($id);
-        $quo = QuotationDetail::join('quotation','quotation.id', '=', 'quotation_detail.quotation_id')->select(
-            'quotation.id',
-            'quotation.amount_paid',
-        )
-        ->where("quotation_id", $id)
-        ->get();
-        return view('spk.pdf', compact('spk', 'quo'));
+        // $quo = QuotationDetail::join('quotation', 'quotation.id', '=', 'quotation_detail.quotation_id')
+        // ->select(
+        //     'quotation.id',
+        //     'quotation.amount_paid',
+        //     'quotation.nama_project',
+        // )
+        // ->where("quotation_id", $id)
+        // ->get();
+
+        return view('spk.pdf', compact('spk'));
     }
 }

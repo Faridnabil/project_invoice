@@ -73,11 +73,10 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
 
     //INVOICE
     Route::get('view-invoice', [InvoiceController::class, 'view_invoice'])->name('view-invoice');
-    Route::get('bayar-invoice/{id}', [InvoiceController::class, 'bayar_invoice'])->name('bayar-invoice');
-    Route::get('create-invoice', [InvoiceController::class, 'create_invoice']);
-    Route::post('store-invoice', [InvoiceController::class, 'store_invoice']);
-    Route::post('update-invoice/{id}', [InvoiceController::class, 'update_invoice']);
-
+    Route::get('termin1/{id}', [InvoiceController::class, 'bayar_termin1']);
+    Route::post('update-termin1/{id}', [InvoiceController::class, 'update_termin1']);
+    Route::get('termin2/{id}', [InvoiceController::class, 'bayar_termin2']);
+    Route::post('update-termin2/{id}', [InvoiceController::class, 'update_termin2']);
 });
 
 Route::get('/', function () {

@@ -12,10 +12,10 @@ class Invoice extends Model
     protected $table = "invoice";
     protected $primaryKey = "id";
     protected $fillable = [
-        'no_inv','no_quotation', 'status','pembayaran', 'issue_date', 'due_date'
+        'no_inv', 'quotation_id', 'status', 'termin1', 'termin2', 'issue_date', 'due_date'
     ];
 
-    public function invoice_detail()
+    public function quotation()
     {
         return $this->belongsTo('App\Models\Quotation');
     }

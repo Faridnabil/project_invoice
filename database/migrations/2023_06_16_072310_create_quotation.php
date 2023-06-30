@@ -24,7 +24,6 @@ class CreateQuotation extends Migration
             $table->string('tax_amount');
             $table->string('sub_total');
             $table->string('amount');
-            $table->string('amount_paid')->nullable();
             $table->string('amount_due');
             $table->string('description')->nullable();
             $table->timestamps();

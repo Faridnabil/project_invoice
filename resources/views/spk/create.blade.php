@@ -38,9 +38,10 @@
                             <div class="row">
                                 <div class="col-3">
                                     <label for="">No Quotation</label>
-                                    <select class="form-control" name="satuan[]">
+                                    <select class="form-control" name="quotation_id">
                                         @foreach ($quo as $x)
-                                            <option value="{{ $x->id }}">{{ $x->no_quotation }}/{{ $x->nama_project }}</option>
+                                            <option value="{{ $x->id }}">
+                                                {{ $x->no_quotation }}/{{ $x->nama_project }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -52,7 +53,7 @@
                                     <div class="form-group">
                                         <label>Date:</label>
                                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                            <input type="date" class="form-control" name="tgl"/>
+                                            <input type="date" class="form-control" name="tgl" />
                                             {{-- <div class="input-group-append" data-target="#reservationdate"
                                                 data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>

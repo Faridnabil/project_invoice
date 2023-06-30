@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Dashboard
+    Quotation
 @endsection
 
 @section('content')
@@ -108,8 +108,8 @@
                                                         title="Edit">
                                                         <span class="fas fa-edit">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
-                                                    <a href="#" data-toggle="modal" data-target="#deleteConfirmation" type="button"
-                                                        title="Delete">
+                                                    <a href="#" data-toggle="modal" data-target="#deleteConfirmation"
+                                                        type="button" title="Delete">
                                                         <span class="fas fa-trash">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
                                                     <a href="/detail-quotation/{{ $item->id }}" type="button"

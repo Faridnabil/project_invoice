@@ -57,7 +57,6 @@ class QuotationController extends Controller
             'tax_amount' => 'required',
             'sub_total' => 'required',
             'amount' => 'required',
-            'amount_paid' => 'required',
             'amount_due' => 'required',
 
         ]);
@@ -72,14 +71,9 @@ class QuotationController extends Controller
             'tax_amount' => $request->tax_amount,
             'sub_total' => $request->sub_total,
             'amount' => $request->amount,
-            'amount_paid' => $request->amount_paid,
             'amount_due' => $request->amount_due - $request->amount_paid,
             'created_at' => now(),
         ]);
-
-        $now = date('Y-m-d');
-        $start_date = strtotime($now);
-        $end_date = strtotime("+14 day", $start_date);
 
         $data = Quotation::latest()->first();
         $totaldata = count($request->item_code);
@@ -103,12 +97,16 @@ class QuotationController extends Controller
                 ]);
             }
         }
+        $now = $data->tanggal_quotation;
+        $start_date = strtotime($now);
+        $end_date = strtotime("+14 day", $start_date);
 
         Invoice::create([
             'no_inv' => $id_inv,
-            'no_quotation' => $incrementKode,
+            'quotation_id' => $data->id,
             'status' => 'unpaid',
-            'pembayaran' => '0',
+            'termin1' => '0',
+            'termin2' => '0',
             'issue_date' => date('Y-m-d', $start_date),
             'due_date' => date('Y-m-d', $end_date)
         ]);
@@ -136,7 +134,6 @@ class QuotationController extends Controller
             'tax_amount' => 'required',
             'sub_total' => 'required',
             'amount' => 'required',
-            'amount_paid' => 'required',
             'amount_due' => 'required',
         ]);
 
@@ -150,7 +147,6 @@ class QuotationController extends Controller
             'tax_amount' => $request->tax_amount,
             'sub_total' => $request->sub_total,
             'amount' => $request->amount,
-            'amount_paid' => $request->amount_paid,
             'amount_due' => $request->amount_due - $request->amount_paid,
             'updated_at' => now(),
         ]);

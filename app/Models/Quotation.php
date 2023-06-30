@@ -13,7 +13,7 @@ class Quotation extends Model
     protected $primaryKey = "id";
     protected $fillable = [
         'no_quotation', 'customer_name', 'address', 'tax', 'sub_total',
-        'tax_amount', 'amount', 'amount_paid', 'amount_due', 'description',
+        'tax_amount', 'amount', 'amount_due', 'description',
         'nama_project', 'tanggal_quotation'
     ];
 
@@ -24,7 +24,7 @@ class Quotation extends Model
 
     public function invoice()
     {
-        return $this->hasOne('App\Models\Invoice');
+        return $this->hasMany('App\Models\Invoice');
     }
 
     public function spk()

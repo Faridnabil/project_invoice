@@ -15,10 +15,11 @@ class CreateInvoice extends Migration
     {
         Schema::create('invoice', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('no_quotation')->constrained('quotation')->onDelete('cascade');
+            $table->foreignId('quotation_id')->constrained('quotation')->onDelete('cascade');
             $table->string('no_inv')->nullable();
             $table->string('status')->nullable();
-            $table->string('pembayaran');
+            $table->string('termin1');
+            $table->string('termin2');
             $table->date('issue_date');
             $table->date('due_date');
             $table->timestamps('');

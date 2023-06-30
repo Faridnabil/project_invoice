@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Dashboard
+    Quotation
 @endsection
 
 @section('content')
@@ -167,7 +167,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <input type="number" class="form-control" id="amount_paid"
-                                                    name="amount_paid" placeholder="Amount Paid">
+                                                    name="amount_paid" value="0" placeholder="Amount Paid" hidden>
                                             </div>
                                             <div class="form-group">
                                                 <input type="number" class="form-control" id="amount_due"
