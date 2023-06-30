@@ -115,6 +115,8 @@
                                                     <td style="color: green">{{$item->status}}</td>
                                                     @endif
                                                 <td>
+                                                    @if ($item->status == 'lunas')
+                                                    @else
                                                     <a href="/termin1/{{ $item->id }}" type="button"
                                                         title="Bayar Termin 1">
                                                         <span class="fas fa-coins">&nbsp; &nbsp;</span>
@@ -123,9 +125,10 @@
                                                         title="Bayar Termin 2">
                                                         <span class="fas fa-coins">&nbsp; &nbsp;</span>
                                                     </a>
+                                                    @endif
                                                     <a href="/cetak-invoice/{{ $item->id }}" type="button"
                                                         title="Cetak">
-                                                        <span class="fas fa-eye"></span>
+                                                        <span class="fas fa-print"></span>
                                                     </a>
                                                 </td>
                                             </tr>

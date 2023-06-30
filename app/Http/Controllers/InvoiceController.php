@@ -82,4 +82,16 @@ class InvoiceController extends Controller
 
         return redirect('view-invoice')->with('success', 'Request updated successfully');
     }
+
+    public function detail_invoice(Request $request, $id)
+    {
+        $invoice = Invoice::find($id);
+        $quotation = QuotationDetail::join('quotation', 'quotation.id', '=', 'quotation_detail.quotation_id')
+        ->select('quotation.id',)
+        ->where('quotation_id', $id)
+        ->get();
+        $quotation_detail = QuotationDetail::where('quotation_id', $id)->get();
+
+        return view('invoice/cetak-invoice', compact('quotation_detail', 'invoice'));
+    }
 }

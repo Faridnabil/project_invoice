@@ -77,6 +77,7 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::post('update-termin1/{id}', [InvoiceController::class, 'update_termin1']);
     Route::get('termin2/{id}', [InvoiceController::class, 'bayar_termin2']);
     Route::post('update-termin2/{id}', [InvoiceController::class, 'update_termin2']);
+    Route::get('cetak-invoice/{id}', [InvoiceController::class, 'detail_invoice']);
 });
 
 Route::get('/', function () {
