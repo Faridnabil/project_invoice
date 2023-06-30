@@ -33,12 +33,14 @@
             <thead>
                 <tr>
                     <td>
-                        <p><strong>INVOICE</strong>
+                        <p>
+                            <strong>INVOICE</strong>
                             <hr>
                             Invoice Number&nbsp;<br>
                             Client Name&nbsp;<br>
                             Project&nbsp;<br>
-                            Date of Quotation&nbsp;
+                            Date of Quotation&nbsp;<br>
+                            Status&nbsp;
                         </p>
                     </td>
                     <td>
@@ -98,7 +100,14 @@
                             /{{ date('Y', strtotime($invoice->quotation->tanggal_quotation)) }}/{{ $invoice->no_inv }}<br>
                             : {{ $invoice->quotation->customer_name }}<br>
                             : {{ $invoice->quotation->nama_project }}<br>
-                            : {{ date('D, d F Y', strtotime($invoice->quotation->tanggal_quotation)) }}
+                            : {{ date('D, d F Y', strtotime($invoice->quotation->tanggal_quotation)) }} <br>
+                            : @if ($invoice->status=='paid')
+                                Termin 1
+                            @elseif ($invoice->status=='unpaid')
+                                Belum membayar
+                            @elseif ($invoice->status=='lunas')
+                                Lunas
+                            @endif
                         </p>
                     </td>
                     <td>
