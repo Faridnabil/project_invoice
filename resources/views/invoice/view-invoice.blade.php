@@ -116,6 +116,11 @@
                                                     @endif
                                                 <td>
                                                     @if ($item->status == 'lunas')
+                                                    @elseif ($item->status == 'paid')
+                                                    <a href="/termin2/{{ $item->id }}" type="button"
+                                                        title="Bayar Termin 2">
+                                                        <span class="fas fa-coins">&nbsp; &nbsp;</span>
+                                                    </a>
                                                     @else
                                                     <a href="/termin1/{{ $item->id }}" type="button"
                                                         title="Bayar Termin 1">
