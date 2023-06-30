@@ -26,6 +26,7 @@ class create_spk extends Seeder
             'alamat1' => 'Purwakarta',
             'telp1' => "0859036839",
             'ktp1' => 3214112512010001,
+            'quotation_id' => '',
             'created_at' => Carbon::now(),
         ]);
     }

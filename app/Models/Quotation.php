@@ -26,4 +26,9 @@ class Quotation extends Model
     {
         return $this->hasOne('App\Models\Invoice');
     }
+
+    public function spk()
+    {
+        return $this->hasMany('App\Models\SPK');
+    }
 }

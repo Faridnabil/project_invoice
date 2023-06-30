@@ -198,7 +198,7 @@
                     </p>
                     <p style="text-align: justify;">
                         2.	PIHAK PERTAMA berhak menerima uang sebesar Rp. 10.000.000 dan potongan pajak sesuai dengan &nbsp;&nbsp;&nbsp;&nbsp;Peraturan Undang-Undang yang berlaku, dengan rincian sebagai berikut:<br>
-                        <br>&nbsp;&nbsp;&nbsp;&nbsp;a.	Total biaya pembuatan (Nama Project) sebesar ....yang dibagi menjadi dua termin, sebagai berikut : <br>
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;a.	Total biaya pembuatan {{ $quo->nama_project }} sebesar ....yang dibagi menjadi dua termin, sebagai berikut : <br>
                         <ul>
                             <li>Termin pertama, ketika menandatangani dan menyepakati SPK sebesar 50% dari total biaya yaitu senilai
                             </li>

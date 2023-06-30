@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Quotation;
+use App\Models\QuotationDetail;
 use App\Models\SPK;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,14 +12,16 @@ class SPKController extends Controller
 {
     public function index()
     {
+        $quo = Quotation::all();
         $spk = SPK::all();
-        return view('spk.index', compact('spk'));
+        return view('spk.index', compact('spk', 'quo'));
     }
 
     public function show()
     {
+        $quo = Quotation::all();
         $spk = SPK::all();
-        return view('spk.create', compact('spk'));
+        return view('spk.create', compact('spk', 'quo'));
     }
 
     public function store(Request $request)
@@ -56,6 +60,7 @@ class SPKController extends Controller
                 'alamat1' => 'required',
                 'telp1' => 'required',
                 'ktp1' => 'required',
+                'quotation_id' => '',
             ], $messages);
 
             $spk = SPK::create([
@@ -69,6 +74,7 @@ class SPKController extends Controller
                 'alamat1' => $request->alamat1,
                 'telp1' => $request->telp1,
                 'ktp1' => $request->ktp1,
+                'quotation_id' => $request->quotation_id,
             ], $rules);
 
             //echo $spk;
@@ -142,6 +148,12 @@ class SPKController extends Controller
     public function pdf($id)
     {
         $spk = SPK::find($id);
-        return view('spk.pdf', compact('spk'));
+        $quo = QuotationDetail::join('quotation','quotation.id', '=', 'quotation_detail.quotation_id')->select(
+            'quotation.id',
+            'quotation.amount_paid',
+        )
+        ->where("quotation_id", $id)
+        ->get();
+        return view('spk.pdf', compact('spk', 'quo'));
     }
 }

@@ -37,6 +37,12 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
+                                    <label for="">No Quotation</label>
+                                    <select class="form-control" name="satuan[]">
+                                        @foreach ($quo as $x)
+                                            <option value="{{ $x->id }}">{{ $x->no_quotation }}/{{ $x->nama_project }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-3">
                                     <label for="">Nomor</label>
