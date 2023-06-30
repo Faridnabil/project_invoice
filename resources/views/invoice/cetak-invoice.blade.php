@@ -153,7 +153,7 @@
                 @endforeach
             </tbody>
         </table> <br><br>
-        <table width="300px" cellspacing="0" cellpadding="0" border="1" align="right" style="margin-right: 15px">
+        <table width="300px" cellspacing="0" cellpadding="0" border="1" align="right" style="margin-right: 25px">
                 <tr style="font-weight: bold">
                     <td style="background-color: yellow">PPN/VAT 11%</td>
                     <td>Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
