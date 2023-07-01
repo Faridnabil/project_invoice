@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BAST;
+use App\Models\Invoice;
+use App\Models\SPK;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,12 +14,6 @@ class BASTController extends Controller
     {
         $bast = BAST::all();
         return view('berita-acara.view-berita', compact('bast'));
-    }
-
-    public function show()
-    {
-        $bast = BAST::all();
-        return view('berita-acara.create', compact('bast'));
     }
 
     public function store(Request $request)
@@ -81,8 +77,10 @@ class BASTController extends Controller
         //return redirect('view-spk')->with('success', 'Data Berhasil Dibuat');
     }
 
-    public function pdf()
+    public function pdf($id)
     {
-        return view('berita-acara.beritaprint');
+        $spk = SPK::find($id);
+        $invoice = Invoice::find($id);
+        return view('berita-acara.beritaprint', compact('invoice'));
     }
 }

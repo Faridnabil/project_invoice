@@ -69,7 +69,7 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('view-bast', [BASTController::class, 'index'])->name('view-bast');
     Route::get('create-bast', [BASTController::class, 'show'])->name('create-bast');
     Route::post('store-bast', [BASTController::class, 'store']);
-    Route::get('print-bast', [BASTController::class, 'pdf'])->name('print-bast');
+    Route::get('print-bast/{id}', [BASTController::class, 'pdf'])->name('print-bast');
 
     //INVOICE
     Route::get('view-invoice', [InvoiceController::class, 'view_invoice'])->name('view-invoice');

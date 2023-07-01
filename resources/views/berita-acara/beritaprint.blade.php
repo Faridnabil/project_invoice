@@ -5,16 +5,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cetak Laporan Data Alumni</title>
+    <title>Berita Acara</title>
     <style>
         body {
-            font-family: "Times New Roman", Times, serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
+
         @page {
             margin-top: 0;
             margin-bottom: 0;
         }
 
+        .p{
+            text-align: justify;
+            /* font-family: Arial, Helvetica, sans-serif */
+        }
         header,
         footer {
             display: none;
@@ -48,46 +53,159 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="12"><br /></td>
-            </tr>
+                <td width="2px">No</td>
+                <td>:</td>
+                <td>{{ date('d.m', strtotime($invoice->created_at)) }}/
+                    @switch(date('m', strtotime($invoice->created_at)))
+                        @case(date(1, strtotime($invoice->created_at)))
+                            I
+                        @break
 
+                        @case(date(2, strtotime($invoice->created_at)))
+                            II
+                        @break
+
+                        @case(date(3, strtotime($invoice->created_at)))
+                            III
+                        @break
+
+                        @case(date(4, strtotime($invoice->created_at)))
+                            IV
+                        @break
+
+                        @case(date(5, strtotime($invoice->created_at)))
+                            V
+                        @break
+
+                        @case(date(6, strtotime($invoice->created_at)))
+                            VI
+                        @break
+
+                        @case(date(7, strtotime($invoice->created_at)))
+                            VII
+                        @break
+
+                        @case(date(8, strtotime($invoice->created_at)))
+                            VIII
+                        @break
+
+                        @case(date(9, strtotime($invoice->created_at)))
+                            IX
+                        @break
+
+                        @case(date(10, strtotime($invoice->created_at)))
+                            X
+                        @break
+
+                        @case(date(11, strtotime($invoice->created_at)))
+                            XI
+                        @break
+
+                        @case(date(11, strtotime($invoice->created_at)))
+                            XII
+                        @break
+                    @endswitch/{{ date('Y', strtotime($invoice->created_at)) }}/{{ $invoice->no_inv }}
+                </td>
+            </tr>
+            <tr>
+                <td>Tanggal</td>
+                <td>:</td>
+                <td>{{ $invoice->created_at }}</td>
+            </tr>
+            <tr>
+                <td colspan="12">
+                    <p style="text-align: center; font-weight: bold; font-family: Arial, Helvetica, sans-serif;">BERITA ACARA SERAH TERIMA</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="12">
+                    <p style="text-align: justify;">Melalui surat ini, kami yang bertanda tangan di bawah ini, <br><br>
+                        <table>
+                            <tr>
+                                <td>Nama/Instansi</td>
+                                <td>:</td>
+                                <td>PT Global Technology Essential</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td>Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117</td>
+                            </tr>
+                        </table><br>
+                        dalam hal ini bertindak atas nama PT Global Technology Essential dan selanjutnya disebut
+                        <b>PIHAK PERTAMA</b>. <br><br>
+                        <table>
+                            <tr>
+                                <td>Nama/Instansi</td>
+                                <td>:</td>
+                                <td>{{ $invoice->quotation->customer_name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td> {{ $invoice->quotation->address }}</td>
+                            </tr>
+                        </table>
+                    </p>
+                    <p style="text-align: justify;">
+                        dalam hal ini bertindak atas nama {{ $invoice->quotation->customer_name }} dan selanjutnya disebut <b>PIHAK
+                            KEDUA</b>. <br><br>
+                        <b>PIHAK PERTAMA</b> dan <b>PIHAK KEDUA</b> secara bersama-sama (selanjutnya disebut sebagai
+                        <b>PARA PIHAK</b>). <br><br>
+                        Berdasarkan Surat Perjanjian Kerja Sama dengan referensi nomor invoice {{ $invoice->no_inv }} perihal pekerjaan {{ $invoice->quotation->nama_project }}.
+                    </p>
+                    <p style="text-align: justify;"><b>PIHAK PERTAMA</b> menyampaikan untuk progress pekerjaan/barang* sudah sesuai dan telah diselesaikan 100% berdasarkan kondisi akhir dilokasi dan diterima dengan baik oleh <b>PIHAK KEDUA</b>. Dengan ini disertakan juga lampiran invoice sebagai kewajiban PIHAK KEDUA untuk melakukan pembayaran atas jasa/barang tersebut dengan detail berikut:
+                        <table>
+                            <tr>
+                                <td>Nomor SPK</td>
+                                <td>:</td>
+                                <td>SPK001</td>
+                            </tr>
+                            <tr>
+                                <td>Nomor Invoice</td>
+                                <td>:</td>
+                                <td>{{ $invoice->no_inv }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nominal Invoice yang harus dibayar </td>
+                                <td>:</td>
+                                <td>Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
+                            </tr>
+                        </table><br>
+                        <br><br><br>Purwakarta, .................
+                    </p>
+
+                    <table width="670px" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><b>PIHAK PERTAMA,</b><br>
+
+                                <br><br><br><br><br><br>
+                                M Ridzky Farhan<br>
+                                CEO PT Global Technology Essential
+                            </td>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>
+                                <b>PIHAK KEDUA,</b>
+                                <br><br><br><br><br><br>
+                                {{ $invoice->quotation->customer_name }}
+                            </td>
+                        </tr>
+                    </table>
         </table>
     </center>
     </td>
     </tr>
     </center>
-
-    Pada hari ini tanggal, bla bla telah dilakukan serah terima hasil pekerjaan oleh dan diantara:
-    <br>
-    1. Nama : GEN Z Company <br>
-    Perusahaan : SDASDa <br>
-    Alamat : asdasdasdasd <br><br>
-    Selanjutnya disebut sebagai <b>"PIHAK PERTAMA"</b>. <br><br>
-
-    <br>
-    2. Nama : GEN Z Company <br>
-    Perusahaan : SDASDa <br>
-    Alamat : asdasdasdasd <br><br>
-    Selanjutnya disebut sebagai <b>"PIHAK KEDUA"</b>. <br><br>
-
-    Dengan ini menerangkan bahwa : <br><br>
-    PIHAK KEDUA telah menyerahkan kepada PIHAK PERTAMA, dan PIHAK PERTAMA menyatakan telah menerima hasil pekerjaan
-    untuk pekerjaan “Perbaikan 10 Unit Air Conditioner di Departemen Pendidikan dan Kebudayaan Yogyakarta” yang
-    diselesaikan pada tanggal 26 Maret 2021.
-    Dengan adanya Berita Acara Serah Terima Pekerjaan ini maka PIHAK KEDUA telah melaksanakan kewajiban dengan baik dan
-    berhak menerima pembayaran dari PIHAK PERTAMA sebesar Rp 2.500.000,- dibayar tunai sesuai perjanjian awal.
-    Demikian Berita Acara Serah Terima Kedua ini dibuat rangkap 3 (tiga) untuk dipergunakan sebagaimana mestinya.
-    <br>
-
-    </p>
-    <p style="text-align: right;">Purwakarta, 16 Juni 2023<br>Mengetahui,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <br><br><br><br><br>GEN Z Company
-    </p>
-    </div>
     <script>
         window.print();
     </script>
-</body>
-
-</html>
 </body>

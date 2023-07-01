@@ -48,15 +48,22 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            @foreach ($bast as $item)
+                                            {{-- @foreach ($bast as $item)
                                             <tr>
-                                                <td>{{ $item->no }}</td>
-                                                <td>{{ $item->tgl }}</td>
-                                                <td>{{ $item->nama }}</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>3</td>
                                                 <td>{{ $item->nama1}}</td>
-                                            <td><a href="/print-bast" target="_blank" class="btn btn-block btn-primary">Print</a></td>
+                                            <td><a href="/print-bast/1" target="_blank" class="btn btn-block btn-primary">Print</a></td>
                                         </tr>
-                                        @endforeach
+                                        @endforeach --}}
+                                            <tr>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>4</td>
+                                            <td><a href="/print-bast/1" target="_blank" class="btn btn-block btn-primary">Print</a></td>
+                                        </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
