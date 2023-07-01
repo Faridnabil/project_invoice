@@ -38,6 +38,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>No Invoice</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -45,6 +46,7 @@
                                     <tbody>
                                         @foreach ($bast as $item)
                                             <tr>
+                                                <td>{{ $item->no_bast }}</td>
                                                 <td>{{ $item->invoice->no_inv }}</td>
                                                 <td>{{ $item->invoice->status }}</td>
                                                 <td>

@@ -104,7 +104,7 @@
                         @case(date(11, strtotime($invoice->created_at)))
                             XII
                         @break
-                    @endswitch/{{ date('Y', strtotime($invoice->created_at)) }}/{{ $invoice->no_inv }}
+                    @endswitch/{{ date('Y', strtotime($invoice->created_at)) }}/{{ $bast->no_bast }}
                 </td>
             </tr>
             <tr>

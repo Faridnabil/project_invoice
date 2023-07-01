@@ -86,17 +86,21 @@ class InvoiceController extends Controller
 
         $kode = DB::table('bast')->count();
         $addNol = '';
-        $kodetb = 'BAST-';
-        $kode = str_replace($kodetb, "", $kode);
+        $kodebast = 'BAST';
+        $kode = str_replace($kodebast, "", $kode);
         $kode = (int) $kode + 1;
         $incrementKode = $kode;
 
         if (strlen($kode) == 1) {
-            $addNol = "00";
+            $addNol = "0000";
         } elseif (strlen($kode) == 2) {
-            $addNol = "0";
+            $addNol = "000";
+        } elseif (strlen($kode) == 3) {
+            $addNol = "00";
+        } elseif (strlen($kode) == 4) {
+            $addNol = "00";
         }
-        $id_bast = $kodetb . $addNol . $incrementKode;
+        $id_bast = $kodebast . $addNol . $incrementKode;
 
         if ($invoice->status == 'lunas')
         {
