@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Quotation;
 use App\Models\Invoice;
+use App\Models\BAST;
 use App\Models\QuotationDetail;
+use App\Models\SPK;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -74,11 +76,35 @@ class InvoiceController extends Controller
         ]);
 
         $invoice = Invoice::latest()->first();
+        $spk = SPK::latest()->first();
+
         $quotation = Quotation::find($request->quotation_id);
         $amount_due = $quotation->amount_due - $invoice->termin2;
         Quotation::where("id", $request->quotation_id)->update([
             'amount_due' => $amount_due,
         ]);
+
+        $kode = DB::table('bast')->count();
+        $addNol = '';
+        $kodetb = 'BAST-';
+        $kode = str_replace($kodetb, "", $kode);
+        $kode = (int) $kode + 1;
+        $incrementKode = $kode;
+
+        if (strlen($kode) == 1) {
+            $addNol = "00";
+        } elseif (strlen($kode) == 2) {
+            $addNol = "0";
+        }
+        $id_bast = $kodetb . $addNol . $incrementKode;
+
+        if ($invoice->status == 'lunas')
+        {
+            BAST::create([
+                'no_bast' => $id_bast,
+                'invoice_id' => $invoice->id,
+            ]);
+        }
 
         return redirect('view-invoice')->with('success', 'Request updated successfully');
     }

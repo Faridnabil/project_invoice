@@ -20,4 +20,9 @@ class Invoice extends Model
         return $this->belongsTo('App\Models\Quotation');
     }
 
+    public function bast()
+    {
+        return $this->hasMany('App\Models\BAST');
+    }
+
 }

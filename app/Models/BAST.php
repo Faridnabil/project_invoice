@@ -11,6 +11,11 @@ class BAST extends Model
     protected $table = "bast";
     protected $primaryKey = "id";
     protected $fillable = [
-        'no','no_spk','no_inv', 'tgl', 'nama', 'alamat', 'telp', 'ktp', 'nama1', 'alamat1', 'telp1', 'ktp1',
+        'no_bast','invoice_id',
     ];
+
+    public function invoice()
+    {
+        return $this->belongsTo('App\Models\Invoice');
+    }
 }

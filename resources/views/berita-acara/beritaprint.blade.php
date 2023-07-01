@@ -154,7 +154,7 @@
                         <b>PARA PIHAK</b>). <br><br>
                         Berdasarkan Surat Perjanjian Kerja Sama dengan referensi nomor invoice {{ $invoice->no_inv }} perihal pekerjaan {{ $invoice->quotation->nama_project }}.
                     </p>
-                    <p style="text-align: justify;"><b>PIHAK PERTAMA</b> menyampaikan untuk progress pekerjaan/barang* sudah sesuai dan telah diselesaikan 100% berdasarkan kondisi akhir dilokasi dan diterima dengan baik oleh <b>PIHAK KEDUA</b>. Dengan ini disertakan juga lampiran invoice sebagai kewajiban PIHAK KEDUA untuk melakukan pembayaran atas jasa/barang tersebut dengan detail berikut:
+                    <p style="text-align: justify;"><b>PIHAK PERTAMA</b> menyampaikan untuk progress pekerjaan/barang* sudah sesuai dan telah diselesaikan 100% berdasarkan kondisi akhir dilokasi dan diterima dengan baik oleh <b>PIHAK KEDUA</b>. Dengan ini disertakan juga lampiran invoice sebagai kewajiban <b>PIHAK KEDUA</b> untuk melakukan pembayaran atas jasa/barang tersebut dengan detail berikut:
                         <table>
                             <tr>
                                 <td>Nomor SPK</td>

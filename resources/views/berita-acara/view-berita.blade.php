@@ -1,29 +1,28 @@
 @extends('layouts.app')
 
 @section('title')
-    Dashboard
+    Berita Acara Serah Terima
 @endsection
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
+        <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Berita Acara</h1>
-                    </div><!-- /.col -->
+                        <h1>Berita Acara Serah Terima</h1>
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Berita Acara</li>
+                            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                            <li class="breadcrumb-item active">BAST</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
+                    </div>
+                </div>
             </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
+        </section>
 
         <!-- Main content -->
         <section class="content">
@@ -32,55 +31,69 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">DataTable with default features</h3>
+
                             </div>
-                            <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Date</th>
-                                            <th>Clients</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            {{-- @foreach ($bast as $item)
+                                            @foreach ($bast as $item)
                                             <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>{{ $item->nama1}}</td>
-                                            <td><a href="/print-bast/1" target="_blank" class="btn btn-block btn-primary">Print</a></td>
-                                        </tr>
-                                        @endforeach --}}
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                            <td><a href="/print-bast/1" target="_blank" class="btn btn-block btn-primary">Print</a></td>
-                                        </tr>
+                                                <td>{{ $item->invoice->no_inv}}</td>
+                                                <td>{{ $item->invoice->status}}</td>
+                                                <td>
+                                                    <a href="/print-bast/{{$item->id}}" type="button"
+                                                        target="__blank" title="Detail">
+                                                        <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah Anda Yakin Ingin Menghapus Data ini?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Close</button>
+                                                            <form action="delete-spk/{{ $item->id }}" method="GET"
+                                                                enctype="multipart/form-data">
+                                                                <button type="submit" class="btn btn-primary">Hapus
+                                                                    Data</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->
                         </div>
+                        <!-- /.card -->
                     </div>
+                    <!-- /.col -->
                 </div>
-                <!-- /.row (main row) -->
-            </div><!-- /.container-fluid -->
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
     </div>
