@@ -43,13 +43,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            @foreach ($bast as $item)
+                                        @foreach ($bast as $item)
                                             <tr>
-                                                <td>{{ $item->invoice->no_inv}}</td>
-                                                <td>{{ $item->invoice->status}}</td>
+                                                <td>{{ $item->invoice->no_inv }}</td>
+                                                <td>{{ $item->invoice->status }}</td>
                                                 <td>
-                                                    <a href="/print-bast/{{$item->id}}" type="button"
+                                                    <a href="/print-bast/{{ $item->id }}" type="button"
                                                         target="__blank" title="Detail">
                                                         <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
