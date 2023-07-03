@@ -82,7 +82,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <label for="">Nama/Instansi</label>
-                                    <input type="text" class="form-control" placeholder="" name="nama" value="{{ $spk->nama }}">
+                                    <input type="text" class="form-control" placeholder="PT. Global Technology Essential" name="nama" value="PT. Global Technology Essential" readonly >
                                     <br>
                                 </div>
                                 <div class="col-6">
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="">Alamat</label>
-                                    <input type="text" class="form-control" placeholder="" name="alamat" value="{{ $spk->alamat }}">
+                                    <input type="text" class="form-control" placeholder="Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117" name="alamat" value="Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117" readonly>
                                     <br>
                                 </div>
                                 <div class="col-6">
@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="">Telepon</label>
-                                    <input type="text" class="form-control" placeholder="" name="telp" value="{{ $spk->telp }}">
+                                    <input type="text" class="form-control" placeholder="0877-7984-4484" name="telp" value="0877-7984-4484" readonly>
                                     <br>
                                 </div>
                                 <div class="col-6">
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="">Nomor KTP</label>
-                                    <input type="text" class="form-control" placeholder="" name="ktp" value="{{ $spk->ktp }}">
+                                    <input type="text" class="form-control" placeholder="3214012109010003" name="ktp" value="3214012109010003" readonly>
                                     <br>
                                 </div>
                                 <div class="col-6">

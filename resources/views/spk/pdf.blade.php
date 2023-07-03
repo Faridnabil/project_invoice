@@ -110,7 +110,7 @@
             <tr>
                 <td>Tanggal</td>
                 <td>:</td>
-                <td>{{ $spk->tgl }}</td>
+                <td>{{ Carbon\Carbon::create($spk->tgl)->isoFormat('DD MMMM Y') }}</td>
             </tr>
             <tr>
                 <td colspan="12">
@@ -191,14 +191,14 @@
                     <p style="text-align: center;"><b>PASAL 3 <br>
                             HAK DAN KEWAJIBAN PIHAK PERTAMA</b><br></p>
                     <p style="text-align: justify;">
-                        1.	PIHAK PERTAMA bertanggung jawab atas seluruh proses Kerjasama pekerjaan pembuatan &nbsp;&nbsp;&nbsp;(Pembangunan Server Lokal) untuk PIHAK KEDUA sesuai dengan kesepakatan PARA PIHAK, &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sebagai berikut : <br>
+                        1.	PIHAK PERTAMA bertanggung jawab atas seluruh proses Kerjasama pekerjaan pembuatan (Pembangunan Server Lokal) untuk PIHAK KEDUA sesuai dengan kesepakatan PARA PIHAK, sebagai berikut : <br>
                         <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a.	Menentukan timeline kerja <br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b.	Mengatur dan memproses seluruh tahapan dan kegiatan Pembangunan Server Lokal <br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c.	Membuat dan mensetting aplikasi sesuai dengan arahan PIHAK KEDUA
                     </p>
                     <p style="text-align: justify;">
-                        2.	PIHAK PERTAMA berhak menerima uang sebesar Rp. 10.000.000 dan potongan pajak sesuai dengan Peraturan Undang-Undang yang berlaku, dengan rincian sebagai berikut:<br>
-                        <br>&nbsp;&nbsp;&nbsp;&nbsp;a.	Total biaya pembuatan "{{ $spk->quotation->nama_project }}" sebesar Rp.{{ number_format($spk->quotation->amount_due, 0, ',', '.') }} yang dibagi menjadi dua termin, sebagai berikut : <br>
+                        2.	PIHAK PERTAMA berhak menerima uang sebesar ............................. dan potongan pajak sesuai dengan Peraturan Undang-Undang yang berlaku, dengan rincian sebagai berikut:<br>
+                        <br>a.	Total biaya pembuatan ............................. sebesar ............................. yang dibagi menjadi dua termin, sebagai berikut : <br>
                         <ul>
                             <li>Termin pertama, ketika menandatangani dan menyepakati SPK sebesar 50% dari total biaya yaitu senilai
                             </li>
@@ -208,15 +208,17 @@
                         </ul>
                     </p>
                     <p style="text-align: justify;">
-                        3.	PIHAK PERTAMA berkewajiban memberikan kesempatan revisi dalam pengerjaan pembuatan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"{{ $spk->quotation->nama_project }}" sesuai dengan ketentuan yang tertera pada dokumen quotation yang telah diberikan.
+                        3.	PIHAK PERTAMA berkewajiban memberikan kesempatan revisi dalam pengerjaan pembuatan ............................. sesuai dengan ketentuan yang tertera pada dokumen <i>quotation</i> yang telah diberikan.
                     </p>
                     <p style="text-align: justify;">
                         4.	PIHAK PERTAMA berhak menjadıkan hasil kerja sama ini untuk diperlihatkan sebagai hasil kerja &nbsp;&nbsp;(portfolio) antar PIHAK PERTAMA dan PIHAK KEDUA, namun PIHAK PERTAMA tetap &nbsp;&nbsp;berkewajiban untuk meminta persetujuan terlebih dahulu kepada PIHAK KEDUA dalam hal &nbsp;&nbsp;&nbsp;&nbsp;penggunaan hasil pekerjaan ini untuk kepentingan PIHAK PERTAMA. Adapun ketidaksepahaman &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dalam perihal persetujuan akan diselesaikan secara musyawarah oleh PARA PIHAK.
                     </p>
                     <p style="text-align: justify;">
-                        5.	PIHAK PERTAMA wajib memberikan hasil pengerjaan pembuatan "{{ $spk->quotation->nama_project }}" kepada PIHAK &nbsp;&nbsp;&nbsp;&nbsp;KEDUA dengan rincian sebagai berikut : <br>
+                        5.	PIHAK PERTAMA wajib memberikan hasil pengerjaan pembuatan ............................. kepada PIHAK &nbsp;&nbsp;&nbsp;&nbsp;KEDUA dengan rincian sebagai berikut : <br>
                         <ul>
-                            <li></li>
+                            <li>.............................</li>
+                            <li>.............................</li>
+                            <li>.............................</li>
                         </ul>
                     </p>
                     <p style="text-align: center;"><b>PASAL 4<br>
@@ -226,19 +228,21 @@
                         1.	Ide konsep yang telah dibuat oleh PIHAK PERTAMA berhak untuk direvisi sebanyak-banyaknya 1 (satu) kali oleh PIHAK KEDUA pada setiap fasenya dan harus melalui persetujuan PIHAK KEDUA sebelum dipublikasikan.
                     </p>
                     <p style="text-align: justify;">
-                        2.	PIHAK KEDUA berkewajiban membayar uang sebesar Rp.{{ number_format($spk->quotation->amount_due, 0, ',', '.') }} dan potongan pajak sesuai dengan Peraturan Undang-Undang yang berlaku, dengan rincian sesuai dengan Pasal 3 Ayat 2.
+                        2.	PIHAK KEDUA berkewajiban membayar uang sebesar ............................. dan potongan pajak sesuai dengan Peraturan Undang-Undang yang berlaku, dengan rincian sesuai dengan Pasal 3 Ayat 2.
                     </p>
                     <p style="text-align: justify;">
-                        3.	PIHAK KEDUA berhak meminta revisi dalam pengerjaan pembuatan "{{ $spk->quotation->nama_project }}"  sesuai dengan ketentuan yang tertera pada dokumen quotation yang telah diberikan.
+                        3.	PIHAK KEDUA berhak meminta revisi dalam pengerjaan pembuatan .............................  sesuai dengan ketentuan yang tertera pada dokumen quotation yang telah diberikan.
                     </p>
                     <p style="text-align: justify;">
-                        4.	PIHAK KEDUA berhak menerima hasil pengerjaan pembuatan "{{ $spk->quotation->nama_project }}" kepada PIHAK KEDUA dengan rincian sebagai berikut :<br>
+                        4.	PIHAK KEDUA berhak menerima hasil pengerjaan pembuatan ............................. kepada PIHAK KEDUA dengan rincian sebagai berikut :<br>
                         <ul>
-                            <li></li>
+                            <li>.............................</li>
+                            <li>.............................</li>
+                            <li>.............................</li>
                         </ul>
                     </p>
                     <p style="text-align: justify;">
-                        5.	Hasil pengerjaan Pembuatan "{{ $spk->quotation->nama_project }}" sepenuhnya menjadi milik PIHAK KEDUA, sehingga penggunaan hasil ini untuk kepentingan PIHAK PERTAMA dan pihak lainnya harus berdasarkan persetujuan PIHAK KEDUA.
+                        5.	Hasil pengerjaan Pembuatan ............................. sepenuhnya menjadi milik PIHAK KEDUA, sehingga penggunaan hasil ini untuk kepentingan PIHAK PERTAMA dan pihak lainnya harus berdasarkan persetujuan PIHAK KEDUA.
                     </p>
                     <p style="text-align: center;"><b>PASAL 5 <br>
                         PERJANJIAN TAMBAHAN</b><br>
@@ -252,19 +256,33 @@
                     <p style="text-align: justify;">
                         Force Majeure atau perselisihan yang terjadi dalam pelaksanaan perjanjian kerjasama inı sehingga salah satu pihak tidak dapat memenuhi kewajibannya, maka masing-masing pihak akan menyelesaikannya secara musyawarah untuk mufakat. Dan apabila dengan jalan musyawarah untuk mufakat tidak juga terselesaikan, maka kedua belah pihak menunjuk dan menetapkan Badan Arbitrase Nasıonal sebagai domisili hukum tetap dan tidak berubah sebagai tempat penyelesaian.
                         <br><br>Demikian SPK ini dibuat rangkap 2 (dua), disepakati dan ditandatangani oleh PARA PIHAK dalam keadaan sadar, sehat jasmani dan rohani, tanpa ada tekanan, pengaruh, paksaan dari pihak manapun, dengan bermaterai cukup, dan berlaku sejak ditandatangani.
-                        <br><br><br>Purwakarta, .................
+                        <br><br><br>Purwakarta, {{ Carbon\Carbon::now()->isoFormat('DD MMMM Y') }}
                     </p>
-                    <tr>
-                        <td colspan="6">PIHAK PERTAMA, <br><br><br><br><br></td>
-                        <td>PIHAK KEDUA, <br><br><br><br><br></td>
-                    </tr>
-                    <tr>
-                        <td colspan="6">Nama</td>
-                        <td>Nama</td>
-                    </tr>
-                    <tr>
-                        <td><hr>Jabatan</td>
-                    </tr>
+                    <table width="670px" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><b>PIHAK PERTAMA,</b><br>
+
+                                <br><br><br><br><br><br>
+                                M Ridzky Farhan<br>
+                                CEO PT Global Technology Essential
+                            </td>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td>
+                                <b>PIHAK KEDUA,</b>
+                                <br><br><br><br><br><br>
+                                <center>{{ $spk->nama1 }}</center>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>
@@ -272,7 +290,7 @@
     </td>
     </tr>
     </center>
-    {{-- <script>
+    <script>
         window.print();
-    </script> --}}
+    </script>
 </body>

@@ -48,6 +48,16 @@
                         </li>
 
                         <li class="nav-item">
+                            <a href="{{ route('view-spk') }}"
+                                class="nav-link {{ request()->is('view-spk') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    SPK
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a href="/view-invoice"
                                 class="nav-link {{ request()->is('view-invoice') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-receipt"></i>
@@ -62,16 +72,6 @@
                                 <i class="nav-icon fas fa-newspaper"></i>
                                 <p>
                                     Berita Acara
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('view-spk') }}"
-                                class="nav-link {{ request()->is('view-spk') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>
-                                    SPK
                                 </p>
                             </a>
                         </li>
