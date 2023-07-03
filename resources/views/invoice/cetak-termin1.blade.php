@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Quotation</title>
+    <title>Invoice</title>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
@@ -33,72 +33,75 @@
             <thead>
                 <tr>
                     <td>
-                        <p>QUOTATION
+                        <p>
+                            <strong>INVOICE</strong>
                             <hr>
-                            Quotation Number&nbsp;<br>
+                            Invoice Number&nbsp;<br>
                             Client Name&nbsp;<br>
                             Project&nbsp;<br>
-                            Date of Quotation&nbsp;
+                            Date of Quotation&nbsp;<br>
+                            Status&nbsp;
                         </p>
                     </td>
                     <td>
                         <p>&nbsp;
                             <hr>
                             :
-                            {{ date('d.m', strtotime($quotation->tanggal_quotation)) }}/
-                            @switch(date('m', strtotime($quotation->tanggal_quotation)))
-                                @case(date(1, strtotime($quotation->tanggal_quotation)))
+                            {{ date('d.m', strtotime($invoice->quotation->tanggal_quotation)) }}/
+                            @switch(date('m', strtotime($invoice->quotation->tanggal_quotation)))
+                                @case(date(1, strtotime($invoice->quotation->tanggal_quotation)))
                                     I
                                 @break
 
-                                @case(date(2, strtotime($quotation->tanggal_quotation)))
+                                @case(date(2, strtotime($invoice->quotation->tanggal_quotation)))
                                     II
                                 @break
 
-                                @case(date(3, strtotime($quotation->tanggal_quotation)))
+                                @case(date(3, strtotime($invoice->quotation->tanggal_quotation)))
                                     III
                                 @break
 
-                                @case(date(4, strtotime($quotation->tanggal_quotation)))
+                                @case(date(4, strtotime($invoice->quotation->tanggal_quotation)))
                                     IV
                                 @break
 
-                                @case(date(5, strtotime($quotation->tanggal_quotation)))
+                                @case(date(5, strtotime($invoice->quotation->tanggal_quotation)))
                                     V
                                 @break
 
-                                @case(date(6, strtotime($quotation->tanggal_quotation)))
+                                @case(date(6, strtotime($invoice->quotation->tanggal_quotation)))
                                     VI
                                 @break
 
-                                @case(date(7, strtotime($quotation->tanggal_quotation)))
+                                @case(date(7, strtotime($invoice->quotation->tanggal_quotation)))
                                     VII
                                 @break
 
-                                @case(date(8, strtotime($quotation->tanggal_quotation)))
+                                @case(date(8, strtotime($invoice->quotation->tanggal_quotation)))
                                     VIII
                                 @break
 
-                                @case(date(9, strtotime($quotation->tanggal_quotation)))
+                                @case(date(9, strtotime($invoice->quotation->tanggal_quotation)))
                                     IX
                                 @break
 
-                                @case(date(10, strtotime($quotation->tanggal_quotation)))
+                                @case(date(10, strtotime($invoice->quotation->tanggal_quotation)))
                                     X
                                 @break
 
-                                @case(date(11, strtotime($quotation->tanggal_quotation)))
+                                @case(date(11, strtotime($invoice->quotation->tanggal_quotation)))
                                     XI
                                 @break
 
-                                @case(date(12, strtotime($quotation->tanggal_quotation)))
+                                @case(date(12, strtotime($invoice->quotation->tanggal_quotation)))
                                     XII
                                 @break
                             @endswitch
-                            /{{ date('Y', strtotime($quotation->tanggal_quotation)) }}/{{ $quotation->no_quotation }}<br>
-                            : {{ $quotation->customer_name }}<br>
-                            : {{ $quotation->nama_project }}<br>
-                            : {{ date('D, d F Y', strtotime($quotation->tanggal_quotation)) }}
+                            /{{ date('Y', strtotime($invoice->quotation->tanggal_quotation)) }}/{{ $invoice->no_inv }}<br>
+                            : {{ $invoice->quotation->customer_name }}<br>
+                            : {{ $invoice->quotation->nama_project }}<br>
+                            : {{ date('D, d F Y', strtotime($invoice->quotation->tanggal_quotation)) }}<br>
+                            : Termin 1
                         </p>
                     </td>
                     <td>
@@ -118,7 +121,8 @@
                 </tr>
             </thead>
         </table>
-        <br><br><br>
+
+
         <table width="670px" cellspacing="0" cellpadding="0" border="1">
             <thead>
                 <tr>
@@ -139,23 +143,31 @@
                         <td>Rp. {{ number_format($item->total, 0, ',', '.') }}</td>
                     </tr>
                 @endforeach
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>PPN/VAT 11%</td>
-                    <td>Rp. {{ number_format($quotation->tax_amount, 0, ',', '.') }}</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>GRAND TOTAL</td>
-                    <td>Rp. {{ number_format($quotation->amount, 0, ',', '.') }}</td>
-                </tr>
             </tbody>
+        </table> <br><br>
+        <table width="300px" cellspacing="0" cellpadding="0" border="1" align="right" style="margin-right: 25px">
+            <tr style="font-weight: bold">
+                <td style="background-color: yellow">PPN/VAT 11%</td>
+                <td>Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
+            </tr>
+            <tr style="font-weight: bold">
+
+                <td style="background-color: yellow">DP</td>
+                <td>Rp. {{ number_format($invoice->termin1, 0, ',', '.') }}</td>
+            </tr>
+            <tr style="font-weight: bold">
+
+                <td style="background-color: yellow">GRAND TOTAL</td>
+                <td>Rp. {{ number_format($invoice->quotation->amount, 0, ',', '.') }}</td>
+            </tr>
+
+            <tr style="font-weight: bold">
+
+                <td style="background-color: yellow">SISA TAGIHAN</td>
+                <td>Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
+            </tr>
         </table>
-        <br><br>
+        <img style="margin-right: 50px" src="{{ asset('img/paid.png') }}" width="200px" />
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Notes :<br>
@@ -214,7 +226,7 @@
                 <td>&nbsp;
                     Client Approval
                     <br><br><br><br><br><br>
-                    ({{ $quotation->customer_name }})
+                    ({{ $invoice->quotation->customer_name }})
                 </td>
             </tr>
         </table>

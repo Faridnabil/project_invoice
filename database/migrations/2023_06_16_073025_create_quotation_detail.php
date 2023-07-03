@@ -16,7 +16,7 @@ class CreateQuotationDetail extends Migration
         Schema::create('quotation_detail', function (Blueprint $table) {
             $table->id();
             $table->foreignId('quotation_id')->constrained('quotation')->onDelete('cascade');
-            $table->string('item_code');
+            // $table->string('item_code');
             $table->string('item_name');
             $table->string('qty');
             $table->string('satuan');

@@ -71,11 +71,7 @@
                                     <h4>Item :</h4>
                                     <div class="after-add" id="DBody">
                                         <div class="row mb-3">
-                                            <div class="col-2">
-                                                <input type="text" class="form-control" name="item_code[]"
-                                                    placeholder="No Item">
-                                            </div>
-                                            <div class="col-2">
+                                            <div class="col-3">
                                                 <input type="text" class="form-control" name="item_name[]"
                                                     placeholder="Item Name">
                                             </div>
@@ -83,7 +79,7 @@
                                                 <input type="number" class="form-control" id="qty" name="qty[]"
                                                     onchange="Calc(this);" placeholder="Quantity">
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-2">
                                                 <select class="form-control" name="satuan[]">
                                                     <option value="Unit">Unit</option>
                                                     <option value="Set">Set</option>
@@ -105,11 +101,7 @@
                                             </div>
                                         </div>
                                         <div id="DRow" class="row mb-3">
-                                            <div class="col-2">
-                                                <input type="text" class="form-control" name="item_code[]"
-                                                    placeholder="No Item">
-                                            </div>
-                                            <div class="col-2">
+                                            <div class="col-3">
                                                 <input type="text" class="form-control" name="item_name[]"
                                                     placeholder="Item Name">
                                             </div>
@@ -117,7 +109,7 @@
                                                 <input type="number" class="form-control" id="qty" name="qty[]"
                                                     onchange="Calc(this);" placeholder="Quantity">
                                             </div>
-                                            <div class="col-1">
+                                            <div class="col-2">
                                                 <select class="form-control" name="satuan[]">
                                                     <option value="Unit">Unit</option>
                                                     <option value="Set">Set</option>

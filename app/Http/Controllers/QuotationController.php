@@ -76,7 +76,7 @@ class QuotationController extends Controller
         ]);
 
         $data = Quotation::latest()->first();
-        $totaldata = count($request->item_code);
+        $totaldata = count($request->item_name);
         $totalrequest = 0;
         if ($totaldata != 0) {
             for ($i = 0; $i < $totaldata; $i++) {
@@ -87,7 +87,6 @@ class QuotationController extends Controller
 
                 QuotationDetail::create([
                     'quotation_id' => $data->id,
-                    'item_code' => $request->item_code[$i],
                     'item_name' => $request->item_name[$i],
                     'qty' => $request->qty[$i],
                     'satuan' => $request->satuan[$i],
@@ -157,7 +156,6 @@ class QuotationController extends Controller
             for ($i = 0; $i < $total; $i++) {
 
                 QuotationDetail::where('id', $request->idreq[$i])->update([
-                    'item_code' => $request->item_code[$i],
                     'item_name' => $request->item_name[$i],
                     'qty' => $request->qty[$i],
                     'satuan' => $request->satuan[$i],

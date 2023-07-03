@@ -101,13 +101,7 @@
                             : {{ $invoice->quotation->customer_name }}<br>
                             : {{ $invoice->quotation->nama_project }}<br>
                             : {{ date('D, d F Y', strtotime($invoice->quotation->tanggal_quotation)) }} <br>
-                            : @if ($invoice->status=='paid')
-                                Termin 1
-                            @elseif ($invoice->status=='unpaid')
-                                Belum membayar
-                            @elseif ($invoice->status=='lunas')
-                                Lunas
-                            @endif
+                            : Lunas
                         </p>
                     </td>
                     <td>
@@ -133,7 +127,6 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>No Item</th>
                     <th>Item Name</th>
                     <th>Quantity</th>
                     <th>Unit Price</th>
@@ -144,7 +137,6 @@
                 @foreach ($quotation_detail as $item)
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->item_code }}</td>
                         <td>{{ $item->item_name }}</td>
                         <td>{{ $item->qty }} {{ $item->satuan }}</td>
                         <td>Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
@@ -154,34 +146,28 @@
             </tbody>
         </table> <br><br>
         <table width="300px" cellspacing="0" cellpadding="0" border="1" align="right" style="margin-right: 25px">
-                <tr style="font-weight: bold">
-                    <td style="background-color: yellow">PPN/VAT 11%</td>
-                    <td>Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
-                </tr>
-                <tr style="font-weight: bold">
+            <tr style="font-weight: bold">
+                <td style="background-color: yellow">PPN/VAT 11%</td>
+                <td>Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
+            </tr>
+            <tr style="font-weight: bold">
 
-                    <td style="background-color: yellow">DP</td>
-                    <td>Rp. {{ number_format($invoice->termin1, 0, ',', '.') }}</td>
-                </tr>
-                <tr style="font-weight: bold">
+                <td style="background-color: yellow">DP</td>
+                <td>Rp. {{ number_format($invoice->termin1, 0, ',', '.') }}</td>
+            </tr>
+            <tr style="font-weight: bold">
 
-                    <td style="background-color: yellow">GRAND TOTAL</td>
-                    <td>Rp. {{ number_format($invoice->quotation->amount, 0, ',', '.') }}</td>
-                </tr>
+                <td style="background-color: yellow">GRAND TOTAL</td>
+                <td>Rp. {{ number_format($invoice->quotation->amount, 0, ',', '.') }}</td>
+            </tr>
 
-                <tr style="font-weight: bold">
+            <tr style="font-weight: bold">
 
-                    <td style="background-color: yellow">SISA TAGIHAN</td>
-                    <td>Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
-                </tr>
+                <td style="background-color: yellow">SISA TAGIHAN</td>
+                <td>Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
+            </tr>
         </table>
-        @if ($invoice->status=='paid')
-            <img style="margin-right: 50px" src="{{ asset('img/paid.png') }}" width="200px" />
-        @elseif ($invoice->status=='unpaid')
-            <img style="margin-right: 50px" src="{{ asset('img/unpaid.png') }}" width="200px" />
-        @elseif ($invoice->status=='lunas')
-            <img style="margin-right: 50px" src="{{ asset('img/lunas.png') }}" width="200px" />
-        @endif
+        <img style="margin-right: 50px" src="{{ asset('img/lunas.png') }}" width="200px" />
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Notes :<br>

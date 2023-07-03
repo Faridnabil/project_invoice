@@ -75,9 +75,10 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('view-invoice', [InvoiceController::class, 'view_invoice'])->name('view-invoice');
     Route::get('termin1/{id}', [InvoiceController::class, 'bayar_termin1']);
     Route::post('update-termin1/{id}', [InvoiceController::class, 'update_termin1']);
+    Route::get('cetak-termin1/{id}', [InvoiceController::class, 'detail_termin1']);
     Route::get('termin2/{id}', [InvoiceController::class, 'bayar_termin2']);
     Route::post('update-termin2/{id}', [InvoiceController::class, 'update_termin2']);
-    Route::get('cetak-invoice/{id}', [InvoiceController::class, 'detail_invoice']);
+    Route::get('cetak-termin2/{id}', [InvoiceController::class, 'detail_termin2']);
 });
 
 Route::get('/', function () {

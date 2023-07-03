@@ -78,11 +78,7 @@
                                         <input type="hidden" name="idreq[]" value="{{ $item->id }}">
                                         <div class="after-add" id="DBody">
                                             <div class="row mb-3" id="DRow">
-                                                <div class="col-2">
-                                                    <input type="text" class="form-control" name="item_code[]"
-                                                        placeholder="No Item" value="{{ $item->item_code }}">
-                                                </div>
-                                                <div class="col-2">
+                                                <div class="col-3">
                                                     <input type="text" class="form-control" name="item_name[]"
                                                         placeholder="Item Name" value="{{ $item->item_name }}">
                                                 </div>
@@ -91,7 +87,7 @@
                                                         onchange="Calc(this);" placeholder="Quantity"
                                                         value="{{ $item->qty }}">
                                                 </div>
-                                                <div class="col-1">
+                                                <div class="col-2">
                                                     <select class="form-control" name="satuan[]" value="{{ $item->satuan }}">
                                                         <option value="{{ $item->satuan }}" selected>{{ $item->satuan }}</option>
                                                         <option value="Unit">Unit</option>

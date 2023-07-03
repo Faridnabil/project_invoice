@@ -34,7 +34,7 @@ class PermissionDemoSeeder extends Seeder
 
         $user = User::factory()->create([
             'name' => 'Admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'admin@globaltech.id',
             'password' => bcrypt('qwerty12')
         ]);
         $user->assignRole($adminRole);

@@ -113,7 +113,7 @@
                                                         <span class="fas fa-trash">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
                                                     <a href="/detail-quotation/{{ $item->id }}" type="button"
-                                                        target="__blank" title="Detail">
+                                                        target="_blank" title="Detail">
                                                         <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
                                                 </td>

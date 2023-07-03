@@ -12,7 +12,7 @@ class QuotationDetail extends Model
     protected $table = "quotation_detail";
     protected $primaryKey = "id";
     protected $fillable = [
-        'quotation_id', 'item_code', 'item_name',
+        'quotation_id', 'item_name',
         'qty', 'satuan', 'price', 'total'
     ];
 
