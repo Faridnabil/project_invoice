@@ -82,5 +82,5 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
