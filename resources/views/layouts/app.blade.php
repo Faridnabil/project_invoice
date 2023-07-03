@@ -24,6 +24,8 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
 
+    <link rel="shortcut icon" href="{{ asset('template/dist/img/AdminLTELogos.png') }}" type="image/x-icon">
+
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet"
