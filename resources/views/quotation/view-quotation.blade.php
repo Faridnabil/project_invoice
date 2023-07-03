@@ -116,6 +116,17 @@
                                                         target="_blank" title="Detail">
                                                         <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
+                                                    @if ($item->file == null)
+                                                        <a href="#" type="button" title="Upload File"
+                                                            data-target="#uploadFile" data-toggle="modal">
+                                                            <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
+                                                        </a>
+                                                    @else
+                                                        <a href="{{ url('download-file/' . $item->id) }}"
+                                                            title="Download File" target="_blank">
+                                                            <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog"
@@ -139,6 +150,32 @@
                                                                 method="GET" enctype="multipart/form-data">
                                                                 <button type="submit" class="btn btn-primary">Hapus
                                                                     Data</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="uploadFile" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Upload File</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/upload-file/{{ $item->id }}" method="POST"
+                                                                enctype="multipart/form-data">
+                                                                @csrf
+                                                                <input type="file" class="form-control mb-3" id="floatingInput"
+                                                                    name="file">
+                                                                <input type="hidden" name="pathFile"
+                                                                    value="{{ $item->file }}">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Upload</button>
                                                             </form>
                                                         </div>
                                                     </div>

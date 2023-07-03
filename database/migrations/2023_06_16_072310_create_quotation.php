@@ -28,6 +28,7 @@ class CreateQuotation extends Migration
             $table->string('amount');
             $table->string('amount_due');
             $table->string('description')->nullable();
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

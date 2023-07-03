@@ -6,6 +6,7 @@ use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SPKController;
 use App\Http\Controllers\UserController;
+use App\Models\Quotation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +53,10 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     //EDIT QUOTATION
     Route::get('edit-quotation/{id}', [QuotationController::class, 'edit_quotation']);
     Route::post('update-quotation/{id}', [QuotationController::class, 'update_quotation']);
+    //UPLOAD QUOTATION
+    Route::post('upload-file/{id}', [QuotationController::class, 'upload_file']);
+    //DOWNLOAD QUOTATION
+    Route::get('download-file/{id}', [QuotationController::class, 'download_file']);
     //DELETE QUOTATION
     Route::get('delete-quotation/{id}', [QuotationController::class, 'delete_quotation']);
     //DETAIL QUOTATION

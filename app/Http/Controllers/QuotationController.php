@@ -8,6 +8,7 @@ use App\Models\QuotationDetail;
 use App\Models\SPK;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class QuotationController extends Controller
 {
@@ -194,5 +195,35 @@ class QuotationController extends Controller
         $quotation_detail = QuotationDetail::where('quotation_id', $id)->get();
 
         return view('quotation/detail-quotation', compact('quotation', 'quotation_detail'));
+    }
+
+    public function upload_file($id, Request $request)
+    {
+        $file = $request->file('file');
+        if (file_exists($file)) {
+            $nama_file = time() . "-" . $file->getClientOriginalName();
+            $folder = 'lampiran_quotation';
+            $file->move($folder, $nama_file);
+            $path = $folder . "/" . $nama_file;
+            //delete
+            $data = Quotation::where('id', $id)->first();
+            File::delete($data->file);
+        } else {
+            $path = $request->pathFile;
+        }
+
+        $quotation = Quotation::find($id);
+        $quotation->file = $path;
+        $quotation->save();
+
+        return back();
+    }
+
+    public function download_file($id)
+    {
+        $file = Quotation::find($id)->first();
+        $file_path = public_path($file->file);
+
+        return response()->download($file_path);
     }
 }
