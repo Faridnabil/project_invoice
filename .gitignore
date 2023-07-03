@@ -13,3 +13,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+/public/lampiran_bast
+/public/lampiran_invoice
+/public/lampiran_quotation
