@@ -107,6 +107,7 @@ class InvoiceController extends Controller
             BAST::create([
                 'no_bast' => $id_bast,
                 'invoice_id' => $invoice->id,
+                'spk_id' => $invoice->id,
             ]);
         }
 

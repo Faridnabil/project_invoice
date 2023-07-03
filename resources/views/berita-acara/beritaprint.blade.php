@@ -209,7 +209,57 @@
                             <tr>
                                 <td>Nomor SPK</td>
                                 <td>:</td>
-                                <td>SPK001</td>
+                                <<td>{{ date('d.m', strtotime($bast->spk->created_at)) }}/
+                                    @switch(date('m', strtotime($bast->spk->created_at)))
+                                        @case(date(1, strtotime($bast->spk->created_at)))
+                                            I
+                                        @break
+
+                                        @case(date(2, strtotime($bast->spk->created_at)))
+                                            II
+                                        @break
+
+                                        @case(date(3, strtotime($bast->spk->created_at)))
+                                            III
+                                        @break
+
+                                        @case(date(4, strtotime($bast->spk->created_at)))
+                                            IV
+                                        @break
+
+                                        @case(date(5, strtotime($bast->spk->created_at)))
+                                            V
+                                        @break
+
+                                        @case(date(6, strtotime($bast->spk->created_at)))
+                                            VI
+                                        @break
+
+                                        @case(date(7, strtotime($bast->spk->created_at)))
+                                            VII
+                                        @break
+
+                                        @case(date(8, strtotime($bast->spk->created_at)))
+                                            VIII
+                                        @break
+
+                                        @case(date(9, strtotime($bast->spk->created_at)))
+                                            IX
+                                        @break
+
+                                        @case(date(10, strtotime($bast->spk->created_at)))
+                                            X
+                                        @break
+
+                                        @case(date(11, strtotime($bast->spk->created_at)))
+                                            XI
+                                        @break
+
+                                        @case(date(12, strtotime($bast->spk->created_at)))
+                                            XII
+                                        @break
+                                    @endswitch/{{ date('Y', strtotime($bast->spk->created_at)) }}/{{ $bast->spk->no }}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Nomor Invoice</td>

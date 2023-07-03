@@ -22,7 +22,6 @@ class BASTController extends Controller
         $spk = SPK::find($id);
         $invoice = Invoice::find($id);
         $bast = BAST::find($id);
-        $today = Carbon::now()->isoFormat('D MMMM Y');
-        return view('berita-acara.beritaprint', compact('invoice', 'bast', 'today'));
+        return view('berita-acara.beritaprint', compact('invoice', 'bast', 'spk'));
     }
 }
