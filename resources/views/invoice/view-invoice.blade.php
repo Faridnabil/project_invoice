@@ -122,8 +122,23 @@
                                                         </a>
                                                         <a href="/cetak-termin2/{{ $item->id }}" type="button"
                                                             title="Cetak Termin 2" target="_blank">
-                                                            <span class="fas fa-eye"></span>
+                                                            <span class="fas fa-eye">&nbsp; &nbsp;</span>
                                                         </a>
+                                                        @if ($item->file_termin2 == null)
+                                                            <a href="#" type="button" title="Upload File"
+                                                                data-target="#uploadFile2" data-toggle="modal">
+                                                                <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
+                                                            </a>
+                                                        @else
+                                                            <a href="{{ url('download-termin1/' . $item->id) }}"
+                                                                title="Download File" target="_blank">
+                                                                <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
+                                                            </a>
+                                                            <a href="{{ url('download-termin2/' . $item->id) }}"
+                                                                title="Download File" target="_blank">
+                                                                <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
+                                                            </a>
+                                                        @endif
                                                     @elseif ($item->status == 'paid')
                                                         <a href="/termin2/{{ $item->id }}" type="button"
                                                             title="Bayar Termin 2">
@@ -133,6 +148,17 @@
                                                             title="Cetak Termin 1" target="_blank">
                                                             <span class="fas fa-eye">&nbsp; &nbsp;</span>
                                                         </a>
+                                                        @if ($item->file_termin1 == null)
+                                                            <a href="#" type="button" title="Upload File"
+                                                                data-target="#uploadFile" data-toggle="modal">
+                                                                <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
+                                                            </a>
+                                                        @else
+                                                            <a href="{{ url('download-termin1/' . $item->id) }}"
+                                                                title="Download File" target="_blank">
+                                                                <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
+                                                            </a>
+                                                        @endif
                                                     @else
                                                         <a href="/termin1/{{ $item->id }}" type="button"
                                                             title="Bayar Termin 1">
@@ -145,6 +171,60 @@
                                                     @endif
                                                 </td>
                                             </tr>
+                                            <div class="modal fade" id="uploadFile" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Upload File
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/upload-termin1/{{ $item->id }}"
+                                                                method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <input type="file" class="form-control mb-3"
+                                                                    id="floatingInput" name="file">
+                                                                <input type="hidden" name="pathFile"
+                                                                    value="{{ $item->file }}">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Upload</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="uploadFile2" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Upload File
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/upload-termin2/{{ $item->id }}"
+                                                                method="POST" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <input type="file" class="form-control mb-3"
+                                                                    id="floatingInput" name="file">
+                                                                <input type="hidden" name="pathFile"
+                                                                    value="{{ $item->file }}">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Upload</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endforeach
                                     </tbody>
                                     <tfoot>

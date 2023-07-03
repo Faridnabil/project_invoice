@@ -22,6 +22,8 @@ class CreateInvoice extends Migration
             $table->string('termin2');
             $table->date('issue_date');
             $table->date('due_date');
+            $table->string('file_termin1')->nullable();
+            $table->string('file_termin2')->nullable();
             $table->timestamps('');
         });
     }

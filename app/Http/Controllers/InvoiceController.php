@@ -9,6 +9,7 @@ use App\Models\QuotationDetail;
 use App\Models\SPK;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class InvoiceController extends Controller
 {
@@ -136,5 +137,63 @@ class InvoiceController extends Controller
         $quotation_detail = QuotationDetail::where('quotation_id', $id)->get();
 
         return view('invoice/cetak-termin2', compact('quotation_detail', 'invoice'));
+    }
+
+    public function upload_file_termin1($id, Request $request)
+    {
+        $file = $request->file('file');
+        if (file_exists($file)) {
+            $nama_file = time() . "-" . $file->getClientOriginalName();
+            $folder = 'lampiran_invoice';
+            $file->move($folder, $nama_file);
+            $path = $folder . "/" . $nama_file;
+            //delete
+            $data = Invoice::where('id', $id)->first();
+            File::delete($data->file);
+        } else {
+            $path = $request->pathFile;
+        }
+
+        $quotation = Invoice::find($id);
+        $quotation->file_termin1 = $path;
+        $quotation->save();
+
+        return back();
+    }
+
+    public function upload_file_termin2($id, Request $request)
+    {
+        $file = $request->file('file');
+        if (file_exists($file)) {
+            $nama_file = time() . "-" . $file->getClientOriginalName();
+            $folder = 'lampiran_invoice';
+            $file->move($folder, $nama_file);
+            $path = $folder . "/" . $nama_file;
+            //delete
+            $data = Invoice::where('id', $id)->first();
+            File::delete($data->file);
+        } else {
+            $path = $request->pathFile;
+        }
+
+        $quotation = Invoice::find($id);
+        $quotation->file_termin2 = $path;
+        $quotation->save();
+
+        return back();
+    }
+
+    public function download_file_termin1($id)
+    {
+        $file = Invoice::find($id)->first();
+        $file_path = public_path($file->file_termin1);
+        return response()->download($file_path);
+    }
+
+    public function download_file_termin2($id)
+    {
+        $file = Invoice::find($id)->first();
+        $file_path = public_path($file->file_termin2);
+        return response()->download($file_path);
     }
 }

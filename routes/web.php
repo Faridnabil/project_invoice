@@ -80,6 +80,8 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('create-bast', [BASTController::class, 'show'])->name('create-bast');
     Route::post('store-bast', [BASTController::class, 'store']);
     Route::get('print-bast/{id}', [BASTController::class, 'pdf'])->name('print-bast');
+    Route::post('upload-bast/{id}', [BASTController::class, 'upload_file']);
+    Route::get('download-bast/{id}', [BASTController::class, 'download_file']);
 
     //INVOICE
     Route::get('view-invoice', [InvoiceController::class, 'view_invoice'])->name('view-invoice');
@@ -89,6 +91,10 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::get('termin2/{id}', [InvoiceController::class, 'bayar_termin2']);
     Route::post('update-termin2/{id}', [InvoiceController::class, 'update_termin2']);
     Route::get('cetak-termin2/{id}', [InvoiceController::class, 'detail_termin2']);
+    Route::post('upload-termin1/{id}', [InvoiceController::class, 'upload_file_termin1']);
+    Route::get('download-termin1/{id}', [InvoiceController::class, 'download_file_termin1']);
+    Route::post('upload-termin2/{id}', [InvoiceController::class, 'upload_file_termin2']);
+    Route::get('download-termin2/{id}', [InvoiceController::class, 'download_file_termin2']);
 });
 
 Route::get('/', function () {

@@ -15,9 +15,10 @@ class CreateBast extends Migration
     {
         Schema::create('bast', function (Blueprint $table) {
             $table->id();
-            $table->string('no_bast')->nullable();
             $table->foreignId('spk_id')->constrained('spk')->onDelete('cascade');
             $table->foreignId('invoice_id')->constrained('invoice')->onDelete('cascade');
+            $table->string('file')->nullable();
+            $table->string('no_bast')->nullable();
             $table->timestamps();
         });
     }

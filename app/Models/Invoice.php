@@ -12,7 +12,7 @@ class Invoice extends Model
     protected $table = "invoice";
     protected $primaryKey = "id";
     protected $fillable = [
-        'no_inv', 'quotation_id', 'status', 'termin1', 'termin2', 'issue_date', 'due_date'
+        'no_inv', 'quotation_id', 'status', 'termin1', 'termin2', 'issue_date', 'due_date', 'file_termin1', 'file_termin2'
     ];
 
     public function quotation()
