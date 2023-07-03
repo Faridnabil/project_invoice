@@ -21,10 +21,10 @@ class CreateSpk extends Migration
             $table->string('alamat');
             $table->string('telp');
             $table->string('ktp');
-            $table->string('nama1');
-            $table->string('alamat1');
-            $table->string('telp1');
-            $table->string('ktp1');
+            // $table->string('nama1');
+            // $table->string('alamat1');
+            // $table->string('telp1');
+            // $table->string('ktp1');
             $table->foreignId('quotation_id')->constrained('quotation')->onDelete('cascade');
             $table->timestamps();
         });

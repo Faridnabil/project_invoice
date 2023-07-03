@@ -149,7 +149,13 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th colspan="7">End of record</th>
+                                            <th>No. Invoice</th>
+                                            <th>Customer Name</th>
+                                            <th>Issue Date</th>
+                                            <th>Due Date</th>
+                                            <th>Invoice Total</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </tfoot>
                                 </table>

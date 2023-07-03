@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Quotation;
 use App\Models\Invoice;
 use App\Models\QuotationDetail;
+use App\Models\SPK;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,9 +30,10 @@ class QuotationController extends Controller
     {
         $kode = DB::table('quotation')->count();
         $addNol = '';
-        $kodetb = 'QUO';
+        $kodequo = 'QUO';
         $kodeinv = 'INV';
-        $kode = str_replace($kodetb, "", $kode);
+        $kodespk = 'SPK';
+        $kode = str_replace($kodequo, "", $kode);
         $kode = (int) $kode + 1;
         $incrementKode = $kode;
 
@@ -44,8 +46,9 @@ class QuotationController extends Controller
         } elseif (strlen($kode) == 4) {
             $addNol = "00";
         }
-        $id_quot = $kodetb . $addNol . $incrementKode;
+        $id_quot = $kodequo . $addNol . $incrementKode;
         $id_inv = $kodeinv . $addNol . $incrementKode;
+        $id_spk = $kodespk . $addNol . $incrementKode;
 
         $rules = $request->validate([
             'no_quotation' => '',
@@ -65,6 +68,8 @@ class QuotationController extends Controller
             'no_quotation' => $id_quot,
             'customer_name' => $request->customer_name,
             'address' => $request->address,
+            'no_hp' => $request->no_hp,
+            'no_ktp' => $request->no_ktp,
             'nama_project' => $request->nama_project,
             'tanggal_quotation' => $request->tanggal_quotation,
             'tax' => $request->tax,
@@ -80,10 +85,6 @@ class QuotationController extends Controller
         $totalrequest = 0;
         if ($totaldata != 0) {
             for ($i = 0; $i < $totaldata; $i++) {
-                //update stok barang (penjualan = bertambah)
-                // Barang::find($request->barang_id[$i])->update([
-                //     'stok' => $barang->stok + $request->kuantitas[$i]
-                // ]);
 
                 QuotationDetail::create([
                     'quotation_id' => $data->id,
@@ -108,6 +109,16 @@ class QuotationController extends Controller
             'termin2' => '0',
             'issue_date' => date('Y-m-d', $start_date),
             'due_date' => date('Y-m-d', $end_date)
+        ]);
+
+        SPK::create([
+            'quotation_id' => $data->id,
+            'no' => $id_spk,
+            'tgl' => now(),
+            'nama' => 'PT. Global Technology Essential',
+            'alamat' => 'Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117',
+            'telp' => '0877-7984-4484',
+            'ktp' => '3214012109010003',
         ]);
 
         return redirect('view-quotation')->with('success', 'Request created successfully');

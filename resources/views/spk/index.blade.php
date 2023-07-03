@@ -31,7 +31,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('create-spk') }}" type="button" class="btn btn-primary">Add SPK</a>
+                                {{-- <a href="{{ route('create-spk') }}" type="button" class="btn btn-primary">Add SPK</a> --}}
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">
@@ -47,10 +47,60 @@
                                     <tbody>
                                         @foreach ($spk as $item)
                                             <tr>
-                                                <td>{{ $item->no }}</td>
+                                                <td>{{ date('d.m', strtotime($item->tgl)) }}/
+                                                    @switch(date('m', strtotime($item->tgl)))
+                                                        @case(date(1, strtotime($item->tgl)))
+                                                            I
+                                                        @break
+
+                                                        @case(date(2, strtotime($item->tgl)))
+                                                            II
+                                                        @break
+
+                                                        @case(date(3, strtotime($item->tgl)))
+                                                            III
+                                                        @break
+
+                                                        @case(date(4, strtotime($item->tgl)))
+                                                            IV
+                                                        @break
+
+                                                        @case(date(5, strtotime($item->tgl)))
+                                                            V
+                                                        @break
+
+                                                        @case(date(6, strtotime($item->tgl)))
+                                                            VI
+                                                        @break
+
+                                                        @case(date(7, strtotime($item->tgl)))
+                                                            VII
+                                                        @break
+
+                                                        @case(date(8, strtotime($item->tgl)))
+                                                            VIII
+                                                        @break
+
+                                                        @case(date(9, strtotime($item->tgl)))
+                                                            IX
+                                                        @break
+
+                                                        @case(date(10, strtotime($item->tgl)))
+                                                            X
+                                                        @break
+
+                                                        @case(date(11, strtotime($item->tgl)))
+                                                            XI
+                                                        @break
+
+                                                        @case(date(11, strtotime($item->tgl)))
+                                                            XII
+                                                        @break
+                                                    @endswitch
+                                                    /{{ date('Y', strtotime($item->tgl)) }}/{{ $item->no }}</td>
                                                 <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->nama1 }}</td>
-                                                <td>{{ $item->tgl }}</td>
+                                                <td>{{ $item->quotation->customer_name }}</td>
+                                                <td>{{ date('d F Y', strtotime($item->tgl)) }}</td>
                                                 <td>
                                                     <a href="/edit-spk/{{ $item->id }}" type="button"
                                                         title="Edit">
@@ -94,6 +144,15 @@
                                             </div>
                                         @endforeach
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>No. SPK</th>
+                                            <th>Nama/Instansi</th>
+                                            <th>Nama/Instansi Client</th>
+                                            <th>Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

@@ -184,6 +184,14 @@
                                             </div>
                                         @endforeach
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>No BAST</th>
+                                            <th>No Invoice</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                             <!-- /.card-body -->

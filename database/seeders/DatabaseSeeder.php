@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         // );
         $this->call([
             PermissionDemoSeeder::class,
-            // create_spk::class
         ]);
 
     }

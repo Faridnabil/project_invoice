@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BASTController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SPKController;
@@ -22,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', function () {
         return view('menu.home');
     });
+
+    Route::get('/home', [HomeController::class, 'count_data']);
 });
 
 Route::middleware(['auth', 'role:Administrator'])->group(function () {

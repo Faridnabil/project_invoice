@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cetak Laporan Data Alumni</title>
+    <title>Detail Surat Perjanjian Kerjasama</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -124,59 +124,58 @@
             <tr>
                 <td colspan="12">
                     <p style="text-align: justify;">Melalui surat ini, kami yang bertanda tangan di bawah ini, <br><br>
-                    <table>
-                        <tr>
-                            <td>Nama/Instansi</td>
-                            <td>:</td>
-                            <td>{{ $spk->nama }}</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat</td>
-                            <td>:</td>
-                            <td> {{ $spk->alamat }}</td>
-                        </tr>
-                        <tr>
-                            <td>Telepon</td>
-                            <td>:</td>
-                            <td>{{ $spk->telp }}</td>
-                        </tr>
-                        <tr>
-                            <td>Nomor KTP</td>
-                            <td>:</td>
-                            <td> {{ $spk->ktp }}</td>
-                        </tr>
-                    </table><br>
-                    dalam hal ini bertindak atas nama {{ $spk->nama }} dan selanjutnya disebut
-                    <b>PIHAK PERTAMA</b>. <br><br>
-                    <table>
-                        <tr>
-                            <td>Nama/Instansi</td>
-                            <td>:</td>
-                            <td>{{ $spk->nama1 }}</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat</td>
-                            <td>:</td>
-                            <td> {{ $spk->alamat1 }}</td>
-                        </tr>
-                        <tr>
-                            <td>Telepon</td>
-                            <td>:</td>
-                            <td>{{ $spk->telp1 }}</td>
-                        </tr>
-                        <tr>
-                            <td>Nomor KTP</td>
-                            <td>:</td>
-                            <td> {{ $spk->ktp1 }}</td>
-                        </tr>
-                    </table><br>
-                    Dalam hal ini bertindak atas nama {{ $spk->nama1 }} dan selanjutnya disebut <b>PIHAK
-                        KEDUA</b>. <br>
-                    <b>PIHAK PERTAMA</b> dan <b>PIHAK KEDUA</b> secara bersama-sama (selanjutnya disebut sebagai
-                    <b>PARA PIHAK</b>). <br><br>
-                    Atas dasar pertimbangan yang diuraikan di atas, <b>PARA PIHAK</b> selanjutnya menerangkan dengan ini
-                    telah sepakat dan setuju untuk mengadakan Kerjasama dan disahkan dalam bentuk surat
-                    perjanjian Kerjasama dengan ketentuan dan syarat sebagai berikut :
+                        <table>
+                            <tr>
+                                <td>Nama/Instansi</td>
+                                <td>:</td>
+                                <td>{{ $spk->nama }}</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td> {{ $spk->alamat }}</td>
+                            </tr>
+                            <tr>
+                                <td>Telepon</td>
+                                <td>:</td>
+                                <td>{{ $spk->telp }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nomor KTP</td>
+                                <td>:</td>
+                                <td> {{ $spk->ktp }}</td>
+                            </tr>
+                        </table><br>
+                        dalam hal ini bertindak atas nama {{ $spk->nama }} dan selanjutnya disebut
+                        <b>PIHAK PERTAMA</b>. <br><br>
+                        <table>
+                            <tr>
+                                <td>Nama/Instansi</td>
+                                <td>:</td>
+                                <td>{{ $spk->quotation->customer_name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td> {{ $spk->quotation->address }}</td>
+                            </tr>
+                            <tr>
+                                <td>Telepon</td>
+                                <td>:</td>
+                                <td>{{ $spk->quotation->no_hp }}</td>
+                            </tr>
+                            <tr>
+                                <td>Nomor KTP</td>
+                                <td>:</td>
+                                <td> {{ $spk->quotation->no_ktp }}</td>
+                            </tr>
+                        </table><br>
+                        Dalam hal ini bertindak atas nama {{ $spk->quotation->customer_name }} dan selanjutnya disebut <b>PIHAK
+                            KEDUA</b>. <br>
+                        <b>PIHAK PERTAMA</b> dan <b>PIHAK KEDUA</b> secara bersama-sama (selanjutnya disebut sebagai
+                        <b>PARA PIHAK</b>). <br><br>
+                        Atas dasar pertimbangan yang diuraikan di atas, <b>PARA PIHAK</b> selanjutnya menerangkan dengan ini telah sepakat dan setuju untuk mengadakan Kerjasama dan disahkan dalam bentuk surat
+                        perjanjian Kerjasama dengan ketentuan dan syarat sebagai berikut :
                     </p>
                     <p style="text-align: center;"><b>PASAL 1 <br>
                             PEKERJAAN</b><br></p>
@@ -251,7 +250,7 @@
                         </li>
                         <li>
                             <p style="text-align: justify;">
-                                PIHAK PERTAMA berhak menjadıkan hasil kerja sama ini untuk diperlihatkan sebagai hasil
+                                PIHAK PERTAMA berhak menjadikan hasil kerja sama ini untuk diperlihatkan sebagai hasil
                                 kerja
                                 &nbsp;&nbsp;(portfolio) antar PIHAK PERTAMA dan PIHAK KEDUA, namun PIHAK PERTAMA tetap
                                 &nbsp;&nbsp;berkewajiban untuk meminta persetujuan terlebih dahulu kepada PIHAK KEDUA
@@ -339,7 +338,7 @@
                             PERJANJIAN TAMBAHAN</b><br>
                     </p>
                     <p style="text-align: justify;">
-                        Selanjutnya hal-hal yang tidak tercantum dalam surat perjanjian kerjasama ıni dan apabila kelak
+                        Selanjutnya hal-hal yang tidak tercantum dalam surat perjanjian kerjasama ini dan apabila kelak
                         di kemudian hari ternyata terdapat kekurangan atau kekeliruan, maka akan diadakan perubahan atau
                         perbaikan yang dianggap perlu serta diatur dalam suatu perjanjian tambahan (addendum) dan
                         merupakan dokumen yang tidak terpisahkan dari surat perjanjian kerjasama ini.
@@ -348,11 +347,11 @@
                             <i>FORCE MAJEURE</i></b><br>
                     </p>
                     <p style="text-align: justify;">
-                        Force Majeure atau perselisihan yang terjadi dalam pelaksanaan perjanjian kerjasama inı sehingga
+                        Force Majeure atau perselisihan yang terjadi dalam pelaksanaan perjanjian kerjasama ini sehingga
                         salah satu pihak tidak dapat memenuhi kewajibannya, maka masing-masing pihak akan
                         menyelesaikannya secara musyawarah untuk mufakat. Dan apabila dengan jalan musyawarah untuk
                         mufakat tidak juga terselesaikan, maka kedua belah pihak menunjuk dan menetapkan Badan Arbitrase
-                        Nasıonal sebagai domisili hukum tetap dan tidak berubah sebagai tempat penyelesaian.
+                        Nasional sebagai domisili hukum tetap dan tidak berubah sebagai tempat penyelesaian.
                         <br><br>Demikian SPK ini dibuat rangkap 2 (dua), disepakati dan ditandatangani oleh PARA PIHAK
                         dalam keadaan sadar, sehat jasmani dan rohani, tanpa ada tekanan, pengaruh, paksaan dari pihak
                         manapun, dengan bermaterai cukup, dan berlaku sejak ditandatangani.
@@ -379,7 +378,7 @@
                             <td>
                                 <b>PIHAK KEDUA,</b>
                                 <br><br><br><br><br><br>
-                                <center>{{ $spk->nama1 }}</center>
+                                <center>{{ $spk->quotation->customer_name }}</center>
                             </td>
                         </tr>
                     </table>

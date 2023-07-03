@@ -53,6 +53,14 @@
                                                     placeholder="Customer Name">
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" class="form-control" name="no_hp"
+                                                    placeholder="No Handphone">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="no_ktp"
+                                                    placeholder="No KTP">
+                                            </div>
+                                            <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="address" placeholder="Customer Address"></textarea>
                                             </div>
                                         </div>

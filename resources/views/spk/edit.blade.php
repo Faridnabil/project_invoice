@@ -56,7 +56,8 @@
                                     <div class="form-group">
                                         <label>Date:</label>
                                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                                            <input type="date" class="form-control" name="tgl" value="{{ $spk->tgl }}"/>
+                                            <input type="date" class="form-control" name="tgl"
+                                                value="{{ $spk->tgl }}" />
                                             {{-- <div class="input-group-append" data-target="#reservationdate"
                                                 data-toggle="datetimepicker">
                                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -82,42 +83,51 @@
                             <div class="row">
                                 <div class="col-6">
                                     <label for="">Nama/Instansi</label>
-                                    <input type="text" class="form-control" placeholder="PT. Global Technology Essential" name="nama" value="PT. Global Technology Essential" readonly >
+                                    <input type="text" class="form-control" placeholder="PT. Global Technology Essential"
+                                        name="nama" value="PT. Global Technology Essential" readonly>
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Nama/Instansi</label>
-                                    <input type="text" class="form-control" placeholder="" name="nama1" value="{{ $spk->nama1 }}">
+                                    <input type="text" class="form-control" placeholder="" name="nama1"
+                                        value="{{ $spk->nama1 }}">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Alamat</label>
-                                    <input type="text" class="form-control" placeholder="Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117" name="alamat" value="Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117" readonly>
+                                    <input type="text" class="form-control"
+                                        placeholder="Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117" name="alamat"
+                                        value="Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117" readonly>
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Alamat</label>
-                                    <input type="text" class="form-control" placeholder="" name="alamat1" value="{{ $spk->alamat1 }}">
+                                    <input type="text" class="form-control" placeholder="" name="alamat1"
+                                        value="{{ $spk->alamat1 }}">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Telepon</label>
-                                    <input type="text" class="form-control" placeholder="0877-7984-4484" name="telp" value="0877-7984-4484" readonly>
+                                    <input type="text" class="form-control" placeholder="0877-7984-4484" name="telp"
+                                        value="0877-7984-4484" readonly>
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Telepon</label>
-                                    <input type="text" class="form-control" placeholder="" name="telp1" value="{{ $spk->telp1 }}">
+                                    <input type="text" class="form-control" placeholder="" name="telp1"
+                                        value="{{ $spk->telp1 }}">
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Nomor KTP</label>
-                                    <input type="text" class="form-control" placeholder="3214012109010003" name="ktp" value="3214012109010003" readonly>
+                                    <input type="text" class="form-control" placeholder="3214012109010003" name="ktp"
+                                        value="3214012109010003" readonly>
                                     <br>
                                 </div>
                                 <div class="col-6">
                                     <label for="">Nomor KTP</label>
-                                    <input type="text" class="form-control" placeholder="" name="ktp1" value="{{ $spk->ktp1 }}">
+                                    <input type="text" class="form-control" placeholder="" name="ktp1"
+                                        value="{{ $spk->ktp1 }}">
                                     <br>
                                 </div>
                                 {{-- <div class="col-6">

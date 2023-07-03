@@ -12,15 +12,14 @@ class SPKController extends Controller
 {
     public function index()
     {
-        $quo = Quotation::all();
-        $spk = SPK::all();
-        return view('spk.index', compact('spk', 'quo'));
+        $spk = SPK::with('quotation')->get();
+        return view('spk.index', compact('spk'));
     }
 
     public function show()
     {
         $quo = Quotation::all();
-        $spk = SPK::all();
+        $spk = SPK::with('quotation')->get();
         return view('spk.create', compact('spk', 'quo'));
     }
 
