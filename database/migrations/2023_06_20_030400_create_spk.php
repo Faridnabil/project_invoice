@@ -26,6 +26,7 @@ class CreateSpk extends Migration
             // $table->string('telp1');
             // $table->string('ktp1');
             $table->foreignId('quotation_id')->constrained('quotation')->onDelete('cascade');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use App\Models\QuotationDetail;
 use App\Models\SPK;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class SPKController extends Controller
 {
@@ -147,15 +148,36 @@ class SPKController extends Controller
     public function pdf($id)
     {
         $spk = SPK::find($id);
-        // $quo = QuotationDetail::join('quotation', 'quotation.id', '=', 'quotation_detail.quotation_id')
-        // ->select(
-        //     'quotation.id',
-        //     'quotation.amount_paid',
-        //     'quotation.nama_project',
-        // )
-        // ->where("quotation_id", $id)
-        // ->get();
-
         return view('spk.pdf', compact('spk'));
+    }
+
+    public function upload_file($id, Request $request)
+    {
+        $file = $request->file('file');
+        if (file_exists($file)) {
+            $nama_file = time() . "-" . $file->getClientOriginalName();
+            $folder = 'lampiran_spk';
+            $file->move($folder, $nama_file);
+            $path = $folder . "/" . $nama_file;
+            //delete
+            $data = SPK::where('id', $id)->first();
+            File::delete($data->file);
+        } else {
+            $path = $request->pathFile;
+        }
+
+        $quotation = SPK::find($id);
+        $quotation->file = $path;
+        $quotation->save();
+
+        return back();
+    }
+
+    public function download_file($id)
+    {
+        $file = SPK::find($id)->first();
+        $file_path = public_path($file->file);
+
+        return response()->download($file_path);
     }
 }

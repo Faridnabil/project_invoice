@@ -11,7 +11,7 @@ class SPK extends Model
     protected $table = "SPK";
     protected $primaryKey = "id";
     protected $fillable = [
-        'no', 'tgl', 'nama', 'alamat', 'telp', 'ktp', 'quotation_id',
+        'no', 'tgl', 'nama', 'alamat', 'telp', 'ktp', 'quotation_id', 'file'
         // 'nama1', 'alamat1', 'telp1', 'ktp1',
     ];
 

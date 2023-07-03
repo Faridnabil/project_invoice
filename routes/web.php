@@ -71,6 +71,8 @@ Route::middleware(['auth', 'role:Administrator'])->group(function () {
     Route::post('update-spk/{id}', [SPKController::class, 'update']);
     Route::get('delete-spk/{id}', [SPKController::class, 'destroy']);
     Route::get('detail-spk/{id}', [SPKController::class, 'pdf']);
+    Route::post('upload-file/{id}', [SPKController::class, 'upload_file']);
+    Route::get('download-file/{id}', [SPKController::class, 'download_file']);
 
 
     //BERITA ACARA SERAH TERIMA
