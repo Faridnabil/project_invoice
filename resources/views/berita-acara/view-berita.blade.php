@@ -37,7 +37,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>No BAST</th>
                                             <th>No Invoice</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -46,8 +46,108 @@
                                     <tbody>
                                         @foreach ($bast as $item)
                                             <tr>
-                                                <td>{{ $item->no_bast }}</td>
-                                                <td>{{ $item->invoice->no_inv }}</td>
+                                                <td>{{ date('d.m', strtotime($item->created_at)) }}/
+                                                    @switch(date('m', strtotime($item->created_at)))
+                                                        @case(date(1, strtotime($item->created_at)))
+                                                            I
+                                                        @break
+
+                                                        @case(date(2, strtotime($item->created_at)))
+                                                            II
+                                                        @break
+
+                                                        @case(date(3, strtotime($item->created_at)))
+                                                            III
+                                                        @break
+
+                                                        @case(date(4, strtotime($item->created_at)))
+                                                            IV
+                                                        @break
+
+                                                        @case(date(5, strtotime($item->created_at)))
+                                                            V
+                                                        @break
+
+                                                        @case(date(6, strtotime($item->created_at)))
+                                                            VI
+                                                        @break
+
+                                                        @case(date(7, strtotime($item->created_at)))
+                                                            VII
+                                                        @break
+
+                                                        @case(date(8, strtotime($item->created_at)))
+                                                            VIII
+                                                        @break
+
+                                                        @case(date(9, strtotime($item->created_at)))
+                                                            IX
+                                                        @break
+
+                                                        @case(date(10, strtotime($item->created_at)))
+                                                            X
+                                                        @break
+
+                                                        @case(date(11, strtotime($item->created_at)))
+                                                            XI
+                                                        @break
+
+                                                        @case(date(11, strtotime($item->created_at)))
+                                                            XII
+                                                        @break
+                                                    @endswitch/{{ date('Y', strtotime($item->created_at)) }}/{{ $item->no_bast }}
+                                                </td>
+                                                <td>{{ date('d.m', strtotime($item->created_at)) }}/
+                                                    @switch(date('m', strtotime($item->created_at)))
+                                                        @case(date(1, strtotime($item->created_at)))
+                                                            I
+                                                        @break
+
+                                                        @case(date(2, strtotime($item->created_at)))
+                                                            II
+                                                        @break
+
+                                                        @case(date(3, strtotime($item->created_at)))
+                                                            III
+                                                        @break
+
+                                                        @case(date(4, strtotime($item->created_at)))
+                                                            IV
+                                                        @break
+
+                                                        @case(date(5, strtotime($item->created_at)))
+                                                            V
+                                                        @break
+
+                                                        @case(date(6, strtotime($item->created_at)))
+                                                            VI
+                                                        @break
+
+                                                        @case(date(7, strtotime($item->created_at)))
+                                                            VII
+                                                        @break
+
+                                                        @case(date(8, strtotime($item->created_at)))
+                                                            VIII
+                                                        @break
+
+                                                        @case(date(9, strtotime($item->created_at)))
+                                                            IX
+                                                        @break
+
+                                                        @case(date(10, strtotime($item->created_at)))
+                                                            X
+                                                        @break
+
+                                                        @case(date(11, strtotime($item->created_at)))
+                                                            XI
+                                                        @break
+
+                                                        @case(date(11, strtotime($item->created_at)))
+                                                            XII
+                                                        @break
+                                                    @endswitch/{{ date('Y', strtotime($item->invoice->created_at)) }}/{{ $item->invoice->no_inv }}
+                                                </td>
                                                 <td>{{ $item->invoice->status }}</td>
                                                 <td>
                                                     <a href="/print-bast/{{ $item->id }}" type="button"

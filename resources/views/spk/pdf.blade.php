@@ -42,7 +42,7 @@
                         style=" text-align: right; margin-top: -25px; font-size: 11px; font-family: Arial, Helvetica, sans-serif;">
                         <br />
                         <i>Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117</i><br>
-                        globaltechnologyessential@gmail.com
+                        admin@globaltech.id
 
                     </p>
                 </td>

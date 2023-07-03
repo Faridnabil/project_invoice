@@ -42,7 +42,7 @@
                         style=" text-align: right; margin-top: -25px; font-size: 11px; font-family: Arial, Helvetica, sans-serif;">
                         <br />
                         <i>Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117</i><br>
-                        globaltechnologyessential@gmail.com
+                        admin@globaltech.id
 
                     </p>
                 </td>
@@ -101,7 +101,7 @@
                             XI
                         @break
 
-                        @case(date(11, strtotime($invoice->created_at)))
+                        @case(date(12, strtotime($invoice->created_at)))
                             XII
                         @break
                     @endswitch/{{ date('Y', strtotime($invoice->created_at)) }}/{{ $bast->no_bast }}
@@ -110,7 +110,7 @@
             <tr>
                 <td>Tanggal</td>
                 <td>:</td>
-                <td>{{ $invoice->created_at }}</td>
+                <td>{{ Carbon\Carbon::create($invoice->created_at)->isoFormat('DD MMMM Y') }}</td>
             </tr>
             <tr>
                 <td colspan="12">
@@ -152,7 +152,57 @@
                             KEDUA</b>. <br><br>
                         <b>PIHAK PERTAMA</b> dan <b>PIHAK KEDUA</b> secara bersama-sama (selanjutnya disebut sebagai
                         <b>PARA PIHAK</b>). <br><br>
-                        Berdasarkan Surat Perjanjian Kerja Sama dengan referensi nomor invoice {{ $invoice->no_inv }} perihal pekerjaan {{ $invoice->quotation->nama_project }}.
+                        Berdasarkan Surat Perjanjian Kerja Sama dengan referensi nomor invoice {{ date('d.m', strtotime($invoice->created_at)) }}/
+                        @switch(date('m', strtotime($invoice->created_at)))
+                            @case(date(1, strtotime($invoice->created_at)))
+                                I
+                            @break
+
+                            @case(date(2, strtotime($invoice->created_at)))
+                                II
+                            @break
+
+                            @case(date(3, strtotime($invoice->created_at)))
+                                III
+                            @break
+
+                            @case(date(4, strtotime($invoice->created_at)))
+                                IV
+                            @break
+
+                            @case(date(5, strtotime($invoice->created_at)))
+                                V
+                            @break
+
+                            @case(date(6, strtotime($invoice->created_at)))
+                                VI
+                            @break
+
+                            @case(date(7, strtotime($invoice->created_at)))
+                                VII
+                            @break
+
+                            @case(date(8, strtotime($invoice->created_at)))
+                                VIII
+                            @break
+
+                            @case(date(9, strtotime($invoice->created_at)))
+                                IX
+                            @break
+
+                            @case(date(10, strtotime($invoice->created_at)))
+                                X
+                            @break
+
+                            @case(date(11, strtotime($invoice->created_at)))
+                                XI
+                            @break
+
+                            @case(date(12, strtotime($invoice->created_at)))
+                                XII
+                            @break
+                        @endswitch/{{ date('Y', strtotime($invoice->created_at)) }}/{{ $invoice->no_inv }}
+                         perihal pekerjaan {{ $invoice->quotation->nama_project }}.
                     </p>
                     <p style="text-align: justify;"><b>PIHAK PERTAMA</b> menyampaikan untuk progress pekerjaan/barang* sudah sesuai dan telah diselesaikan 100% berdasarkan kondisi akhir dilokasi dan diterima dengan baik oleh <b>PIHAK KEDUA</b>. Dengan ini disertakan juga lampiran invoice sebagai kewajiban <b>PIHAK KEDUA</b> untuk melakukan pembayaran atas jasa/barang tersebut dengan detail berikut:
                         <table>
@@ -164,7 +214,57 @@
                             <tr>
                                 <td>Nomor Invoice</td>
                                 <td>:</td>
-                                <td>{{ $invoice->no_inv }}</td>
+                                <td>{{ date('d.m', strtotime($invoice->created_at)) }}/
+                                    @switch(date('m', strtotime($invoice->created_at)))
+                                        @case(date(1, strtotime($invoice->created_at)))
+                                            I
+                                        @break
+
+                                        @case(date(2, strtotime($invoice->created_at)))
+                                            II
+                                        @break
+
+                                        @case(date(3, strtotime($invoice->created_at)))
+                                            III
+                                        @break
+
+                                        @case(date(4, strtotime($invoice->created_at)))
+                                            IV
+                                        @break
+
+                                        @case(date(5, strtotime($invoice->created_at)))
+                                            V
+                                        @break
+
+                                        @case(date(6, strtotime($invoice->created_at)))
+                                            VI
+                                        @break
+
+                                        @case(date(7, strtotime($invoice->created_at)))
+                                            VII
+                                        @break
+
+                                        @case(date(8, strtotime($invoice->created_at)))
+                                            VIII
+                                        @break
+
+                                        @case(date(9, strtotime($invoice->created_at)))
+                                            IX
+                                        @break
+
+                                        @case(date(10, strtotime($invoice->created_at)))
+                                            X
+                                        @break
+
+                                        @case(date(11, strtotime($invoice->created_at)))
+                                            XI
+                                        @break
+
+                                        @case(date(12, strtotime($invoice->created_at)))
+                                            XII
+                                        @break
+                                    @endswitch/{{ date('Y', strtotime($invoice->created_at)) }}/{{ $invoice->no_inv }}
+                                </td>
                             </tr>
                             <tr>
                                 <td>Nominal Invoice yang harus dibayar </td>
@@ -172,7 +272,7 @@
                                 <td>Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
                             </tr>
                         </table><br>
-                        <br><br><br>Purwakarta, .................
+                        <br><br><br>Purwakarta, {{ Carbon\Carbon::now()->isoFormat('DD MMMM Y') }}
                     </p>
 
                     <table width="670px" cellspacing="0" cellpadding="0">
@@ -196,7 +296,7 @@
                             <td>
                                 <b>PIHAK KEDUA,</b>
                                 <br><br><br><br><br><br>
-                                {{ $invoice->quotation->customer_name }}
+                                <center>{{ $invoice->quotation->customer_name }}</center>
                             </td>
                         </tr>
                     </table>
