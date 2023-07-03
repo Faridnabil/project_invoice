@@ -116,8 +116,8 @@ class QuotationController extends Controller
             'no' => $id_spk,
             'tgl' => now(),
             'nama' => 'PT. Global Technology Essential',
-            'alamat' => 'Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117',
-            'telp' => '0877-7984-4484',
+            'alamat' => 'Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat',
+            'telp' => '087779844484',
             'ktp' => '3214012109010003',
         ]);
 

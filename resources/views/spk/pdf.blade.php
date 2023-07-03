@@ -222,7 +222,7 @@
                                 <ul type="disc" style="padding-left: 20px">
                                     <li>Termin pertama, ketika menandatangani dan menyepakati SPK sebesar 50% dari total
                                         biaya yaitu
-                                        senilai
+                                        senilai .............................
                                     </li>
                                     <li>Termin kedua, ketika PIHAK PERTAMA menyerahkan hasil pekerjaan pembuatan
                                         Pembangunan Server
@@ -251,13 +251,11 @@
                         <li>
                             <p style="text-align: justify;">
                                 PIHAK PERTAMA berhak menjadikan hasil kerja sama ini untuk diperlihatkan sebagai hasil
-                                kerja
-                                &nbsp;&nbsp;(portfolio) antar PIHAK PERTAMA dan PIHAK KEDUA, namun PIHAK PERTAMA tetap
-                                &nbsp;&nbsp;berkewajiban untuk meminta persetujuan terlebih dahulu kepada PIHAK KEDUA
-                                dalam hal
-                                &nbsp;&nbsp;&nbsp;&nbsp;penggunaan hasil pekerjaan ini untuk kepentingan PIHAK PERTAMA.
+                                kerja (portfolio) antar PIHAK PERTAMA dan PIHAK KEDUA, namun PIHAK PERTAMA tetap
+                                berkewajiban untuk meminta persetujuan terlebih dahulu kepada PIHAK KEDUA
+                                dalam hal penggunaan hasil pekerjaan ini untuk kepentingan PIHAK PERTAMA.
                                 Adapun
-                                ketidaksepahaman &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dalam perihal persetujuan akan
+                                ketidaksepahaman dalam perihal persetujuan akan
                                 diselesaikan
                                 secara musyawarah oleh PARA PIHAK.
                             </p>
