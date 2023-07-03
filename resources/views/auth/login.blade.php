@@ -15,12 +15,22 @@
     <link rel="stylesheet" href="{{ asset('template/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
+
+    <style>
+        body {
+          background-image: url({{ asset('template/dist/img/bg.png') }});
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+    </style>
+
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><b>Invoice</b>Web</a>
+            <a href="#" style="color: white"><b>Invoice</b>Web</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
