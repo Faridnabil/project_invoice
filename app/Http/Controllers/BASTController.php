@@ -50,7 +50,7 @@ class BASTController extends Controller
 
     public function download_file($id)
     {
-        $file = BAST::find($id)->first();
+        $file = BAST::find($id);
         $file_path = public_path($file->file);
         return response()->download($file_path);
     }

@@ -100,7 +100,7 @@
                                                     /{{ date('Y', strtotime($item->tgl)) }}/{{ $item->no }}</td>
                                                 <td>{{ $item->nama }}</td>
                                                 <td>{{ $item->quotation->customer_name }}</td>
-                                                <td>{{ date('d F Y', strtotime($item->tgl)) }}</td>
+                                                <td>{{ Carbon\Carbon::create($item->tgl)->isoFormat('DD MMMM Y') }}</td>
                                                 <td>
                                                     <a href="/edit-spk/{{ $item->id }}" type="button" title="Edit">
                                                         <span class="fas fa-edit">&nbsp;&nbsp;&nbsp;</span>

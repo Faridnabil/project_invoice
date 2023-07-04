@@ -175,7 +175,7 @@ class SPKController extends Controller
 
     public function download_file($id)
     {
-        $file = SPK::find($id)->first();
+        $file = SPK::find($id);
         $file_path = public_path($file->file);
 
         return response()->download($file_path);

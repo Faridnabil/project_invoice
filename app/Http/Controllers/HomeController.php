@@ -16,7 +16,7 @@ class HomeController extends Controller
         $spk = SPK::count();
         $invoice = Invoice::count();
         $bast = BAST::count();
-
-        return view('menu.home', compact('quotation', 'spk', 'invoice', 'bast'));
+        $amount_due = Quotation::sum('amount_due');
+        return view('menu.home', compact('quotation', 'spk', 'invoice', 'bast', 'amount_due'));
     }
 }
