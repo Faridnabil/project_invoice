@@ -199,6 +199,7 @@ class QuotationController extends Controller
 
     public function upload_file($id, Request $request)
     {
+        $quotation = Quotation::find($id);
         $file = $request->file('file');
         if (file_exists($file)) {
             $nama_file = time() . "-" . $file->getClientOriginalName();
@@ -212,7 +213,6 @@ class QuotationController extends Controller
             $path = $request->pathFile;
         }
 
-        $quotation = Quotation::find($id);
         $quotation->file = $path;
         $quotation->save();
 

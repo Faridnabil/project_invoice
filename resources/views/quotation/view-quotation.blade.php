@@ -117,12 +117,12 @@
                                                         <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
                                                     @if ($item->file == null)
-                                                        <a href="#" type="button" title="Upload File"
-                                                            data-target="#uploadFile" data-toggle="modal">
+                                                        <a href="#uploadFile{{ $item->id }}" type="button" title="Upload File"
+                                                            data-toggle="modal">
                                                             <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
                                                         </a>
                                                     @else
-                                                        <a href="{{ url('download-file/' . $item->id) }}"
+                                                        <a href="{{ url('download-quotation/' . $item->id) }}"
                                                             title="Download File" target="_blank">
                                                             <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
                                                         </a>
@@ -155,7 +155,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" id="uploadFile" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="uploadFile{{ $item->id }}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -167,15 +167,15 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="/upload-file/{{ $item->id }}" method="POST"
-                                                                enctype="multipart/form-data">
+                                                            <form action="/upload-quotation/{{ $item->id }}"
+                                                                method="POST" enctype="multipart/form-data">
                                                                 @csrf
-                                                                <input type="file" class="form-control mb-3" id="floatingInput"
-                                                                    name="file">
+                                                                <input type="file" class="form-control mb-3"
+                                                                    id="floatingInput" name="file">
                                                                 <input type="hidden" name="pathFile"
                                                                     value="{{ $item->file }}">
-                                                                <button type="submit"
-                                                                    class="btn btn-primary">Upload</button>
+                                                                <button type="submit" class="btn btn-primary">Upload
+                                                                </button>
                                                             </form>
                                                         </div>
                                                     </div>

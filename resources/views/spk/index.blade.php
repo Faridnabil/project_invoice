@@ -119,7 +119,7 @@
                                                             <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
                                                         </a>
                                                     @else
-                                                        <a href="{{ url('download-file/' . $item->id) }}"
+                                                        <a href="{{ url('download-spk/' . $item->id) }}"
                                                             title="Download File" target="_blank">
                                                             <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
                                                         </a>
@@ -164,7 +164,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="/upload-file/{{ $item->id }}" method="POST"
+                                                            <form action="/upload-spk/{{ $item->id }}" method="POST"
                                                                 enctype="multipart/form-data">
                                                                 @csrf
                                                                 <input type="file" class="form-control mb-3" id="floatingInput"
