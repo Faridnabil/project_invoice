@@ -209,7 +209,7 @@
                             <tr>
                                 <td>Nomor SPK</td>
                                 <td>:</td>
-                                <<td>{{ date('d.m', strtotime($bast->spk->created_at)) }}/
+                                <td>{{ date('d.m', strtotime($bast->spk->created_at)) }}/
                                     @switch(date('m', strtotime($bast->spk->created_at)))
                                         @case(date(1, strtotime($bast->spk->created_at)))
                                             I
@@ -319,7 +319,7 @@
                             <tr>
                                 <td>Nominal Invoice yang harus dibayar </td>
                                 <td>:</td>
-                                <td>Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
+                                <td>Rp. {{ number_format($invoice->quotation->amount, 0, ',', '.') }}</td>
                             </tr>
                         </table><br>
                         <br><br><br>Purwakarta, {{ Carbon\Carbon::now()->isoFormat('DD MMMM Y') }}

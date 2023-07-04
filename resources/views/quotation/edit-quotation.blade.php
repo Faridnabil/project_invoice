@@ -96,8 +96,10 @@
                                                         value="{{ $item->qty }}">
                                                 </div>
                                                 <div class="col-2">
-                                                    <select class="form-control" name="satuan[]" value="{{ $item->satuan }}">
-                                                        <option value="{{ $item->satuan }}" selected>{{ $item->satuan }}</option>
+                                                    <select class="form-control" name="satuan[]"
+                                                        value="{{ $item->satuan }}">
+                                                        <option value="{{ $item->satuan }}" selected>{{ $item->satuan }}
+                                                        </option>
                                                         <option value="Unit">Unit</option>
                                                         <option value="Set">Set</option>
                                                         <option value="Roll">Roll</option>
@@ -109,8 +111,9 @@
                                                         value="{{ $item->price }}">
                                                 </div>
                                                 <div class="col-3">
-                                                    <input type="text" class="form-control" id="total" name="total[]"
-                                                        placeholder="Total" value="{{ $item->total }}" readonly>
+                                                    <input type="text" class="form-control" id="total"
+                                                        name="total[]" placeholder="Total" value="{{ $item->total }}"
+                                                        readonly>
                                                 </div>
                                                 {{-- <div class="col-1">
                                                     <button class="btn btn-primary" onclick="btnAdd()" type="button">
@@ -125,7 +128,8 @@
                                         <div class="col-sm-8">
                                             <h2>Notes :</h2>
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="3" name="description" placeholder="Enter ..."></textarea>
+                                                <textarea class="form-control" rows="3" name="description" value="{{ $quotation->description }}"
+                                                    placeholder="Enter ...">{{ $quotation->description }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -148,11 +152,6 @@
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="amount" name="amount"
                                                     placeholder="Total" readonly value="{{ $quotation->amount }}">
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="amount_paid"
-                                                    name="amount_paid" placeholder="Amount Paid"
-                                                    value="{{ $quotation->amount_paid }}">
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="amount_due"
