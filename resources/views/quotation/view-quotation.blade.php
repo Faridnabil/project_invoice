@@ -100,7 +100,7 @@
                                                     @endswitch
                                                     /{{ date('Y', strtotime($item->tanggal_quotation)) }}/{{ $item->no_quotation }}
                                                 </td>
-                                                <td>{{ date('d F Y', strtotime($item->tanggal_quotation)) }}</td>
+                                                <td>{{ Carbon\Carbon::create($item->tanggal_quotation)->isoFormat('DD MMMM Y') }}</td>
                                                 <td>{{ $item->customer_name }}</td>
                                                 <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td>
                                                 <td>
