@@ -132,26 +132,26 @@
             <tbody>
                 @foreach ($quotation_detail as $item)
                     <tr data-widget="expandable-table" aria-expanded="false">
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->item_name }}</td>
-                        <td>{{ $item->qty }} {{ $item->satuan }}</td>
-                        <td>Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
-                        <td>Rp. {{ number_format($item->total, 0, ',', '.') }}</td>
+                        <td style="text-align: center;">{{ $loop->iteration }}</td>
+                        <td style="text-align: center;">{{ $item->item_name }}</td>
+                        <td style="text-align: center;">{{ $item->qty }} {{ $item->satuan }}</td>
+                        <td style="text-align: right;">Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
+                        <td style="text-align: right;">Rp. {{ number_format($item->total, 0, ',', '.') }}</td>
                     </tr>
                 @endforeach
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>PPN/VAT 11%</td>
-                    <td>Rp. {{ number_format($quotation->tax_amount, 0, ',', '.') }}</td>
+                    <td colspan="5"></td>
                 </tr>
                 <tr>
+                    {{-- <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>GRAND TOTAL</td>
-                    <td>Rp. {{ number_format($quotation->amount, 0, ',', '.') }}</td>
+                    <td></td> --}}
+                    <td colspan="4" style="text-align: right;">PPN/VAT 11%</td>
+                    <td style="text-align: right;">Rp. {{ number_format($quotation->tax_amount, 0, ',', '.') }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="text-align: right;">GRAND TOTAL</td>
+                    <td style="text-align: right;">Rp. {{ number_format($quotation->amount, 0, ',', '.') }}</td>
                 </tr>
             </tbody>
         </table>
@@ -180,17 +180,31 @@
                 </td>
             </tr>
         </table>
+    </center>
         <br>
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Payment Transfer To :<br>
-                    Account Number : 1362450042<br>
-                    Account Name : PT Global Technology Essential<br>
-                    Bank Name : Bank Negara Indonesia<br>
                 </td>
+            </tr>
+            <tr>
+                <td>Account Number</td>
+                <td>:</td>
+                <td>1362450042</td>
+            </tr>
+            <tr>
+                <td>Account Name</td>
+                <td>:</td>
+                <td>PT Global Technology Essential</td>
+            </tr>
+            <tr>
+                <td>Bank Name</td>
+                <td>:</td>
+                <td>Bank Negara Indonesia</td>
             </tr>
         </table>
         <br><br>
+        <center>
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Prepared by<br>

@@ -114,8 +114,8 @@
                                                         <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
                                                     @if ($item->file == null)
-                                                        <a href="#" type="button" title="Upload File"
-                                                            data-target="#uploadFile" data-toggle="modal">
+                                                        <a href="#uploadFile{{ $item->id }}" type="button" title="Upload File"
+                                                            data-toggle="modal">
                                                             <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
                                                         </a>
                                                     @else
@@ -152,7 +152,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" id="uploadFile" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="uploadFile{{ $item->id }}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">

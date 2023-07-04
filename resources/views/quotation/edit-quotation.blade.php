@@ -57,8 +57,16 @@
                                                     placeholder="Customer Name" value="{{ $quotation->customer_name }}">
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" class="form-control" name="no_hp"
+                                                    placeholder="No Handphone" value="{{ $quotation->no_hp }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="no_ktp"
+                                                    placeholder="No KTP" value="{{ $quotation->no_ktp }}">
+                                            </div>
+                                            <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="address" placeholder="Customer Address"
-                                                    value="{{ $quotation->address }}"></textarea>
+                                                    value="{{ $quotation->address }}">{{ $quotation->address }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
