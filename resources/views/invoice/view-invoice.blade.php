@@ -125,8 +125,8 @@
                                                             <span class="fas fa-eye">&nbsp; &nbsp;</span>
                                                         </a>
                                                         @if ($item->file_termin2 == null)
-                                                            <a href="#" type="button" title="Upload File"
-                                                                data-target="#uploadFile2" data-toggle="modal">
+                                                            <a href="#uploadFile2{{ $item->id }}" type="button" title="Upload File"
+                                                                data-toggle="modal">
                                                                 <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
                                                             </a>
                                                         @else
@@ -149,8 +149,8 @@
                                                             <span class="fas fa-eye">&nbsp; &nbsp;</span>
                                                         </a>
                                                         @if ($item->file_termin1 == null)
-                                                            <a href="#" type="button" title="Upload File"
-                                                                data-target="#uploadFile" data-toggle="modal">
+                                                            <a href="#uploadFile{{ $item->id }}" type="button" title="Upload File"
+                                                                data-toggle="modal">
                                                                 <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
                                                             </a>
                                                         @else
@@ -171,12 +171,12 @@
                                                     @endif
                                                 </td>
                                             </tr>
-                                            <div class="modal fade" id="uploadFile" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="uploadFile{{ $item->id }}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Upload File
+                                                            <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Termin 2
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -198,12 +198,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="modal fade" id="uploadFile2" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="uploadFile2{{ $item->id }}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Upload File
+                                                            <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Termin 2
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">

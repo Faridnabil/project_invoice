@@ -221,7 +221,7 @@ class QuotationController extends Controller
 
     public function download_file($id)
     {
-        $file = Quotation::find($id)->first();
+        $file = Quotation::find($id);
         $file_path = public_path($file->file);
 
         return response()->download($file_path);

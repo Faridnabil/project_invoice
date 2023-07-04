@@ -185,14 +185,14 @@ class InvoiceController extends Controller
 
     public function download_file_termin1($id)
     {
-        $file = Invoice::find($id)->first();
+        $file = Invoice::find($id);
         $file_path = public_path($file->file_termin1);
         return response()->download($file_path);
     }
 
     public function download_file_termin2($id)
     {
-        $file = Invoice::find($id)->first();
+        $file = Invoice::find($id);
         $file_path = public_path($file->file_termin2);
         return response()->download($file_path);
     }
