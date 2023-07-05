@@ -27,7 +27,7 @@ class CreateQuotation extends Migration
             $table->string('sub_total');
             $table->string('amount');
             $table->string('amount_due');
-            $table->string('description')->nullable();
+            $table->string('description', 10000)->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
         });

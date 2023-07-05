@@ -12,7 +12,7 @@
         }
 
         @page {
-            margin-top: 0;
+            margin-top: 10px;
             margin-bottom: 0;
         }
 
@@ -126,9 +126,9 @@
         <table width="670px" cellspacing="0" cellpadding="0" border="1">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Item Name</th>
-                    <th>Quantity</th>
+                    <th style="width: 5%">No</th>
+                    <th style="width: 50%">Item Name</th>
+                    <th style="width: 10%">Quantity</th>
                     <th>Unit Price</th>
                     <th>Amount</th>
                 </tr>
@@ -174,19 +174,18 @@
                 </td>
             </tr>
         </table>
-        <br><br>
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Prepared by<br>
                     PT Global Technology Essential
-                    <br><br><br><br><br><br>
+                    <br><br><br><br><br>
                     M Ridzky Farhan<br>
                     CEO
                 </td>
 
                 <td align="right">&nbsp;
                     Client Approval
-                    <br><br><br><br><br><br>
+                    <br><br><br><br><br>
                     {{ $invoice->quotation->customer_name }}
                 </td>
             </tr>
