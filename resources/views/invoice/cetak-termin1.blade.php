@@ -138,67 +138,39 @@
                     <tr data-widget="expandable-table" aria-expanded="false">
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->item_name }}</td>
-                        <td>{{ $item->qty }} {{ $item->satuan }}</td>
-                        <td>Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
-                        <td>Rp. {{ number_format($item->total, 0, ',', '.') }}</td>
+                        <td align="right">{{ $item->qty }} {{ $item->satuan }}</td>
+                        <td align="right">Rp. {{ number_format($item->price, 0, ',', '.') }}</td>
+                        <td align="right">Rp. {{ number_format($item->total, 0, ',', '.') }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table> <br><br>
         <table width="300px" cellspacing="0" cellpadding="0" border="1" align="right" style="margin-right: 25px">
             <tr style="font-weight: bold">
-                <td style="background-color: yellow">PPN/VAT 11%</td>
-                <td>Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
+                <td>PPN/VAT 11%</td>
+                <td align="right">Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
             </tr>
             <tr style="font-weight: bold">
 
-                <td style="background-color: yellow">DP</td>
-                <td>Rp. {{ number_format($invoice->termin1, 0, ',', '.') }}</td>
+                <td>DP</td>
+                <td align="right">Rp. {{ number_format($invoice->termin1, 0, ',', '.') }}</td>
             </tr>
             <tr style="font-weight: bold">
 
-                <td style="background-color: yellow">GRAND TOTAL</td>
-                <td>Rp. {{ number_format($invoice->quotation->amount, 0, ',', '.') }}</td>
+                <td>GRAND TOTAL</td>
+                <td align="right">Rp. {{ number_format($invoice->quotation->amount, 0, ',', '.') }}</td>
             </tr>
 
             <tr style="font-weight: bold">
 
-                <td style="background-color: yellow">SISA TAGIHAN</td>
-                <td>Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
+                <td>SISA TAGIHAN</td>
+                <td align="right">Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
             </tr>
         </table>
-        <img style="margin-right: 50px" src="{{ asset('img/paid.png') }}" width="200px" />
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Notes :<br>
-                    Nilai diatas sudah termasuk PPN<br>
-                    Timeline (1-2 Minggu)<br>
-                    Meeting, Diskusi, Preview dilakukan secara online via WA/Email<br>
-                    Additional cost akan dikenakan jika spesifikasi & notes diluar item diatas<br>
-                    Sudah termasuk IP Public selama 6 bulan, selanjutnya dikenakan biaya Rp.200.000/bulan<br>
-                    Pengerjaan 7-14 hari
-                </td>
-            </tr>
-        </table>
-        <br>
-        <table width="670px" cellspacing="0" cellpadding="0">
-            <tr>
-                <td>Term and Agreements :<br>
-                    1. Pembayaran DP minimal 50% dari Total Harga<br>
-                    2. Pembayaran 2x Termin, sebelum pemasangan dan sesudah pekerjaan selesai<br>
-                    3. Harga sudah termasuk PPN 11%<br>
-                    4. Garansi produk 1 tahun, cacat produk dari pabrik kecuali (human error, petir, dll)<br>
-                    5. Garansi instalasi 6 bulan
-                </td>
-            </tr>
-        </table>
-        <br>
-        <table width="670px" cellspacing="0" cellpadding="0">
-            <tr>
-                <td>Payment Transfer To :<br>
-                    Account Number : 1362450042<br>
-                    Account Name : PT Global Technology Essential<br>
-                    Bank Name : Bank Negara Indonesia<br>
+                    <p style="white-space: pre-line">{{ $invoice->quotation->description }}</p>
                 </td>
             </tr>
         </table>
@@ -211,22 +183,11 @@
                     M Ridzky Farhan<br>
                     CEO
                 </td>
-                <td>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-                <td>&nbsp;
+
+                <td align="right">&nbsp;
                     Client Approval
                     <br><br><br><br><br><br>
-                    ({{ $invoice->quotation->customer_name }})
+                    {{ $invoice->quotation->customer_name }}
                 </td>
             </tr>
         </table>

@@ -327,26 +327,16 @@
 
                     <table width="670px" cellspacing="0" cellpadding="0">
                         <tr>
-                            <td><b>PIHAK PERTAMA,</b><br>
+                            <td><b>PIHAK PERTAMA</b><br>
 
                                 <br><br><br><br><br><br>
                                 M Ridzky Farhan<br>
                                 CEO PT Global Technology Essential
                             </td>
-                            <td>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </td>
-                            <td>
-                                <b>PIHAK KEDUA,</b>
+                            <td align="right">
+                                <b>PIHAK KEDUA</b>
                                 <br><br><br><br><br><br>
-                                <center>{{ $invoice->quotation->customer_name }}</center>
+                                {{ $invoice->quotation->customer_name }}
                             </td>
                         </tr>
                     </table>
