@@ -61,6 +61,16 @@
                                                     value="{{ $invoice->quotation->customer_name }}" readonly>
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" class="form-control" name="no_hp"
+                                                    placeholder="Customer Phone" value="{{ $invoice->quotation->no_hp }}"
+                                                    readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="no_ktp"
+                                                    placeholder="Customer KTP" value="{{ $invoice->quotation->no_ktp }}"
+                                                    readonly>
+                                            </div>
+                                            <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="address" placeholder="{{ $invoice->quotation->address }}" readonly
                                                     value="{{ $invoice->quotation->address }}"></textarea>
                                             </div>
@@ -101,8 +111,8 @@
                                                 </div>
                                                 <div class="col-2">
                                                     <label for="sub_total">Sub total</label>
-                                                    <input type="text" class="form-control" id="price" name="price[]"
-                                                        onchange="Calc(this);" placeholder="Price"
+                                                    <input type="text" class="form-control" id="price"
+                                                        name="price[]" onchange="Calc(this);" placeholder="Price"
                                                         value="{{ $item->price }}" readonly>
                                                 </div>
                                                 <div class="col-3">
@@ -123,11 +133,6 @@
                                     <div class="row">
                                         <div class="col-sm-8">
                                             <div class="form-group">
-                                                <label for="notes">Notes</label>
-                                                <textarea class="form-control" rows="3" name="description"
-                                                    placeholder="{{ $invoice->quotation->description }}" value="{{ $invoice->quotation->description }}" readonly></textarea>
-                                            </div>
-                                            <div class="form-group">
                                                 <label for="no-inv">No Invoice</label>
                                                 <input type="text" class="form-control" name="no_inv"
                                                     value="{{ $invoice->no_inv }}" readonly>
@@ -147,7 +152,8 @@
                                                 <div class="form-group">
                                                     <label for="total-paid">Termin 2</label>
                                                     <input type="text" class="form-control" id="termin2"
-                                                        name="termin2" value="{{ $invoice->termin2 }}" placeholder="Termin 2">
+                                                        name="termin2" value="{{ $invoice->termin2 }}"
+                                                        placeholder="Termin 2">
                                                 </div>
                                             @endif
                                         </div>
@@ -182,7 +188,8 @@
                                                     name="amount_due" placeholder="Amount Due" readonly
                                                     value="{{ $invoice->quotation->amount_due }}">
                                             </div>
-
+                                        </div>
+                                        <div class="col-sm-4">
                                             <a href="/view-invoice" class="btn btn-danger" type="button">
                                                 Cancel
                                             </a>

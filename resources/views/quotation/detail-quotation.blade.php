@@ -75,7 +75,13 @@
                             @case(date(2, strtotime($quotation->tanggal_quotation)))
                                 II
                             @break
+                            @case(date(2, strtotime($quotation->tanggal_quotation)))
+                                II
+                            @break
 
+                            @case(date(3, strtotime($quotation->tanggal_quotation)))
+                                III
+                            @break
                             @case(date(3, strtotime($quotation->tanggal_quotation)))
                                 III
                             @break
@@ -83,7 +89,13 @@
                             @case(date(4, strtotime($quotation->tanggal_quotation)))
                                 IV
                             @break
+                            @case(date(4, strtotime($quotation->tanggal_quotation)))
+                                IV
+                            @break
 
+                            @case(date(5, strtotime($quotation->tanggal_quotation)))
+                                V
+                            @break
                             @case(date(5, strtotime($quotation->tanggal_quotation)))
                                 V
                             @break
@@ -91,7 +103,13 @@
                             @case(date(6, strtotime($quotation->tanggal_quotation)))
                                 VI
                             @break
+                            @case(date(6, strtotime($quotation->tanggal_quotation)))
+                                VI
+                            @break
 
+                            @case(date(7, strtotime($quotation->tanggal_quotation)))
+                                VII
+                            @break
                             @case(date(7, strtotime($quotation->tanggal_quotation)))
                                 VII
                             @break
@@ -99,7 +117,13 @@
                             @case(date(8, strtotime($quotation->tanggal_quotation)))
                                 VIII
                             @break
+                            @case(date(8, strtotime($quotation->tanggal_quotation)))
+                                VIII
+                            @break
 
+                            @case(date(9, strtotime($quotation->tanggal_quotation)))
+                                IX
+                            @break
                             @case(date(9, strtotime($quotation->tanggal_quotation)))
                                 IX
                             @break
@@ -107,7 +131,13 @@
                             @case(date(10, strtotime($quotation->tanggal_quotation)))
                                 X
                             @break
+                            @case(date(10, strtotime($quotation->tanggal_quotation)))
+                                X
+                            @break
 
+                            @case(date(11, strtotime($quotation->tanggal_quotation)))
+                                XI
+                            @break
                             @case(date(11, strtotime($quotation->tanggal_quotation)))
                                 XI
                             @break
