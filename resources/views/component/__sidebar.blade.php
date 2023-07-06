@@ -3,7 +3,7 @@
             <a href="/home" class="brand-link">
                 <img src="{{ asset('template/dist/img/AdminLTELogos.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Invoice</span>
+                <span class="brand-text font-weight-light">E-Archive</span>
             </a>
 
             <!-- Sidebar -->
@@ -15,8 +15,6 @@
                         <img src="{{ asset('template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
-                    {{-- <img class="avatar rounded image" alt="Image placeholder"
-                        src="https://ui-avatars.com/api/?name={{ auth()->user()->name }}&amp;background=4e73df&amp;color=ffffff&amp;size=100" /> --}}
                     <div class="info">
                         <a href="#" class="d-block">{{ auth()->user()->name }}</a>
                     </div>

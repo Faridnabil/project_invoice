@@ -61,6 +61,12 @@
                                                     placeholder="No KTP">
                                             </div>
                                             <div class="form-group">
+                                                <select class="form-control" name="bank_number">
+                                                    <option value="0124905486100">0124905486100 (BJB)</option>
+                                                    <option value="1362450042">1362450042 (BNI)</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="address" placeholder="Customer Address"></textarea>
                                             </div>
                                         </div>
@@ -90,8 +96,15 @@
                                             <div class="col-2">
                                                 <select class="form-control" name="satuan[]">
                                                     <option value="Unit">Unit</option>
-                                                    <option value="Set">Set</option>
+                                                    <option value="Pcs">Pcs</option>
+                                                    <option value="Btg">Btg</option>
+                                                    <option value="Lot">Lot</option>
+                                                    <option value="Mtr">Mtr</option>
                                                     <option value="Roll">Roll</option>
+                                                    <option value="Set">Set</option>
+                                                    <option value="Bln">Bln</option>
+                                                    <option value="Ttk">Ttk</option>
+                                                    <option value="Bks">Bks</option>
                                                 </select>
                                             </div>
                                             <div class="col-2">
@@ -149,7 +162,8 @@
 
                                             <h5>Term and Agreements :</h5>
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="4" id="perjanjian" name="perjanjian" placeholder="Enter Term and Agreements..."></textarea>
+                                                <textarea class="form-control" rows="4" id="perjanjian" name="perjanjian"
+                                                    placeholder="Enter Term and Agreements..."></textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">

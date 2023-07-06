@@ -43,7 +43,7 @@ class InvoiceController extends Controller
             'status' => 'paid',
         ]);
 
-        $invoice = Invoice::latest()->first();
+        $invoice = Invoice::find($id);
         $quotation = Quotation::find($request->quotation_id);
         $amount_due = $quotation->amount_due - $invoice->termin1;
         Quotation::where("id", $request->quotation_id)->update([
@@ -77,8 +77,7 @@ class InvoiceController extends Controller
             'status' => 'lunas',
         ]);
 
-        $invoice = Invoice::latest()->first();
-        $spk = SPK::latest()->first();
+        $invoice = Invoice::find($id);
 
         $quotation = Quotation::find($request->quotation_id);
         $amount_due = $quotation->amount_due - $invoice->termin2;
@@ -104,12 +103,15 @@ class InvoiceController extends Controller
         }
         $id_bast = $kodebast . $addNol . $incrementKode;
 
+        $inv = Invoice::find($id);
+        $spk = SPK::find($id);
+
         if ($invoice->status == 'lunas')
         {
             BAST::create([
                 'no_bast' => $id_bast,
-                'invoice_id' => $invoice->id,
-                'spk_id' => $invoice->id,
+                'invoice_id' => $inv->id,
+                'spk_id' => $spk->id,
             ]);
         }
 

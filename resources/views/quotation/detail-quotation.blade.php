@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Quotation - {{$quotation->customer_name}}</title>
+    <title>Detail Quotation - {{ $quotation->customer_name }}</title>
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
@@ -26,11 +26,13 @@
             display: none;
         }
 
-         @media print {
-        html, body {
-            width: 210mm;
-            height: 297mm;
-        }
+        @media print {
+
+            html,
+            body {
+                width: 210mm;
+                height: 297mm;
+            }
     </style>
 </head>
 
@@ -75,6 +77,7 @@
                             @case(date(2, strtotime($quotation->tanggal_quotation)))
                                 II
                             @break
+
                             @case(date(2, strtotime($quotation->tanggal_quotation)))
                                 II
                             @break
@@ -82,6 +85,7 @@
                             @case(date(3, strtotime($quotation->tanggal_quotation)))
                                 III
                             @break
+
                             @case(date(3, strtotime($quotation->tanggal_quotation)))
                                 III
                             @break
@@ -89,6 +93,7 @@
                             @case(date(4, strtotime($quotation->tanggal_quotation)))
                                 IV
                             @break
+
                             @case(date(4, strtotime($quotation->tanggal_quotation)))
                                 IV
                             @break
@@ -96,6 +101,7 @@
                             @case(date(5, strtotime($quotation->tanggal_quotation)))
                                 V
                             @break
+
                             @case(date(5, strtotime($quotation->tanggal_quotation)))
                                 V
                             @break
@@ -103,6 +109,7 @@
                             @case(date(6, strtotime($quotation->tanggal_quotation)))
                                 VI
                             @break
+
                             @case(date(6, strtotime($quotation->tanggal_quotation)))
                                 VI
                             @break
@@ -110,6 +117,7 @@
                             @case(date(7, strtotime($quotation->tanggal_quotation)))
                                 VII
                             @break
+
                             @case(date(7, strtotime($quotation->tanggal_quotation)))
                                 VII
                             @break
@@ -117,6 +125,7 @@
                             @case(date(8, strtotime($quotation->tanggal_quotation)))
                                 VIII
                             @break
+
                             @case(date(8, strtotime($quotation->tanggal_quotation)))
                                 VIII
                             @break
@@ -124,6 +133,7 @@
                             @case(date(9, strtotime($quotation->tanggal_quotation)))
                                 IX
                             @break
+
                             @case(date(9, strtotime($quotation->tanggal_quotation)))
                                 IX
                             @break
@@ -131,6 +141,7 @@
                             @case(date(10, strtotime($quotation->tanggal_quotation)))
                                 X
                             @break
+
                             @case(date(10, strtotime($quotation->tanggal_quotation)))
                                 X
                             @break
@@ -138,6 +149,7 @@
                             @case(date(11, strtotime($quotation->tanggal_quotation)))
                                 XI
                             @break
+
                             @case(date(11, strtotime($quotation->tanggal_quotation)))
                                 XI
                             @break
@@ -150,11 +162,11 @@
                         : {{ $quotation->customer_name }}<br>
                         : {{ $quotation->nama_project }}<br>
                         : {{ Carbon\Carbon::create($quotation->tanggal_quotation)->isoFormat('DD MMMM Y') }}
-                        </td>
+                    </td>
                 </tr>
             </thead>
         </table>
-<br>
+        <br>
         <table width="670px" cellspacing="0" cellpadding="0" border="1">
             <thead>
                 <tr>
@@ -207,9 +219,13 @@
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td><b>Payment Transfer To :</b><br>
-                    Account Number : 1362450042<br>
+                    Account Number : {{ $quotation->bank_number }}<br>
                     Account Name : PT Global Technology Essential<br>
-                    Bank Name : Bank Negara Indonesia<br>
+                    @if ($quotation->bank_number == '1362450042')
+                        Bank Name : Bank Negara Indonesia<br>
+                    @else
+                        Bank Name : Bank Jabar Banten<br>
+                    @endif
                 </td>
             </tr>
         </table>
@@ -234,4 +250,4 @@
         window.print();
     </script>
     <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js">
-</body>
+        < /body>

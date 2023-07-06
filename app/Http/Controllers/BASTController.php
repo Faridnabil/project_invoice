@@ -20,10 +20,9 @@ class BASTController extends Controller
 
     public function pdf($id)
     {
-        $spk = SPK::find($id);
-        $invoice = Invoice::find($id);
         $bast = BAST::find($id);
-        return view('berita-acara.beritaprint', compact('invoice', 'bast', 'spk'));
+
+        return view('berita-acara.beritaprint', compact('bast'));
     }
 
     public function upload_file($id, Request $request)

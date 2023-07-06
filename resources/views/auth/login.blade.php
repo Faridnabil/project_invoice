@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="#" style="color: white"><b>Invoice</b>Web</a>
+            <a href="#" style="color: white"><b>E-Archive</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">

@@ -65,6 +65,20 @@
                                                     placeholder="No KTP" value="{{ $quotation->no_ktp }}">
                                             </div>
                                             <div class="form-group">
+                                                <select class="form-control" name="bank_number"
+                                                    value="{{ $quotation->bank_number }}">
+                                                    @if ($quotation->bank_number == '0124905486100')
+                                                        <option value="{{ $quotation->bank_number }}" selected disabled>
+                                                            {{ $quotation->bank_number }} (BJB)</option>
+                                                    @else
+                                                        <option value="{{ $quotation->bank_number }}" selected disabled>
+                                                            {{ $quotation->bank_number }} (BNI)</option>
+                                                    @endif
+                                                    <option value="0124905486100">0124905486100 (BJB)</option>
+                                                    <option value="1362450042">1362450042 (BNI)</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="address" placeholder="Customer Address"
                                                     value="{{ $quotation->address }}">{{ $quotation->address }}</textarea>
                                             </div>
@@ -98,16 +112,23 @@
                                                 <div class="col-2">
                                                     <select class="form-control" name="satuan[]"
                                                         value="{{ $item->satuan }}">
-                                                        <option value="{{ $item->satuan }}" selected>{{ $item->satuan }}
+                                                        <option value="{{ $item->satuan }}" selected disabled>{{ $item->satuan }}
                                                         </option>
                                                         <option value="Unit">Unit</option>
-                                                        <option value="Set">Set</option>
+                                                        <option value="Pcs">Pcs</option>
+                                                        <option value="Btg">Btg</option>
+                                                        <option value="Lot">Lot</option>
+                                                        <option value="Mtr">Mtr</option>
                                                         <option value="Roll">Roll</option>
+                                                        <option value="Set">Set</option>
+                                                        <option value="Bln">Bln</option>
+                                                        <option value="Ttk">Ttk</option>
+                                                        <option value="Bks">Bks</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-2">
-                                                    <input type="text" class="form-control" id="price" name="price[]"
-                                                        onchange="Calc(this);" placeholder="Price"
+                                                    <input type="text" class="form-control" id="price"
+                                                        name="price[]" onchange="Calc(this);" placeholder="Price"
                                                         value="{{ $item->price }}">
                                                 </div>
                                                 <div class="col-3">
@@ -128,14 +149,14 @@
                                         <div class="col-sm-8">
                                             <h5>Notes :</h5>
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="4" id="description" name="description" value="{{ $quotation->description }}"
-                                                    placeholder="Enter ...">{{ $quotation->description }}</textarea>
+                                                <textarea class="form-control" rows="4" id="description" name="description"
+                                                    value="{{ $quotation->description }}" placeholder="Enter ...">{{ $quotation->description }}</textarea>
                                             </div>
 
                                             <h5>Term and Agreements :</h5>
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="4" id="perjanjian" name="perjanjian" value="{{ $quotation->perjanjian }}"
-                                                    placeholder="Enter Term and Agreements...">{{ $quotation->perjanjian }}</textarea>
+                                                <textarea class="form-control" rows="4" id="perjanjian" name="perjanjian"
+                                                    value="{{ $quotation->perjanjian }}" placeholder="Enter Term and Agreements...">{{ $quotation->perjanjian }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
