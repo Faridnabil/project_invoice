@@ -119,14 +119,14 @@
                         /{{ date('Y', strtotime($invoice->quotation->tanggal_quotation)) }}/{{ $invoice->no_inv }}<br>
                         : {{ $invoice->quotation->customer_name }}<br>
                         : {{ $invoice->quotation->nama_project }}<br>
-                        : {{ Carbon\Carbon::create($invoice->quotation->tanggal_quotation)->isoFormat('DD MMMM Y') }}
+                        : {{ Carbon\Carbon::create($invoice->quotation->tanggal_quotation)->isoFormat('DD MMMM Y') }} <br>
                         : Termin 1
                         </td>
                 </tr>
             </thead>
         </table>
 <br>
-        <table width="670px" cellspacing="0" cellpadding="0" border="1">
+        <table width="680px" cellspacing="0" cellpadding="0" border="1">
             <thead>
                 <tr>
                     <th>No</th>
@@ -147,8 +147,8 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table> <br><br>
-        <table width="300px" cellspacing="0" cellpadding="0" border="1" align="right" style="margin-right: 60px">
+        </table> <br>
+        <table width="300px" cellspacing="0" cellpadding="0" border="1" align="right" style="margin-right: 57px">
             <tr style="font-weight: bold">
                 <td>PPN/VAT 11%</td>
                 <td align="right">Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
