@@ -158,30 +158,18 @@
         <br><br>
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
-                <td>Notes :<br>
-                    Nilai diatas sudah termasuk PPN<br>
-                    Timeline (1-2 Minggu)<br>
-                    Meeting, Diskusi, Preview dilakukan secara online via WA/Email<br>
-                    Additional cost akan dikenakan jika spesifikasi & notes diluar item diatas<br>
-                    Sudah termasuk IP Public selama 6 bulan, selanjutnya dikenakan biaya Rp.200.000/bulan<br>
-                    Pengerjaan 7-14 hari
+                <td><b>Notes :</b><br>
+                    {!! $quotation->description !!}
                 </td>
             </tr>
-        </table>
-        <br>
-        <table width="670px" cellspacing="0" cellpadding="0">
+            <br>
             <tr>
-                <td>Term and Agreements :<br>
-                    1. Pembayaran DP minimal 50% dari Total Harga<br>
-                    2. Pembayaran 2x Termin, sebelum pemasangan dan sesudah pekerjaan selesai<br>
-                    3. Harga sudah termasuk PPN 11%<br>
-                    4. Garansi produk 1 tahun, cacat produk dari pabrik kecuali (human error, petir, dll)<br>
-                    5. Garansi instalasi 6 bulan
+                <td><b>Term and Agreements :</b><br>
+                    {!! $quotation->perjanjian !!}
                 </td>
             </tr>
         </table>
-    </center>
-        <br>
+
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Payment Transfer To :<br>
@@ -204,7 +192,6 @@
             </tr>
         </table>
         <br><br>
-        <center>
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Prepared by<br>
@@ -213,22 +200,11 @@
                     M Ridzky Farhan<br>
                     CEO
                 </td>
-                <td>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </td>
-                <td>&nbsp;
+
+                <td align="right">&nbsp;
                     Client Approval
                     <br><br><br><br><br><br>
-                    ({{ $quotation->customer_name }})
+                    {{ $quotation->customer_name }}
                 </td>
             </tr>
         </table>
@@ -236,4 +212,6 @@
     <script>
         window.print();
     </script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
 </body>

@@ -47,7 +47,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <h2>From,</h2>
+                                            <h5>From :</h5>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="no_quotation"
                                                     value="{{ $quotation->no_quotation }}" readonly>
@@ -70,7 +70,7 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <h4>Project Name :</h4>
+                                            <h5>Project Name :</h5>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="nama_project"
                                                     value="{{ $quotation->nama_project }}" placeholder="Project Name">
@@ -126,14 +126,20 @@
                                     @endforeach
                                     <div class="row">
                                         <div class="col-sm-8">
-                                            <h2>Notes :</h2>
+                                            <h5>Notes :</h5>
                                             <div class="form-group">
-                                                <textarea class="form-control" rows="3" name="description" value="{{ $quotation->description }}"
+                                                <textarea class="form-control" rows="4" id="description" name="description" value="{{ $quotation->description }}"
                                                     placeholder="Enter ...">{{ $quotation->description }}</textarea>
+                                            </div>
+
+                                            <h5>Term and Agreements :</h5>
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="4" id="perjanjian" name="perjanjian" value="{{ $quotation->perjanjian }}"
+                                                    placeholder="Enter Term and Agreements...">{{ $quotation->perjanjian }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
-                                            <h2>Details :</h2>
+                                            <h5>Details :</h5>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="sub_total"
                                                     name="sub_total" placeholder="Sub Total" readonly
@@ -158,7 +164,8 @@
                                                     name="amount_due" placeholder="Amount Due" readonly
                                                     value="{{ $quotation->amount_due }}">
                                             </div>
-
+                                        </div>
+                                        <div class="col-sm-4">
                                             <a href="/view-quotation" class="btn btn-danger" type="button">
                                                 Cancel
                                             </a>
@@ -182,7 +189,7 @@
     <!-- /.content-wrapper -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h555rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
 
     <script>
@@ -240,5 +247,21 @@
             document.getElementById("amount").value = grand_total;
             document.getElementById("amount_due").value = grand_total;
         }
+    </script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#perjanjian'))
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 @endsection

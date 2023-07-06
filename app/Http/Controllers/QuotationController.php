@@ -63,6 +63,7 @@ class QuotationController extends Controller
             'tax_amount' => 'required',
             'sub_total' => 'required',
             'description' => '',
+            'perjanjian' => '',
             'amount' => 'required',
             'amount_due' => 'required',
 
@@ -80,8 +81,9 @@ class QuotationController extends Controller
             'tax_amount' => $request->tax_amount,
             'sub_total' => $request->sub_total,
             'description' => $request->description,
+            'perjanjian' => $request->perjanjian,
             'amount' => $request->amount,
-            'amount_due' => $request->amount_due - $request->amount_paid,
+            'amount_due' => $request->amount_due,
             'created_at' => now(),
         ]);
 
@@ -151,6 +153,7 @@ class QuotationController extends Controller
             'tax_amount' => 'required',
             'sub_total' => 'required',
             'description' => '',
+            'perjanjian' => '',
             'amount' => 'required',
             'amount_due' => 'required',
         ]);
@@ -165,8 +168,9 @@ class QuotationController extends Controller
             'tax_amount' => $request->tax_amount,
             'sub_total' => $request->sub_total,
             'description' => $request->description,
+            'perjanjian' => $request->perjanjian,
             'amount' => $request->amount,
-            'amount_due' => $request->amount_due - $request->amount_paid,
+            'amount_due' => $request->amount_due,
             'updated_at' => now(),
         ]);
 
