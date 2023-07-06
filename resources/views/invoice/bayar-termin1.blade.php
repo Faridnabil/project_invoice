@@ -79,16 +79,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @foreach ($quotation as $item)
+                                    @foreach ($quotation_detail as $item)
                                         <input type="hidden" name="idreq[]" value="{{ $item->id }}">
                                         <div class="after-add" id="DBody">
                                             <div class="row mb-3" id="DRow">
-                                                <div class="col-2">
-                                                    <label for="item-code">No Item</label>
-                                                    <input type="text" class="form-control" name="item_code[]"
-                                                        placeholder="No Item" readonly value="{{ $item->item_code }}">
-                                                </div>
-                                                <div class="col-3">
+                                                <div class="col-5">
                                                     <label for="item-name">Name Item</label>
                                                     <input type="text" class="form-control" name="item_name[]"
                                                         placeholder="Item Name" readonly value="{{ $item->item_name }}">

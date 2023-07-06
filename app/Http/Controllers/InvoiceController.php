@@ -26,7 +26,8 @@ class InvoiceController extends Controller
         ->select('quotation.id',)
         ->where('quotation_id', $id)
         ->get();
-        return view('invoice/bayar-termin1', compact('quotation', 'invoice'));
+        $quotation_detail = QuotationDetail::where('quotation_id', $id)->get();
+        return view('invoice/bayar-termin1', compact('quotation', 'invoice', 'quotation_detail'));
     }
 
     public function update_termin1(Request $request, $id)
@@ -59,8 +60,8 @@ class InvoiceController extends Controller
         ->select('quotation.id',)
         ->where('quotation_id', $id)
         ->get();
-
-        return view('invoice/bayar-termin2', compact('quotation', 'invoice'));
+        $quotation_detail = QuotationDetail::where('quotation_id', $id)->get();
+        return view('invoice/bayar-termin2', compact('quotation', 'invoice', 'quotation_detail'));
     }
 
     public function update_termin2(Request $request, $id)
