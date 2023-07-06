@@ -32,21 +32,11 @@
         <table width="670px" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
-                    <td>
+                    <td width="50%">
                         <p>
                             <strong>INVOICE</strong>
                             <hr>
-                            Invoice Number&nbsp;<br>
-                            Client Name&nbsp;<br>
-                            Project&nbsp;<br>
-                            Date of Quotation&nbsp;<br>
-                            Status&nbsp;
-                        </p>
-                    </td>
-                    <td>
-                        <p>&nbsp;
-                            <hr>
-                            :
+                            Invoice Number&nbsp; :
                             {{ date('d.m', strtotime($invoice->quotation->tanggal_quotation)) }}/
                             @switch(date('m', strtotime($invoice->quotation->tanggal_quotation)))
                                 @case(date(1, strtotime($invoice->quotation->tanggal_quotation)))
@@ -98,12 +88,13 @@
                                 @break
                             @endswitch
                             /{{ date('Y', strtotime($invoice->quotation->tanggal_quotation)) }}/{{ $invoice->no_inv }}<br>
-                            : {{ $invoice->quotation->customer_name }}<br>
-                            : {{ $invoice->quotation->nama_project }}<br>
-                            : {{ date('D, d F Y', strtotime($invoice->quotation->tanggal_quotation)) }}<br>
-                            : Termin 1
+                            Client Name&nbsp; : {{ $invoice->quotation->customer_name }}<br>
+                            Project&nbsp; : {{ $invoice->quotation->nama_project }}<br>
+                            Date of Quotation&nbsp; : {{ date('D, d F Y', strtotime($invoice->quotation->tanggal_quotation)) }}<br>
+                            Status&nbsp; : Termin 1
                         </p>
                     </td>
+
                     <td>
                         <img src="{{ asset('template/dist/img/logo-global.png') }}" width="190px"
                             style="text-align: right; margin-left: 160px;" />
@@ -143,37 +134,65 @@
                         <td align="right">Rp. {{ number_format($item->total, 0, ',', '.') }}</td>
                     </tr>
                 @endforeach
+                <tr style="border: 0">
+                    <td colspan="5">&nbsp;</td>
+                </tr>
+                <tr style="font-weight: bold;">
+                    <td colspan="4" align="right">PPN/VAT 11%</td>
+                    <td align="right">Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
+                </tr>
+                <tr style="font-weight: bold">
+
+                    <td colspan="4" align="right">DP</td>
+                    <td align="right">Rp. {{ number_format($invoice->termin1, 0, ',', '.') }}</td>
+                </tr>
+                <tr style="font-weight: bold">
+
+                    <td colspan="4" align="right">GRAND TOTAL</td>
+                    <td align="right">Rp. {{ number_format($invoice->quotation->amount, 0, ',', '.') }}</td>
+                </tr>
+
+                <tr style="font-weight: bold">
+                    <td colspan="4" align="right">SISA TAGIHAN</td>
+                    <td align="right">Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
+                </tr>
             </tbody>
-        </table> <br><br>
-        <table width="300px" cellspacing="0" cellpadding="0" border="1" align="right" style="margin-right: 25px">
-            <tr style="font-weight: bold">
-                <td>PPN/VAT 11%</td>
-                <td align="right">Rp. {{ number_format($invoice->quotation->tax_amount, 0, ',', '.') }}</td>
-            </tr>
-            <tr style="font-weight: bold">
-
-                <td>DP</td>
-                <td align="right">Rp. {{ number_format($invoice->termin1, 0, ',', '.') }}</td>
-            </tr>
-            <tr style="font-weight: bold">
-
-                <td>GRAND TOTAL</td>
-                <td align="right">Rp. {{ number_format($invoice->quotation->amount, 0, ',', '.') }}</td>
-            </tr>
-
-            <tr style="font-weight: bold">
-
-                <td>SISA TAGIHAN</td>
-                <td align="right">Rp. {{ number_format($invoice->quotation->amount_due, 0, ',', '.') }}</td>
-            </tr>
-        </table>
+        </table> <br>
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
-                <td>Notes :<br>
-                    <p style="white-space: pre-line">{{ $invoice->quotation->description }}</p>
+                <td><b>Notes :</b><br>
+                    {!! $invoice->quotation->description !!}
+                </td>
+            </tr>
+            <br>
+            <tr>
+                <td><b>Term and Agreements :</b><br>
+                    {!! $invoice->quotation->perjanjian !!}
                 </td>
             </tr>
         </table>
+
+        <table width="670px" cellspacing="0" cellpadding="0">
+            <tr>
+                <td>Payment Transfer To :<br>
+                </td>
+            </tr>
+            <tr>
+                <td>Account Number</td>
+                <td>:</td>
+                <td>1362450042</td>
+            </tr>
+            <tr>
+                <td>Account Name</td>
+                <td>:</td>
+                <td>PT Global Technology Essential</td>
+            </tr>
+            <tr>
+                <td>Bank Name</td>
+                <td>:</td>
+                <td>Bank Negara Indonesia</td>
+            </tr>
+        </table><br><br>
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Prepared by<br>

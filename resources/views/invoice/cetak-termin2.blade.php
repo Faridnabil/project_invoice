@@ -169,9 +169,37 @@
         </table>
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
-                <td>Notes :<br>
-                    <p style="white-space: pre-line">{{ $invoice->quotation->description }}</p>
+                <td><b>Notes :</b><br>
+                    {!! $invoice->quotation->description !!}
                 </td>
+            </tr>
+            <br>
+            <tr>
+                <td><b>Term and Agreements :</b><br>
+                    {!! $invoice->quotation->perjanjian !!}
+                </td>
+            </tr>
+        </table>
+
+        <table width="670px" cellspacing="0" cellpadding="0">
+            <tr>
+                <td>Payment Transfer To :<br>
+                </td>
+            </tr>
+            <tr>
+                <td>Account Number</td>
+                <td>:</td>
+                <td>1362450042</td>
+            </tr>
+            <tr>
+                <td>Account Name</td>
+                <td>:</td>
+                <td>PT Global Technology Essential</td>
+            </tr>
+            <tr>
+                <td>Bank Name</td>
+                <td>:</td>
+                <td>Bank Negara Indonesia</td>
             </tr>
         </table>
         <table width="670px" cellspacing="0" cellpadding="0">
