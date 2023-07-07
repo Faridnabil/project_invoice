@@ -105,7 +105,7 @@
                                                     {{-- <a href="/edit-spk/{{ $item->id }}" type="button" title="Edit">
                                                         <span class="fas fa-edit">&nbsp;&nbsp;&nbsp;</span>
                                                     </a> --}}
-                                                    <a href="#" data-toggle="modal" data-target="#deleteConfirmation"
+                                                    <a href="#deleteConfirmation{{ $item->id }}" data-toggle="modal"
                                                         type="button" title="Delete">
                                                         <span class="fas fa-trash">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
@@ -126,7 +126,7 @@
                                                     @endif
                                                 </td>
                                             </tr>
-                                            <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="deleteConfirmation{{ $item->id }}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
