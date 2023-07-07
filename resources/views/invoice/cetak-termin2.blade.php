@@ -189,9 +189,13 @@
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td><b>Payment Transfer To :</b><br>
-                    Account Number : 1362450042<br>
+                    Account Number : {{ $invoice->quotation->bank_number }}<br>
                     Account Name : PT Global Technology Essential<br>
-                    Bank Name : Bank Negara Indonesia<br>
+                    @if ($invoice->quotation->bank_number == '1362450042')
+                        Bank Name : Bank Negara Indonesia<br>
+                    @else
+                        Bank Name : Bank Jabar Banten<br>
+                    @endif
                 </td>
             </tr>
         </table>

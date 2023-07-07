@@ -124,18 +124,31 @@
                                                             title="Cetak Termin 2" target="_blank">
                                                             <span class="fas fa-file-invoice-dollar">&nbsp; &nbsp;</span>
                                                         </a>
-                                                        @if ($item->file_termin2 == null)
-                                                            <a href="#uploadFile2{{ $item->id }}" type="button" title="Upload File"
+                                                        @if ($item->file_termin2 == null && $item->file_termin1 == null)
+                                                            <a href="#uploadFile{{ $item->id }}" type="button" title="Upload File 1"
+                                                                data-toggle="modal">
+                                                                <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
+                                                            </a>
+                                                            <a href="#uploadFile2{{ $item->id }}" type="button" title="Upload File 2"
+                                                                data-toggle="modal">
+                                                                <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
+                                                            </a>
+                                                        @elseif ($item->file_termin2 == null)
+                                                            <a href="{{ url('download-termin1/' . $item->id) }}"
+                                                                title="Download File 1" target="_blank">
+                                                                <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
+                                                            </a>
+                                                            <a href="#uploadFile2{{ $item->id }}" type="button" title="Upload File 2"
                                                                 data-toggle="modal">
                                                                 <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
                                                             </a>
                                                         @else
                                                             <a href="{{ url('download-termin1/' . $item->id) }}"
-                                                                title="Download File" target="_blank">
+                                                                title="Download File 1" target="_blank">
                                                                 <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
                                                             </a>
                                                             <a href="{{ url('download-termin2/' . $item->id) }}"
-                                                                title="Download File" target="_blank">
+                                                                title="Download File 2" target="_blank">
                                                                 <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
                                                             </a>
                                                         @endif
@@ -149,16 +162,17 @@
                                                             <span class="fas fa-file-invoice-dollar">&nbsp; &nbsp;</span>
                                                         </a>
                                                         @if ($item->file_termin1 == null)
-                                                            <a href="#uploadFile{{ $item->id }}" type="button" title="Upload File"
+                                                            <a href="#uploadFile{{ $item->id }}" type="button" title="Upload File 1"
                                                                 data-toggle="modal">
                                                                 <span class="fas fa-upload">&nbsp;&nbsp;&nbsp;</span>
                                                             </a>
                                                         @else
                                                             <a href="{{ url('download-termin1/' . $item->id) }}"
-                                                                title="Download File" target="_blank">
+                                                                title="Download File 1" target="_blank">
                                                                 <span class="fas fa-download">&nbsp;&nbsp;&nbsp;</span>
                                                             </a>
                                                         @endif
+
                                                     @else
                                                         <a href="/termin1/{{ $item->id }}" type="button"
                                                             title="Bayar Termin 1">
