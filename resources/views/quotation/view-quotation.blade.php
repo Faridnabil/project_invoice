@@ -94,7 +94,7 @@
                                                             XI
                                                         @break
 
-                                                        @case(date(11, strtotime($item->tanggal_quotation)))
+                                                        @case(date(12, strtotime($item->tanggal_quotation)))
                                                             XII
                                                         @break
                                                     @endswitch

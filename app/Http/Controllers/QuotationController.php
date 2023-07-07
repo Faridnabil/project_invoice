@@ -29,11 +29,18 @@ class QuotationController extends Controller
 
     public function store_quotation(Request $request)
     {
-        $kode = DB::table('quotation')->count();
+        // $kode = DB::table('quotation')->count();
+        // $kode = Quotation::orderBy('id', 'desc')->first()->id;
+        if (Quotation::count() == 0)
+        {
+            $kode = DB::table('quotation')->count();
+        }
+        else
+        {
+            $kode = Quotation::orderBy('id', 'desc')->first()->id;
+        }
         $addNol = '';
         $kodequo = 'QUO';
-        $kodeinv = 'INV';
-        $kodespk = 'SPK';
         $kode = str_replace($kodequo, "", $kode);
         $kode = (int) $kode + 1;
         $incrementKode = $kode;
@@ -48,7 +55,42 @@ class QuotationController extends Controller
             $addNol = "00";
         }
         $id_quot = $kodequo . $addNol . $incrementKode;
+
+
+        $kodei = DB::table('invoice')->count();
+        $addNol = '';
+        $kodeinv = 'INV';
+        $kodei = str_replace($kodeinv, "", $kodei);
+        $kodei = (int) $kodei + 1;
+        $incrementKode = $kodei;
+
+        if (strlen($kodei) == 1) {
+            $addNol = "0000";
+        } elseif (strlen($kodei) == 2) {
+            $addNol = "000";
+        } elseif (strlen($kodei) == 3) {
+            $addNol = "00";
+        } elseif (strlen($kodei) == 4) {
+            $addNol = "00";
+        }
         $id_inv = $kodeinv . $addNol . $incrementKode;
+
+        $kodes = DB::table('SPK')->count();
+        $addNol = '';
+        $kodespk = 'SPK';
+        $kodes = str_replace($kodespk, "", $kodes);
+        $kodes = (int) $kodes + 1;
+        $incrementKode = $kodes;
+
+        if (strlen($kodes) == 1) {
+            $addNol = "0000";
+        } elseif (strlen($kodes) == 2) {
+            $addNol = "000";
+        } elseif (strlen($kodes) == 3) {
+            $addNol = "00";
+        } elseif (strlen($kodes) == 4) {
+            $addNol = "00";
+        }
         $id_spk = $kodespk . $addNol . $incrementKode;
 
         $rules = $request->validate([
