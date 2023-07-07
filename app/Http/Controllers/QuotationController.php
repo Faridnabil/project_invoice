@@ -200,7 +200,6 @@ class QuotationController extends Controller
     public function delete_quotation($id)
     {
         Quotation::find($id)->delete();
-
         return redirect('view-quotation')->with('success', 'Request deleted successfully');
     }
     //END BARANG

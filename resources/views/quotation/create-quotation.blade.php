@@ -133,8 +133,15 @@
                                             <div class="col-2">
                                                 <select class="form-control" name="satuan[]">
                                                     <option value="Unit">Unit</option>
-                                                    <option value="Set">Set</option>
+                                                    <option value="Pcs">Pcs</option>
+                                                    <option value="Btg">Btg</option>
+                                                    <option value="Lot">Lot</option>
+                                                    <option value="Mtr">Mtr</option>
                                                     <option value="Roll">Roll</option>
+                                                    <option value="Set">Set</option>
+                                                    <option value="Bln">Bln</option>
+                                                    <option value="Ttk">Ttk</option>
+                                                    <option value="Bks">Bks</option>
                                                 </select>
                                             </div>
                                             <div class="col-2">
