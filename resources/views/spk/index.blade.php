@@ -105,10 +105,10 @@
                                                     {{-- <a href="/edit-spk/{{ $item->id }}" type="button" title="Edit">
                                                         <span class="fas fa-edit">&nbsp;&nbsp;&nbsp;</span>
                                                     </a> --}}
-                                                    <a href="#deleteConfirmation{{ $item->id }}" data-toggle="modal"
+                                                    {{-- <a href="#deleteConfirmation{{ $item->id }}" data-toggle="modal"
                                                         type="button" title="Delete">
                                                         <span class="fas fa-trash">&nbsp;&nbsp;&nbsp;</span>
-                                                    </a>
+                                                    </a> --}}
                                                     <a href="/detail-spk/{{ $item->id }}" type="button"
                                                         target="__blank" title="Detail">
                                                         <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
@@ -126,7 +126,7 @@
                                                     @endif
                                                 </td>
                                             </tr>
-                                            <div class="modal fade" id="deleteConfirmation{{ $item->id }}" tabindex="-1" role="dialog"
+                                            {{-- <div class="modal fade" id="deleteConfirmation{{ $item->id }}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
@@ -151,7 +151,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="modal fade" id="uploadFile{{ $item->id }}" tabindex="-1" role="dialog"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">

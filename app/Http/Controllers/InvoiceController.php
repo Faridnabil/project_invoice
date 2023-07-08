@@ -85,11 +85,18 @@ class InvoiceController extends Controller
             'amount_due' => $amount_due,
         ]);
 
-        $kode = DB::table('bast')->count();
+        $kode = DB::table('bast')->orderBy('id', 'desc')->first();
+        if(!$kode)
+        {
+            $kodefix = 0;
+        }else{
+            $kodefix = substr($kode->no_bast, -5);
+            // $kodefix = $kode->no_quotation;
+        }
         $addNol = '';
         $kodebast = 'BAST';
-        $kode = str_replace($kodebast, "", $kode);
-        $kode = (int) $kode + 1;
+        $kode = str_replace($kodebast, "", $kodefix);
+        $kode = (int) $kodefix + 1;
         $incrementKode = $kode;
 
         if (strlen($kode) == 1) {
