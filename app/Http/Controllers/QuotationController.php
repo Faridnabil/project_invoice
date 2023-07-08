@@ -14,8 +14,10 @@ class QuotationController extends Controller
 {
     public function view_quotation(Request $request)
     {
-        $quotation = Quotation::all();
-
+        // $quotation = Quotation::all()->orderBy('id', 'asc')->get();
+      $quotation = DB::table('quotation')
+                ->orderBy('id', 'asc')
+                ->get();
         return view('quotation/view-quotation', compact('quotation'));
     }
 
@@ -29,20 +31,20 @@ class QuotationController extends Controller
 
     public function store_quotation(Request $request)
     {
-        // $kode = DB::table('quotation')->count();
-        // $kode = Quotation::orderBy('id', 'desc')->first()->id;
-        if (Quotation::count() == 0)
+        $kode = DB::table('quotation')->orderBy('id', 'desc')->first();
+        if(!$kode)
         {
-            $kode = DB::table('quotation')->count();
-        }
-        else
-        {
-            $kode = Quotation::orderBy('id', 'desc')->first()->id;
+            $kodefix = 0;
+        }else{
+            $kodefix = substr($kode->no_quotation, -5);
+            // $kodefix = $kode->no_quotation;
         }
         $addNol = '';
         $kodequo = 'QUO';
-        $kode = str_replace($kodequo, "", $kode);
-        $kode = (int) $kode + 1;
+        $kodeinv = 'INV';
+        $kodespk = 'SPK';
+        $kode = str_replace($kodequo, "", $kodefix);
+        $kode = (int) $kodefix + 1;
         $incrementKode = $kode;
 
         if (strlen($kode) == 1) {
@@ -55,42 +57,7 @@ class QuotationController extends Controller
             $addNol = "00";
         }
         $id_quot = $kodequo . $addNol . $incrementKode;
-
-
-        $kodei = DB::table('invoice')->count();
-        $addNol = '';
-        $kodeinv = 'INV';
-        $kodei = str_replace($kodeinv, "", $kodei);
-        $kodei = (int) $kodei + 1;
-        $incrementKode = $kodei;
-
-        if (strlen($kodei) == 1) {
-            $addNol = "0000";
-        } elseif (strlen($kodei) == 2) {
-            $addNol = "000";
-        } elseif (strlen($kodei) == 3) {
-            $addNol = "00";
-        } elseif (strlen($kodei) == 4) {
-            $addNol = "00";
-        }
         $id_inv = $kodeinv . $addNol . $incrementKode;
-
-        $kodes = DB::table('SPK')->count();
-        $addNol = '';
-        $kodespk = 'SPK';
-        $kodes = str_replace($kodespk, "", $kodes);
-        $kodes = (int) $kodes + 1;
-        $incrementKode = $kodes;
-
-        if (strlen($kodes) == 1) {
-            $addNol = "0000";
-        } elseif (strlen($kodes) == 2) {
-            $addNol = "000";
-        } elseif (strlen($kodes) == 3) {
-            $addNol = "00";
-        } elseif (strlen($kodes) == 4) {
-            $addNol = "00";
-        }
         $id_spk = $kodespk . $addNol . $incrementKode;
 
         $rules = $request->validate([
@@ -242,6 +209,7 @@ class QuotationController extends Controller
     public function delete_quotation($id)
     {
         Quotation::find($id)->delete();
+
         return redirect('view-quotation')->with('success', 'Request deleted successfully');
     }
     //END BARANG
@@ -260,7 +228,7 @@ class QuotationController extends Controller
         $file = $request->file('file');
         if (file_exists($file)) {
             $nama_file = time() . "-" . $file->getClientOriginalName();
-            $folder = 'lampiran_quotation';
+            $folder = 'lampiran/lampiran_quotation';
             $file->move($folder, $nama_file);
             $path = $folder . "/" . $nama_file;
             //delete
@@ -279,8 +247,8 @@ class QuotationController extends Controller
     public function download_file($id)
     {
         $file = Quotation::find($id);
+        //$file_path = storage_path('archive/public/'.$file->file);
         $file_path = public_path($file->file);
-
         return response()->download($file_path);
     }
 }
