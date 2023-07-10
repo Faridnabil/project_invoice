@@ -156,7 +156,7 @@ class SPKController extends Controller
         $file = $request->file('file');
         if (file_exists($file)) {
             $nama_file = time() . "-" . $file->getClientOriginalName();
-            $folder = 'lampiran_spk';
+            $folder = 'lampiran/lampiran_spk';
             $file->move($folder, $nama_file);
             $path = $folder . "/" . $nama_file;
             //delete

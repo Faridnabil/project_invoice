@@ -30,7 +30,7 @@ class BASTController extends Controller
         $file = $request->file('file');
         if (file_exists($file)) {
             $nama_file = time() . "-" . $file->getClientOriginalName();
-            $folder = 'lampiran_bast';
+            $folder = 'lampiran/lampiran_bast';
             $file->move($folder, $nama_file);
             $path = $folder . "/" . $nama_file;
             //delete
