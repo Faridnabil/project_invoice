@@ -48,59 +48,59 @@
                                         @foreach ($quotation as $item)
                                             <tr>
                                                 <td>
-                                                    {{ date('d.m', strtotime($item->tanggal_quotation)) }}/
-                                                    @switch(date('m', strtotime($item->tanggal_quotation)))
-                                                        @case(date(1, strtotime($item->tanggal_quotation)))
+                                                    {{ date('d.m', strtotime($item->created_at)) }}/
+                                                    @switch(date('m', strtotime($item->created_at)))
+                                                        @case(date(1, strtotime($item->created_at)))
                                                             I
                                                         @break
 
-                                                        @case(date(2, strtotime($item->tanggal_quotation)))
+                                                        @case(date(2, strtotime($item->created_at)))
                                                             II
                                                         @break
 
-                                                        @case(date(3, strtotime($item->tanggal_quotation)))
+                                                        @case(date(3, strtotime($item->created_at)))
                                                             III
                                                         @break
 
-                                                        @case(date(4, strtotime($item->tanggal_quotation)))
+                                                        @case(date(4, strtotime($item->created_at)))
                                                             IV
                                                         @break
 
-                                                        @case(date(5, strtotime($item->tanggal_quotation)))
+                                                        @case(date(5, strtotime($item->created_at)))
                                                             V
                                                         @break
 
-                                                        @case(date(6, strtotime($item->tanggal_quotation)))
+                                                        @case(date(6, strtotime($item->created_at)))
                                                             VI
                                                         @break
 
-                                                        @case(date(7, strtotime($item->tanggal_quotation)))
+                                                        @case(date(7, strtotime($item->created_at)))
                                                             VII
                                                         @break
 
-                                                        @case(date(8, strtotime($item->tanggal_quotation)))
+                                                        @case(date(8, strtotime($item->created_at)))
                                                             VIII
                                                         @break
 
-                                                        @case(date(9, strtotime($item->tanggal_quotation)))
+                                                        @case(date(9, strtotime($item->created_at)))
                                                             IX
                                                         @break
 
-                                                        @case(date(10, strtotime($item->tanggal_quotation)))
+                                                        @case(date(10, strtotime($item->created_at)))
                                                             X
                                                         @break
 
-                                                        @case(date(11, strtotime($item->tanggal_quotation)))
+                                                        @case(date(11, strtotime($item->created_at)))
                                                             XI
                                                         @break
 
-                                                        @case(date(12, strtotime($item->tanggal_quotation)))
+                                                        @case(date(12, strtotime($item->created_at)))
                                                             XII
                                                         @break
                                                     @endswitch
-                                                    /{{ date('Y', strtotime($item->tanggal_quotation)) }}/{{ $item->no_quotation }}
+                                                    /{{ date('Y', strtotime($item->created_at)) }}/{{ $item->no_quotation }}
                                                 </td>
-                                                <td>{{ Carbon\Carbon::create($item->tanggal_quotation)->isoFormat('DD MMMM Y') }}</td>
+                                                <td>{{ Carbon\Carbon::create($item->created_at)->isoFormat('DD MMMM Y') }}</td>
                                                 <td>{{ $item->customer_name }}</td>
                                                 <td>Rp. {{ number_format($item->amount, 0, ',', '.') }}</td>
                                                 <td>

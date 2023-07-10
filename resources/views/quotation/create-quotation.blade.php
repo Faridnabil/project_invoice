@@ -53,18 +53,15 @@
                                                     placeholder="Customer Name">
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" class="form-control" name="pic" placeholder="PIC">
+                                            </div>
+                                            <div class="form-group">
                                                 <input type="text" class="form-control" name="no_hp"
                                                     placeholder="No Handphone">
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="no_ktp"
                                                     placeholder="No KTP">
-                                            </div>
-                                            <div class="form-group">
-                                                <select class="form-control" name="bank_number">
-                                                    <option value="0124905486100">0124905486100 (BJB)</option>
-                                                    <option value="1362450042">1362450042 (BNI)</option>
-                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="address" placeholder="Customer Address"></textarea>
@@ -77,11 +74,16 @@
                                                     placeholder="Project Name">
                                             </div>
                                             <div class="form-group">
-                                                <input type="date" class="form-control" name="tanggal_quotation"
-                                                    placeholder="Quotation Date">
+                                                <select class="form-control" name="bank_number">
+                                                    <option value="0124905486100">0124905486100 (BJB)</option>
+                                                    <option value="1362450042">1362450042 (BNI)</option>
+                                                </select>
                                             </div>
+
+
                                         </div>
                                     </div>
+
                                     <h5>Item :</h5>
                                     <div class="after-add" id="DBody">
                                         <div class="row mb-3">

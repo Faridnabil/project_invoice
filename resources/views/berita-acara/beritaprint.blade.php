@@ -336,7 +336,8 @@
                             <td align="right">
                                 <b>PIHAK KEDUA</b>
                                 <br><br><br><br><br><br>
-                                {{ $bast->invoice->quotation->customer_name }}
+                                {{ $bast->invoice->quotation->pic }} <br>
+                                PIC {{ $bast->invoice->quotation->customer_name }}
                             </td>
                         </tr>
                     </table>
@@ -346,6 +347,9 @@
     </tr>
     </center>
     <script>
-        window.print();
+        window.print(); // Melakukan pencetakan saat halaman dimuat
+                window.onafterprint = function() {
+                    window.close(); // Menutup jendela cetakan setelah pencetakan selesai
+                };
     </script>
 </body>

@@ -13,9 +13,9 @@ class Quotation extends Model
     protected $table = "quotation";
     protected $primaryKey = "id";
     protected $fillable = [
-        'no_quotation', 'customer_name', 'address', 'no_hp', 'no_ktp',
+        'no_quotation', 'customer_name', 'pic', 'address', 'no_hp', 'no_ktp',
         'tax', 'sub_total', 'tax_amount', 'amount', 'amount_due', 'description',
-        'nama_project', 'tanggal_quotation', 'perjanjian', 'bank_number'
+        'nama_project', 'perjanjian', 'bank_number'
     ];
 
     public function quotation_detail()

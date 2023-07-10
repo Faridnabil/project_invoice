@@ -126,7 +126,7 @@
             </thead>
         </table>
 <br>
-        <table width="680px" cellspacing="0" cellpadding="0" border="1">
+        <table width="670px" cellspacing="0" cellpadding="0" border="1">
             <thead>
                 <tr>
                     <th>No</th>
@@ -208,15 +208,20 @@
                     M Ridzky Farhan<br>
                     CEO
                 </td>
-                <td align="right">&nbsp;
-                    Client Approval
-                    <br><br><br><br><br><br>
+                <td align="right">
+                    Client<br>
                     {{ $invoice->quotation->customer_name }}
+                    <br><br><br><br><br><br>
+                    {{ $invoice->quotation->pic }}<br>
+                    PIC
                 </td>
             </tr>
         </table>
     </center>
     <script>
-        window.print();
+        window.print(); // Melakukan pencetakan saat halaman dimuat
+                window.onafterprint = function() {
+                    window.close(); // Menutup jendela cetakan setelah pencetakan selesai
+                };
     </script>
 </body>

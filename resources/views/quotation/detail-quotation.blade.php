@@ -68,100 +68,100 @@
                         Project <br>
                         Date
                     </td>
-                    <td>: {{ date('d.m', strtotime($quotation->tanggal_quotation)) }}/
-                        @switch(date('m', strtotime($quotation->tanggal_quotation)))
-                            @case(date(1, strtotime($quotation->tanggal_quotation)))
+                    <td>: {{ date('d.m', strtotime($quotation->created_at)) }}/
+                        @switch(date('m', strtotime($quotation->created_at)))
+                            @case(date(1, strtotime($quotation->created_at)))
                                 I
                             @break
 
-                            @case(date(2, strtotime($quotation->tanggal_quotation)))
+                            @case(date(2, strtotime($quotation->created_at)))
                                 II
                             @break
 
-                            @case(date(2, strtotime($quotation->tanggal_quotation)))
+                            @case(date(2, strtotime($quotation->created_at)))
                                 II
                             @break
 
-                            @case(date(3, strtotime($quotation->tanggal_quotation)))
+                            @case(date(3, strtotime($quotation->created_at)))
                                 III
                             @break
 
-                            @case(date(3, strtotime($quotation->tanggal_quotation)))
+                            @case(date(3, strtotime($quotation->created_at)))
                                 III
                             @break
 
-                            @case(date(4, strtotime($quotation->tanggal_quotation)))
+                            @case(date(4, strtotime($quotation->created_at)))
                                 IV
                             @break
 
-                            @case(date(4, strtotime($quotation->tanggal_quotation)))
+                            @case(date(4, strtotime($quotation->created_at)))
                                 IV
                             @break
 
-                            @case(date(5, strtotime($quotation->tanggal_quotation)))
+                            @case(date(5, strtotime($quotation->created_at)))
                                 V
                             @break
 
-                            @case(date(5, strtotime($quotation->tanggal_quotation)))
+                            @case(date(5, strtotime($quotation->created_at)))
                                 V
                             @break
 
-                            @case(date(6, strtotime($quotation->tanggal_quotation)))
+                            @case(date(6, strtotime($quotation->created_at)))
                                 VI
                             @break
 
-                            @case(date(6, strtotime($quotation->tanggal_quotation)))
+                            @case(date(6, strtotime($quotation->created_at)))
                                 VI
                             @break
 
-                            @case(date(7, strtotime($quotation->tanggal_quotation)))
+                            @case(date(7, strtotime($quotation->created_at)))
                                 VII
                             @break
 
-                            @case(date(7, strtotime($quotation->tanggal_quotation)))
+                            @case(date(7, strtotime($quotation->created_at)))
                                 VII
                             @break
 
-                            @case(date(8, strtotime($quotation->tanggal_quotation)))
+                            @case(date(8, strtotime($quotation->created_at)))
                                 VIII
                             @break
 
-                            @case(date(8, strtotime($quotation->tanggal_quotation)))
+                            @case(date(8, strtotime($quotation->created_at)))
                                 VIII
                             @break
 
-                            @case(date(9, strtotime($quotation->tanggal_quotation)))
+                            @case(date(9, strtotime($quotation->created_at)))
                                 IX
                             @break
 
-                            @case(date(9, strtotime($quotation->tanggal_quotation)))
+                            @case(date(9, strtotime($quotation->created_at)))
                                 IX
                             @break
 
-                            @case(date(10, strtotime($quotation->tanggal_quotation)))
+                            @case(date(10, strtotime($quotation->created_at)))
                                 X
                             @break
 
-                            @case(date(10, strtotime($quotation->tanggal_quotation)))
+                            @case(date(10, strtotime($quotation->created_at)))
                                 X
                             @break
 
-                            @case(date(11, strtotime($quotation->tanggal_quotation)))
+                            @case(date(11, strtotime($quotation->created_at)))
                                 XI
                             @break
 
-                            @case(date(11, strtotime($quotation->tanggal_quotation)))
+                            @case(date(11, strtotime($quotation->created_at)))
                                 XI
                             @break
 
-                            @case(date(12, strtotime($quotation->tanggal_quotation)))
+                            @case(date(12, strtotime($quotation->created_at)))
                                 XII
                             @break
                         @endswitch
-                        /{{ date('Y', strtotime($quotation->tanggal_quotation)) }}/{{ $quotation->no_quotation }}<br>
+                        /{{ date('Y', strtotime($quotation->created_at)) }}/{{ $quotation->no_quotation }}<br>
                         : {{ $quotation->customer_name }}<br>
                         : {{ $quotation->nama_project }}<br>
-                        : {{ Carbon\Carbon::create($quotation->tanggal_quotation)->isoFormat('DD MMMM Y') }}
+                        : {{ Carbon\Carbon::create($quotation->created_at)->isoFormat('DD MMMM Y') }}
                     </td>
                 </tr>
             </thead>
@@ -238,16 +238,21 @@
                     M Ridzky Farhan<br>
                     CEO
                 </td>
-                <td align="right">&nbsp;
-                    Client Approval
-                    <br><br><br><br><br><br>
+                <td align="right">
+                    Client<br>
                     {{ $quotation->customer_name }}
+                    <br><br><br><br><br><br>
+                    {{ $quotation->pic }}<br>
+                    PIC
                 </td>
             </tr>
         </table>
     </center>
     <script>
-        window.print();
+        window.print(); // Melakukan pencetakan saat halaman dimuat
+                window.onafterprint = function() {
+                    window.close(); // Menutup jendela cetakan setelah pencetakan selesai
+                };
     </script>
     <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js">
         < /body>

@@ -57,6 +57,10 @@
                                                     placeholder="Customer Name" value="{{ $quotation->customer_name }}">
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" class="form-control" name="pic"
+                                                    placeholder="PIC" value="{{ $quotation->pic }}">
+                                            </div>
+                                            <div class="form-group">
                                                 <input type="text" class="form-control" name="no_hp"
                                                     placeholder="No Handphone" value="{{ $quotation->no_hp }}">
                                             </div>
@@ -64,20 +68,7 @@
                                                 <input type="text" class="form-control" name="no_ktp"
                                                     placeholder="No KTP" value="{{ $quotation->no_ktp }}">
                                             </div>
-                                            <div class="form-group">
-                                                <select class="form-control" name="bank_number"
-                                                    value="{{ $quotation->bank_number }}">
-                                                    @if ($quotation->bank_number == '0124905486100')
-                                                        <option value="{{ $quotation->bank_number }}" selected disabled>
-                                                            {{ $quotation->bank_number }} (BJB)</option>
-                                                    @else
-                                                        <option value="{{ $quotation->bank_number }}" selected disabled>
-                                                            {{ $quotation->bank_number }} (BNI)</option>
-                                                    @endif
-                                                    <option value="0124905486100">0124905486100 (BJB)</option>
-                                                    <option value="1362450042">1362450042 (BNI)</option>
-                                                </select>
-                                            </div>
+
                                             <div class="form-group">
                                                 <textarea class="form-control" rows="3" name="address" placeholder="Customer Address"
                                                     value="{{ $quotation->address }}">{{ $quotation->address }}</textarea>
@@ -90,9 +81,18 @@
                                                     value="{{ $quotation->nama_project }}" placeholder="Project Name">
                                             </div>
                                             <div class="form-group">
-                                                <input type="date" class="form-control" name="tanggal_quotation"
-                                                    value="{{ $quotation->tanggal_quotation }}"
-                                                    placeholder="Quotation Date">
+                                                <select class="form-control" name="bank_number"
+                                                    value="{{ $quotation->bank_number }}">
+                                                    @if ($quotation->bank_number == '0124905486100')
+                                                        <option value="{{ $quotation->bank_number }}" selected>
+                                                            {{ $quotation->bank_number }} (BJB)</option>
+                                                    @else
+                                                        <option value="{{ $quotation->bank_number }}" selected>
+                                                            {{ $quotation->bank_number }} (BNI)</option>
+                                                    @endif
+                                                    <option value="0124905486100">0124905486100 (BJB)</option>
+                                                    <option value="1362450042">1362450042 (BNI)</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@
                                                 <div class="col-2">
                                                     <select class="form-control" name="satuan[]"
                                                         value="{{ $item->satuan }}">
-                                                        <option value="{{ $item->satuan }}" selected disabled>{{ $item->satuan }}
+                                                        <option value="{{ $item->satuan }}" selected >{{ $item->satuan }}
                                                         </option>
                                                         <option value="Unit">Unit</option>
                                                         <option value="Pcs">Pcs</option>
