@@ -61,6 +61,11 @@
                                                     value="{{ $invoice->quotation->customer_name }}" readonly>
                                             </div>
                                             <div class="form-group">
+                                                <input type="text" class="form-control" name="pic"
+                                                    placeholder="PIC"
+                                                    value="{{ $invoice->quotation->pic }}" readonly>
+                                            </div>
+                                            <div class="form-group">
                                                 <input type="text" class="form-control" name="no_hp"
                                                     placeholder="Customer Phone" value="{{ $invoice->quotation->no_hp }}"
                                                     readonly>
@@ -83,9 +88,9 @@
                                                     placeholder="Project Name" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <input type="date" class="form-control" name="tanggal_quotation"
-                                                    value="{{ $invoice->quotation->tanggal_quotation }}"
-                                                    placeholder="Quotation Date" readonly>
+                                                <input type="text" class="form-control" name="bank_number"
+                                                    placeholder="bank number" value="{{ $invoice->quotation->bank_number }}"
+                                                    readonly>
                                             </div>
                                         </div>
                                     </div>
