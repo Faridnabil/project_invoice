@@ -66,60 +66,60 @@
                         Project <br>
                         Date <br>
                         Status</td>
-                    <td>: {{ date('d.m', strtotime($invoice->quotation->tanggal_quotation)) }}/
-                        @switch(date('m', strtotime($invoice->quotation->tanggal_quotation)))
-                            @case(date(1, strtotime($invoice->quotation->tanggal_quotation)))
+                    <td>: {{ date('d.m', strtotime($invoice->quotation->created_at)) }}/
+                        @switch(date('m', strtotime($invoice->quotation->created_at)))
+                            @case(date(1, strtotime($invoice->quotation->created_at)))
                                 I
                             @break
 
-                            @case(date(2, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(2, strtotime($invoice->quotation->created_at)))
                                 II
                             @break
 
-                            @case(date(3, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(3, strtotime($invoice->quotation->created_at)))
                                 III
                             @break
 
-                            @case(date(4, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(4, strtotime($invoice->quotation->created_at)))
                                 IV
                             @break
 
-                            @case(date(5, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(5, strtotime($invoice->quotation->created_at)))
                                 V
                             @break
 
-                            @case(date(6, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(6, strtotime($invoice->quotation->created_at)))
                                 VI
                             @break
 
-                            @case(date(7, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(7, strtotime($invoice->quotation->created_at)))
                                 VII
                             @break
 
-                            @case(date(8, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(8, strtotime($invoice->quotation->created_at)))
                                 VIII
                             @break
 
-                            @case(date(9, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(9, strtotime($invoice->quotation->created_at)))
                                 IX
                             @break
 
-                            @case(date(10, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(10, strtotime($invoice->quotation->created_at)))
                                 X
                             @break
 
-                            @case(date(11, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(11, strtotime($invoice->quotation->created_at)))
                                 XI
                             @break
 
-                            @case(date(12, strtotime($invoice->quotation->tanggal_quotation)))
+                            @case(date(12, strtotime($invoice->quotation->created_at)))
                                 XII
                             @break
                         @endswitch
-                        /{{ date('Y', strtotime($invoice->quotation->tanggal_quotation)) }}/{{ $invoice->no_inv }}<br>
+                        /{{ date('Y', strtotime($invoice->quotation->created_at)) }}/{{ $invoice->no_inv }}<br>
                         : {{ $invoice->quotation->customer_name }}<br>
                         : {{ $invoice->quotation->nama_project }}<br>
-                        : {{ Carbon\Carbon::create($invoice->quotation->tanggal_quotation)->isoFormat('DD MMMM Y') }} <br>
+                        : {{ Carbon\Carbon::create($invoice->quotation->created_at)->isoFormat('DD MMMM Y') }} <br>
                         : Termin 1
                         </td>
                 </tr>

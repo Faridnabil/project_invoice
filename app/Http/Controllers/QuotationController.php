@@ -115,7 +115,7 @@ class QuotationController extends Controller
                 ]);
             }
         }
-        $now = $data->tanggal_quotation;
+        $now = $data->created_at;
         $start_date = strtotime($now);
         $end_date = strtotime("+14 day", $start_date);
 
