@@ -93,7 +93,7 @@
                                                             XI
                                                         @break
 
-                                                        @case(date(11, strtotime($item->tgl)))
+                                                        @case(date(12, strtotime($item->tgl)))
                                                             XII
                                                         @break
                                                     @endswitch

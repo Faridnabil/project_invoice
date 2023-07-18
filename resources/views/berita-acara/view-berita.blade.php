@@ -92,7 +92,7 @@
                                                             XI
                                                         @break
 
-                                                        @case(date(11, strtotime($item->created_at)))
+                                                        @case(date(12, strtotime($item->created_at)))
                                                             XII
                                                         @break
                                                     @endswitch/{{ date('Y', strtotime($item->created_at)) }}/{{ $item->no_bast }}
@@ -143,7 +143,7 @@
                                                             XI
                                                         @break
 
-                                                        @case(date(11, strtotime($item->created_at)))
+                                                        @case(date(12, strtotime($item->created_at)))
                                                             XII
                                                         @break
                                                     @endswitch/{{ date('Y', strtotime($item->invoice->created_at)) }}/{{ $item->invoice->no_inv }}

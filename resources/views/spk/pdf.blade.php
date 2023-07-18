@@ -104,7 +104,7 @@
                             XI
                         @break
 
-                        @case(date(11, strtotime($spk->tgl)))
+                        @case(date(12, strtotime($spk->tgl)))
                             XII
                         @break
                     @endswitch/{{ date('Y', strtotime($spk->tgl)) }}/{{ $spk->no }}

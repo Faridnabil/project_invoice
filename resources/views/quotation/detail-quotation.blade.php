@@ -149,11 +149,6 @@
                             @case(date(11, strtotime($quotation->created_at)))
                                 XI
                             @break
-
-                            @case(date(11, strtotime($quotation->created_at)))
-                                XI
-                            @break
-
                             @case(date(12, strtotime($quotation->created_at)))
                                 XII
                             @break
