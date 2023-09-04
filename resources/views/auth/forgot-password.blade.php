@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('template/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css') }}">
+    <link rel="shortcut icon" href="{{ asset('template/dist/img/genz-3d.png') }}" type="image/x-icon">
 </head>
 
 <body class="hold-transition login-page">
