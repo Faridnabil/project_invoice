@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Invoice Termin 1 - {{$invoice->quotation->customer_name}}</title>
+    <title>Detail Invoice Termin 1 - {{ $invoice->quotation->customer_name }}</title>
+    <link rel="shortcut icon" href="{{ asset('template/dist/img/genz-3d.png') }}" type="image/x-icon">
     <style>
         body {
             font-family: "Times New Roman", Times, serif;
@@ -26,10 +27,13 @@
             display: none;
         }
 
-         @media print {
-        html, body {
-            width: 210mm;
-            height: 297mm;
+        @media print {
+
+            html,
+            body {
+                width: 210mm;
+                height: 297mm;
+            }
         }
     </style>
 </head>
@@ -40,16 +44,16 @@
             <thead>
                 <tr>
                     <td colspan="2" width="20%" style="text-align: left; font-weight: bold;">INVOICE</td>
-                    <td rowspan="3"><img src="{{ asset('template/dist/img/logo-global.png') }}" width="190px"
+                    <td rowspan="3"><img src="{{ asset('template/dist/img/genz-global.png') }}" width="190px"
                             style="text-align: right; margin-left: 160px;" />
                         <h3
                             style="text-align: right; margin-top: 5px; font-size: 12px; font-family: Arial, Helvetica, sans-serif; font-weight: bolder;">
-                            PT GLOBAL TECHNOLOGY ESSENTIAL</h3>
+                            GEN Z COMPANY</h3>
                         <p
                             style="text-align: right; margin-top: -25px; font-size: 11px; font-family: Arial, Helvetica, sans-serif;">
                             <br />
-                            <i>Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat, 41117</i><br>
-                            admin@globaltech.id
+                            <i>Jl. Pramuka RT12/04, Bunder, Jatiluhur, Purwakarta 41117</i><br>
+                            genzcompany23@gmail.com
 
                         </p>
                     </td>
@@ -121,11 +125,11 @@
                         : {{ $invoice->quotation->nama_project }}<br>
                         : {{ Carbon\Carbon::create($invoice->quotation->created_at)->isoFormat('DD MMMM Y') }} <br>
                         : Termin 1
-                        </td>
+                    </td>
                 </tr>
             </thead>
         </table>
-<br>
+        <br>
         <table width="670px" cellspacing="0" cellpadding="0" border="1">
             <thead>
                 <tr>
@@ -190,11 +194,12 @@
             <tr>
                 <td><b>Payment Transfer To :</b><br>
                     Account Number : {{ $invoice->quotation->bank_number }}<br>
-                    Account Name : PT Global Technology Essential<br>
-                    @if ($invoice->quotation->bank_number == '1362450042')
-                        Bank Name : Bank Negara Indonesia<br>
+                    @if ($invoice->quotation->bank_number == '373601030504533')
+                        Account Name : Nurul Huda<br>
+                        Bank Name    : Bank Rakyat Indonesia (BRI)<br>
                     @else
-                        Bank Name : Bank Jabar Banten<br>
+                        Account Name : Farid Nabil Firdaus<br>
+                        Bank Name    : Bank Central Asia (BCA)<br>
                     @endif
                 </td>
             </tr>
@@ -203,9 +208,9 @@
         <table width="670px" cellspacing="0" cellpadding="0">
             <tr>
                 <td>Prepared by<br>
-                    PT Global Technology Essential
+                    Gen Z Company
                     <br><br><br><br><br><br>
-                    M Ridzky Farhan<br>
+                    Farid Nabil F., S.Tr.Kom<br>
                     CEO
                 </td>
                 <td align="right">
@@ -220,8 +225,8 @@
     </center>
     <script>
         window.print(); // Melakukan pencetakan saat halaman dimuat
-                window.onafterprint = function() {
-                    window.close(); // Menutup jendela cetakan setelah pencetakan selesai
-                };
+        window.onafterprint = function() {
+            window.close(); // Menutup jendela cetakan setelah pencetakan selesai
+        };
     </script>
 </body>

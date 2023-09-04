@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
                             <li class="breadcrumb-item active">BAST</li>
                         </ol>
                     </div>
@@ -151,7 +151,7 @@
                                                 <td>{{ $item->invoice->status }}</td>
                                                 <td>
                                                     <a href="/print-bast/{{ $item->id }}" type="button"
-                                                        target="__blank" title="Detail">
+                                                        target="_blank" title="Detail">
                                                         <span class="fas fa-eye">&nbsp;&nbsp;&nbsp;</span>
                                                     </a>
                                                     @if ($item->file == null)

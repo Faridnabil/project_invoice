@@ -133,10 +133,10 @@ class QuotationController extends Controller
             'quotation_id' => $data->id,
             'no' => $id_spk,
             'tgl' => now(),
-            'nama' => 'PT. Global Technology Essential',
-            'alamat' => 'Bumi Jaya Indah E 12 A, Purwakarta, Jawa Barat',
-            'telp' => '087779844484',
-            'ktp' => '3214012109010003',
+            'nama' => 'Gen Z Company',
+            'alamat' => 'Jl. Pramuka RT12/04, Bunder, Jatiluhur, Purwakarta 41117',
+            'telp' => '087786672467',
+            'ktp' => '3214033001010004',
         ]);
 
         return redirect('view-quotation')->with('success', 'Request created successfully');

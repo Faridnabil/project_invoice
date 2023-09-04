@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/home">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="/view-quotation">Quotation</a></li>
                             <li class="breadcrumb-item active">Create Quotation</li>
                         </ol>
@@ -75,12 +75,10 @@
                                             </div>
                                             <div class="form-group">
                                                 <select class="form-control" name="bank_number">
-                                                    <option value="0124905486100">0124905486100 (BJB)</option>
-                                                    <option value="1362450042">1362450042 (BNI)</option>
+                                                    <option value="373601030504533">373601030504533 (BRI)</option>
+                                                    <option value="2310385819">2310385819 (BCA)</option>
                                                 </select>
                                             </div>
-
-
                                         </div>
                                     </div>
 

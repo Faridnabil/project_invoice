@@ -33,8 +33,8 @@ class PermissionDemoSeeder extends Seeder
         $adminRole->givePermissionTo('Unpublish User');
 
         $user = User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@globaltech.id',
+            'name' => 'Admin Gen-Z Company',
+            'email' => 'admin@gmail.com',
             'password' => bcrypt('qwerty12')
         ]);
         $user->assignRole($adminRole);
